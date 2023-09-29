@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwokanr7mk82v"]
+
+[ext_resource type="Script" path="res://scripts/ball.gd" id="1_hdw1j"]
+[ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="1_yrk2e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oejnf"]
+radius = 8.0
+
+[node name="Ball" type="CharacterBody2D"]
+scale = Vector2(0.7, 0.7)
+collision_layer = 4
+collision_mask = 11
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("1_hdw1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oejnf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yrk2e")
+region_enabled = true
+region_rect = Rect2(384, 432, 16, 16)

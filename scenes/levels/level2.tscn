@@ -1,0 +1,391 @@
+[gd_scene load_steps=3 format=3 uid="uid://brsyupmi2ge7m"]
+
+[ext_resource type="PackedScene" uid="uid://bdlewbi22dowq" path="res://scenes/world.tscn" id="1_iwkt8"]
+[ext_resource type="PackedScene" uid="uid://dva53aapfah8n" path="res://scenes/brick.tscn" id="2_7yeum"]
+
+[node name="Level2" instance=ExtResource("1_iwkt8")]
+
+[node name="DefaultLevel" parent="." index="0"]
+metadata/_edit_lock_ = true
+
+[node name="Silver" type="Node2D" parent="DefaultLevel" index="1"]
+position = Vector2(-400, -80)
+
+[node name="Brick" parent="DefaultLevel/Silver" index="0" instance=ExtResource("2_7yeum")]
+position = Vector2(448, 352)
+color = 8
+
+[node name="Brick2" parent="DefaultLevel/Silver" index="1" instance=ExtResource("2_7yeum")]
+position = Vector2(480, 352)
+color = 8
+
+[node name="Brick3" parent="DefaultLevel/Silver" index="2" instance=ExtResource("2_7yeum")]
+position = Vector2(512, 352)
+color = 8
+
+[node name="Brick4" parent="DefaultLevel/Silver" index="3" instance=ExtResource("2_7yeum")]
+position = Vector2(544, 352)
+color = 8
+
+[node name="Brick5" parent="DefaultLevel/Silver" index="4" instance=ExtResource("2_7yeum")]
+position = Vector2(576, 352)
+color = 8
+
+[node name="Brick6" parent="DefaultLevel/Silver" index="5" instance=ExtResource("2_7yeum")]
+position = Vector2(608, 352)
+color = 8
+
+[node name="Brick7" parent="DefaultLevel/Silver" index="6" instance=ExtResource("2_7yeum")]
+position = Vector2(640, 352)
+color = 8
+
+[node name="Brick8" parent="DefaultLevel/Silver" index="7" instance=ExtResource("2_7yeum")]
+position = Vector2(672, 352)
+color = 8
+
+[node name="Brick9" parent="DefaultLevel/Silver" index="8" instance=ExtResource("2_7yeum")]
+position = Vector2(704, 352)
+color = 8
+
+[node name="Brick10" parent="DefaultLevel/Silver" index="9" instance=ExtResource("2_7yeum")]
+position = Vector2(736, 352)
+color = 8
+
+[node name="Brick11" parent="DefaultLevel/Silver" index="10" instance=ExtResource("2_7yeum")]
+position = Vector2(768, 352)
+color = 8
+
+[node name="Brick12" parent="DefaultLevel/Silver" index="11" instance=ExtResource("2_7yeum")]
+position = Vector2(800, 352)
+color = 8
+
+[node name="Red" type="Node2D" parent="DefaultLevel" index="2"]
+position = Vector2(-400, -80)
+
+[node name="Brick20" parent="DefaultLevel/Red" index="0" instance=ExtResource("2_7yeum")]
+position = Vector2(576, 336)
+
+[node name="Brick21" parent="DefaultLevel/Red" index="1" instance=ExtResource("2_7yeum")]
+position = Vector2(576, 320)
+
+[node name="Brick22" parent="DefaultLevel/Red" index="2" instance=ExtResource("2_7yeum")]
+position = Vector2(576, 304)
+
+[node name="Brick23" parent="DefaultLevel/Red" index="3" instance=ExtResource("2_7yeum")]
+position = Vector2(576, 288)
+
+[node name="Brick24" parent="DefaultLevel/Red" index="4" instance=ExtResource("2_7yeum")]
+position = Vector2(576, 272)
+
+[node name="Brick25" parent="DefaultLevel/Red" index="5" instance=ExtResource("2_7yeum")]
+position = Vector2(576, 256)
+
+[node name="Brick26" parent="DefaultLevel/Red" index="6" instance=ExtResource("2_7yeum")]
+position = Vector2(576, 240)
+
+[node name="Brick27" parent="DefaultLevel/Red" index="7" instance=ExtResource("2_7yeum")]
+position = Vector2(576, 224)
+
+[node name="Brick19" parent="DefaultLevel/Red" index="8" instance=ExtResource("2_7yeum")]
+position = Vector2(832, 352)
+
+[node name="Pink" type="Node2D" parent="DefaultLevel" index="3"]
+position = Vector2(-400, -80)
+
+[node name="Brick20" parent="DefaultLevel/Pink" index="0" instance=ExtResource("2_7yeum")]
+position = Vector2(448, 336)
+color = 2
+
+[node name="Brick21" parent="DefaultLevel/Pink" index="1" instance=ExtResource("2_7yeum")]
+position = Vector2(448, 320)
+color = 2
+
+[node name="Brick22" parent="DefaultLevel/Pink" index="2" instance=ExtResource("2_7yeum")]
+position = Vector2(448, 304)
+color = 2
+
+[node name="Brick23" parent="DefaultLevel/Pink" index="3" instance=ExtResource("2_7yeum")]
+position = Vector2(448, 288)
+color = 2
+
+[node name="Brick24" parent="DefaultLevel/Pink" index="4" instance=ExtResource("2_7yeum")]
+position = Vector2(448, 272)
+color = 2
+
+[node name="Brick25" parent="DefaultLevel/Pink" index="5" instance=ExtResource("2_7yeum")]
+position = Vector2(448, 256)
+color = 2
+
+[node name="Brick26" parent="DefaultLevel/Pink" index="6" instance=ExtResource("2_7yeum")]
+position = Vector2(448, 240)
+color = 2
+
+[node name="Brick27" parent="DefaultLevel/Pink" index="7" instance=ExtResource("2_7yeum")]
+position = Vector2(448, 224)
+color = 2
+
+[node name="Brick28" parent="DefaultLevel/Pink" index="8" instance=ExtResource("2_7yeum")]
+position = Vector2(448, 208)
+color = 2
+
+[node name="Brick37" parent="DefaultLevel/Pink" index="9" instance=ExtResource("2_7yeum")]
+position = Vector2(704, 336)
+color = 2
+
+[node name="Brick38" parent="DefaultLevel/Pink" index="10" instance=ExtResource("2_7yeum")]
+position = Vector2(704, 320)
+color = 2
+
+[node name="Brick39" parent="DefaultLevel/Pink" index="11" instance=ExtResource("2_7yeum")]
+position = Vector2(704, 304)
+color = 2
+
+[node name="Brick40" parent="DefaultLevel/Pink" index="12" instance=ExtResource("2_7yeum")]
+position = Vector2(704, 288)
+color = 2
+
+[node name="Brick29" parent="DefaultLevel/Pink" index="13" instance=ExtResource("2_7yeum")]
+position = Vector2(448, 192)
+color = 2
+
+[node name="Brick30" parent="DefaultLevel/Pink" index="14" instance=ExtResource("2_7yeum")]
+position = Vector2(448, 176)
+color = 2
+
+[node name="Brick31" parent="DefaultLevel/Pink" index="15" instance=ExtResource("2_7yeum")]
+position = Vector2(448, 160)
+color = 2
+
+[node name="Orange" type="Node2D" parent="DefaultLevel" index="4"]
+position = Vector2(-400, -80)
+
+[node name="Brick20" parent="DefaultLevel/Orange" index="0" instance=ExtResource("2_7yeum")]
+position = Vector2(480, 336)
+color = 3
+
+[node name="Brick21" parent="DefaultLevel/Orange" index="1" instance=ExtResource("2_7yeum")]
+position = Vector2(480, 320)
+color = 3
+
+[node name="Brick22" parent="DefaultLevel/Orange" index="2" instance=ExtResource("2_7yeum")]
+position = Vector2(480, 304)
+color = 3
+
+[node name="Brick23" parent="DefaultLevel/Orange" index="3" instance=ExtResource("2_7yeum")]
+position = Vector2(480, 288)
+color = 3
+
+[node name="Brick24" parent="DefaultLevel/Orange" index="4" instance=ExtResource("2_7yeum")]
+position = Vector2(480, 272)
+color = 3
+
+[node name="Brick25" parent="DefaultLevel/Orange" index="5" instance=ExtResource("2_7yeum")]
+position = Vector2(480, 256)
+color = 3
+
+[node name="Brick26" parent="DefaultLevel/Orange" index="6" instance=ExtResource("2_7yeum")]
+position = Vector2(480, 240)
+color = 3
+
+[node name="Brick27" parent="DefaultLevel/Orange" index="7" instance=ExtResource("2_7yeum")]
+position = Vector2(480, 224)
+color = 3
+
+[node name="Brick36" parent="DefaultLevel/Orange" index="8" instance=ExtResource("2_7yeum")]
+position = Vector2(736, 336)
+color = 3
+
+[node name="Brick37" parent="DefaultLevel/Orange" index="9" instance=ExtResource("2_7yeum")]
+position = Vector2(736, 320)
+color = 3
+
+[node name="Brick38" parent="DefaultLevel/Orange" index="10" instance=ExtResource("2_7yeum")]
+position = Vector2(736, 304)
+color = 3
+
+[node name="Brick28" parent="DefaultLevel/Orange" index="11" instance=ExtResource("2_7yeum")]
+position = Vector2(480, 208)
+color = 3
+
+[node name="Brick29" parent="DefaultLevel/Orange" index="12" instance=ExtResource("2_7yeum")]
+position = Vector2(480, 192)
+color = 3
+
+[node name="Brick30" parent="DefaultLevel/Orange" index="13" instance=ExtResource("2_7yeum")]
+position = Vector2(480, 176)
+color = 3
+
+[node name="Cyan" type="Node2D" parent="DefaultLevel" index="5"]
+position = Vector2(-400, -80)
+
+[node name="Brick20" parent="DefaultLevel/Cyan" index="0" instance=ExtResource("2_7yeum")]
+position = Vector2(512, 336)
+color = 4
+
+[node name="Brick21" parent="DefaultLevel/Cyan" index="1" instance=ExtResource("2_7yeum")]
+position = Vector2(512, 320)
+color = 4
+
+[node name="Brick22" parent="DefaultLevel/Cyan" index="2" instance=ExtResource("2_7yeum")]
+position = Vector2(512, 304)
+color = 4
+
+[node name="Brick23" parent="DefaultLevel/Cyan" index="3" instance=ExtResource("2_7yeum")]
+position = Vector2(512, 288)
+color = 4
+
+[node name="Brick24" parent="DefaultLevel/Cyan" index="4" instance=ExtResource("2_7yeum")]
+position = Vector2(512, 272)
+color = 4
+
+[node name="Brick25" parent="DefaultLevel/Cyan" index="5" instance=ExtResource("2_7yeum")]
+position = Vector2(512, 256)
+color = 4
+
+[node name="Brick26" parent="DefaultLevel/Cyan" index="6" instance=ExtResource("2_7yeum")]
+position = Vector2(512, 240)
+color = 4
+
+[node name="Brick35" parent="DefaultLevel/Cyan" index="7" instance=ExtResource("2_7yeum")]
+position = Vector2(768, 336)
+color = 4
+
+[node name="Brick36" parent="DefaultLevel/Cyan" index="8" instance=ExtResource("2_7yeum")]
+position = Vector2(768, 320)
+color = 4
+
+[node name="Brick27" parent="DefaultLevel/Cyan" index="9" instance=ExtResource("2_7yeum")]
+position = Vector2(512, 224)
+color = 4
+
+[node name="Brick28" parent="DefaultLevel/Cyan" index="10" instance=ExtResource("2_7yeum")]
+position = Vector2(512, 208)
+color = 4
+
+[node name="Brick29" parent="DefaultLevel/Cyan" index="11" instance=ExtResource("2_7yeum")]
+position = Vector2(512, 192)
+color = 4
+
+[node name="Green" type="Node2D" parent="DefaultLevel" index="6"]
+position = Vector2(-400, -80)
+
+[node name="Brick20" parent="DefaultLevel/Green" index="0" instance=ExtResource("2_7yeum")]
+position = Vector2(544, 336)
+color = 5
+
+[node name="Brick21" parent="DefaultLevel/Green" index="1" instance=ExtResource("2_7yeum")]
+position = Vector2(544, 320)
+color = 5
+
+[node name="Brick22" parent="DefaultLevel/Green" index="2" instance=ExtResource("2_7yeum")]
+position = Vector2(544, 304)
+color = 5
+
+[node name="Brick23" parent="DefaultLevel/Green" index="3" instance=ExtResource("2_7yeum")]
+position = Vector2(544, 288)
+color = 5
+
+[node name="Brick24" parent="DefaultLevel/Green" index="4" instance=ExtResource("2_7yeum")]
+position = Vector2(544, 272)
+color = 5
+
+[node name="Brick25" parent="DefaultLevel/Green" index="5" instance=ExtResource("2_7yeum")]
+position = Vector2(544, 256)
+color = 5
+
+[node name="Brick34" parent="DefaultLevel/Green" index="6" instance=ExtResource("2_7yeum")]
+position = Vector2(800, 336)
+color = 5
+
+[node name="Brick26" parent="DefaultLevel/Green" index="7" instance=ExtResource("2_7yeum")]
+position = Vector2(544, 240)
+color = 5
+
+[node name="Brick27" parent="DefaultLevel/Green" index="8" instance=ExtResource("2_7yeum")]
+position = Vector2(544, 224)
+color = 5
+
+[node name="Brick28" parent="DefaultLevel/Green" index="9" instance=ExtResource("2_7yeum")]
+position = Vector2(544, 208)
+color = 5
+
+[node name="Blue" type="Node2D" parent="DefaultLevel" index="7"]
+position = Vector2(-400, -80)
+
+[node name="Brick20" parent="DefaultLevel/Blue" index="0" instance=ExtResource("2_7yeum")]
+position = Vector2(608, 336)
+color = 6
+
+[node name="Brick21" parent="DefaultLevel/Blue" index="1" instance=ExtResource("2_7yeum")]
+position = Vector2(608, 320)
+color = 6
+
+[node name="Brick22" parent="DefaultLevel/Blue" index="2" instance=ExtResource("2_7yeum")]
+position = Vector2(608, 304)
+color = 6
+
+[node name="Brick23" parent="DefaultLevel/Blue" index="3" instance=ExtResource("2_7yeum")]
+position = Vector2(608, 288)
+color = 6
+
+[node name="Brick24" parent="DefaultLevel/Blue" index="4" instance=ExtResource("2_7yeum")]
+position = Vector2(608, 272)
+color = 6
+
+[node name="Brick25" parent="DefaultLevel/Blue" index="5" instance=ExtResource("2_7yeum")]
+position = Vector2(608, 256)
+color = 6
+
+[node name="Brick26" parent="DefaultLevel/Blue" index="6" instance=ExtResource("2_7yeum")]
+position = Vector2(608, 240)
+color = 6
+
+[node name="Violet" type="Node2D" parent="DefaultLevel" index="8"]
+position = Vector2(-400, -80)
+
+[node name="Brick20" parent="DefaultLevel/Violet" index="0" instance=ExtResource("2_7yeum")]
+position = Vector2(640, 336)
+color = 7
+
+[node name="Brick21" parent="DefaultLevel/Violet" index="1" instance=ExtResource("2_7yeum")]
+position = Vector2(640, 320)
+color = 7
+
+[node name="Brick22" parent="DefaultLevel/Violet" index="2" instance=ExtResource("2_7yeum")]
+position = Vector2(640, 304)
+color = 7
+
+[node name="Brick23" parent="DefaultLevel/Violet" index="3" instance=ExtResource("2_7yeum")]
+position = Vector2(640, 288)
+color = 7
+
+[node name="Brick24" parent="DefaultLevel/Violet" index="4" instance=ExtResource("2_7yeum")]
+position = Vector2(640, 272)
+color = 7
+
+[node name="Brick25" parent="DefaultLevel/Violet" index="5" instance=ExtResource("2_7yeum")]
+position = Vector2(640, 256)
+color = 7
+
+[node name="Yellow" type="Node2D" parent="DefaultLevel" index="9"]
+position = Vector2(-400, -80)
+
+[node name="Brick20" parent="DefaultLevel/Yellow" index="0" instance=ExtResource("2_7yeum")]
+position = Vector2(672, 336)
+color = 1
+
+[node name="Brick21" parent="DefaultLevel/Yellow" index="1" instance=ExtResource("2_7yeum")]
+position = Vector2(672, 320)
+color = 1
+
+[node name="Brick22" parent="DefaultLevel/Yellow" index="2" instance=ExtResource("2_7yeum")]
+position = Vector2(672, 304)
+color = 1
+
+[node name="Brick23" parent="DefaultLevel/Yellow" index="3" instance=ExtResource("2_7yeum")]
+position = Vector2(672, 288)
+color = 1
+
+[node name="Brick24" parent="DefaultLevel/Yellow" index="4" instance=ExtResource("2_7yeum")]
+position = Vector2(672, 272)
+color = 1
