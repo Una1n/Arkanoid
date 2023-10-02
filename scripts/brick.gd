@@ -4,7 +4,7 @@ class_name Brick
 
 enum Colors {RED = 0, YELLOW, PINK, ORANGE, CYAN, GREEN, BLUE, VIOLET, SILVER, GOLD}
 
-signal on_destroyed
+signal on_destroyed(brick: Brick)
 
 @export var color: Colors = Colors.RED:
 	set(value):
@@ -63,6 +63,5 @@ func on_collided_with_ball() -> void:
 
 	current_hits += 1
 	if hits_to_destroy == current_hits:
-		Globals.add_points(points)
-		on_destroyed.emit()
+		on_destroyed.emit(self)
 		queue_free()
