@@ -11,7 +11,7 @@ func start_moving() -> void:
 
 	# Enable collision after some time (otherwise it will collide with paddle)
 	if $CollisionShape2D.disabled:
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.05).timeout
 		disable_collision(false)
 
 
