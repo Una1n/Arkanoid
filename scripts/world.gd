@@ -54,7 +54,7 @@ func respawn_ball() -> void:
 
 func on_destroy_brick(brick: Brick) -> void:
 	spawn_powerup()
-	HighscoreManager.add_points(brick.points)
+	HighscoreManager.add_points(brick.type.points)
 	bricks_available -= 1
 	if bricks_available == 0:
 		on_level_cleared.emit()

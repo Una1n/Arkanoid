@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BrickType" load_steps=2 format=3 uid="uid://f68v43dk7ffp"]
+
+[ext_resource type="Script" path="res://scenes/bricks/brick_type.gd" id="1_u0fh1"]
+
+[resource]
+script = ExtResource("1_u0fh1")
+points = 50
+hits_to_destroy = 2
+can_be_destroyed = true
+region_rect = Rect2(0, 96, 32, 16)
