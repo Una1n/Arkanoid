@@ -3,11 +3,12 @@ class_name Ball
 
 const __SPEED = 350.0
 
-signal on_screen_exited
+signal on_screen_exited(ball: Ball)
 
 
-func start_moving() -> void:
-	velocity = Vector2(1, -1) * __SPEED
+func start_moving(direction: Vector2) -> void:
+	add_to_group("Ball")
+	velocity = direction * __SPEED
 
 	# Enable collision after some time (otherwise it will collide with paddle)
 	if $CollisionShape2D.disabled:
@@ -48,7 +49,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_screen_exited() -> void:
-	on_screen_exited.emit()
+	on_screen_exited.emit(self)
 
 
 func disable_collision(disable: bool = true) -> void:
