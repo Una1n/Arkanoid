@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Globals="*res://globals/globals.gd"
 SceneManager="*res://globals/scene_manager.gd"
+HighscoreManager="*res://globals/highscore_manager.gd"
 
 [display]
 
