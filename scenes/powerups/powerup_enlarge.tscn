@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://jyw1eqoph7po"]
+
+[ext_resource type="PackedScene" uid="uid://c3u2pk5ceaigr" path="res://scenes/powerup.tscn" id="1_2x4dm"]
+[ext_resource type="Script" path="res://scenes/powerups/powerup_enlarge.gd" id="2_snlp6"]
+
+[node name="PowerupEnlarge" instance=ExtResource("1_2x4dm")]
+script = ExtResource("2_snlp6")

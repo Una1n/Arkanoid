@@ -55,6 +55,7 @@ debug_destroy_bricks={
 2d_physics/layer_2="Paddle"
 2d_physics/layer_3="Ball"
 2d_physics/layer_4="Bricks"
+2d_physics/layer_5="Powerup"
 
 [rendering]
 
