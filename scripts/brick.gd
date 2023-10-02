@@ -12,7 +12,7 @@ signal on_destroyed(brick: Brick)
 		_update_color()
 
 var points: int = 90
-var hits_to_destroy: int = 1
+var hits_to_destroy: int = 1	# TODO: Silver = +1 every 8 stages
 var can_be_destroyed: bool = true
 
 @onready var current_hits: int = 0

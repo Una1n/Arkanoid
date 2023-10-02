@@ -5,14 +5,18 @@ extends Node2D
 var ball_scene: PackedScene = preload("res://scenes/ball.tscn")
 
 var current_ball: Ball = null
+var bricks_available: int = 100
+
+signal on_level_cleared
 
 
 func _ready() -> void:
 	respawn_ball()
-	Globals.bricks_available = get_tree().get_nodes_in_group("Bricks").size()
+	on_level_cleared.connect(SceneManager.go_to_next_level)
+	bricks_available = get_tree().get_nodes_in_group("Bricks").size()
 	for node in get_tree().get_nodes_in_group("Bricks"):
 		var brick = node as Brick
-		brick.on_destroyed.connect(Globals.destroy_brick)
+		brick.on_destroyed.connect(on_destroy_brick)
 
 
 func _input(event: InputEvent) -> void:
@@ -29,7 +33,7 @@ func _input(event: InputEvent) -> void:
 		SceneManager.go_to_prev_level()
 
 	if OS.is_debug_build() and event.is_action_pressed("debug_destroy_bricks"):
-		Globals.on_level_cleared.emit()
+		on_level_cleared.emit()
 
 
 func on_ball_exited_screen() -> void:
@@ -46,3 +50,15 @@ func respawn_ball() -> void:
 	current_ball.position = Vector2(0, -12)
 	current_ball.on_screen_exited.connect(on_ball_exited_screen)
 	started_game = false
+
+
+func on_destroy_brick(brick: Brick) -> void:
+	spawn_powerup()
+	Globals.add_points(brick.points)
+	bricks_available -= 1
+	if bricks_available == 0:
+		on_level_cleared.emit()
+
+
+func spawn_powerup() -> void:
+	pass
