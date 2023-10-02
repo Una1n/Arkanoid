@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Ball
 
-const __SPEED = 400.0
+const __SPEED = 350.0
 
 signal on_screen_exited
 
