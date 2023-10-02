@@ -1,11 +1,19 @@
 extends CharacterBody2D
-
+class_name Ball
 
 const __SPEED = 400.0
+
+signal on_screen_exited
 
 
 func start_moving() -> void:
 	velocity = Vector2(1, -1) * __SPEED
+
+	# Enable collision after some time (otherwise it will collide with paddle)
+	if $CollisionShape2D.disabled:
+		await get_tree().create_timer(0.2).timeout
+		disable_collision(false)
+
 
 
 func _physics_process(delta: float) -> void:
@@ -37,3 +45,11 @@ func _physics_process(delta: float) -> void:
 		var reflect = collision.get_remainder().bounce(collision.get_normal())
 		velocity = velocity.bounce(collision.get_normal())
 		move_and_collide(reflect * delta)
+
+
+func _on_screen_exited() -> void:
+	on_screen_exited.emit()
+
+
+func disable_collision(disable: bool = true) -> void:
+	$CollisionShape2D.set_deferred("disabled", disable)

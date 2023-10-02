@@ -21,3 +21,7 @@ shape = SubResource("CircleShape2D_oejnf")
 texture = ExtResource("1_yrk2e")
 region_enabled = true
 region_rect = Rect2(384, 432, 16, 16)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_screen_exited"]
