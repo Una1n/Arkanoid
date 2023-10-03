@@ -68,4 +68,4 @@ func on_destroy_brick(brick: Brick) -> void:
 	if bricks_available == 0:
 		on_level_cleared.emit()
 	else:
-		PowerupManager.spawn_powerup(self, brick.global_position)
+		PowerupManager.spawn_powerup(self, brick)

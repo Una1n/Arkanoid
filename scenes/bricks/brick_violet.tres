@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_krmda")
+name = "Violet"
 points = 110
 hits_to_destroy = 1
 can_be_destroyed = true

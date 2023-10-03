@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_qekhf")
+name = "Yellow"
 points = 120
 hits_to_destroy = 1
 can_be_destroyed = true

@@ -9,15 +9,16 @@ var active_powerup: Powerup = null
 var powerup_on_screen: bool = false
 
 
-func spawn_powerup(world: World, position: Vector2) -> void:
+func spawn_powerup(world: World, brick: Brick) -> void:
 	if powerup_on_screen: return
 	if active_powerup is PowerupDisruption and \
 		get_tree().get_nodes_in_group("Ball").size() > 1:
 			return
+	if brick.type.name == "Silver": return
 
 	if randi_range(1, 5) == 1:
 		var powerup: Powerup = POWERUP_LIST[randi() % POWERUP_LIST.size()].instantiate()
-		powerup.global_position = position
+		powerup.global_position = brick.global_position
 		powerup.on_screen_exited.connect(on_powerup_destroyed)
 		powerup.on_powerup_gained.connect(on_powerup_gained)
 		world.add_child(powerup)

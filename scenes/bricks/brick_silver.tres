@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_u0fh1")
+name = "Silver"
 points = 50
 hits_to_destroy = 2
 can_be_destroyed = true

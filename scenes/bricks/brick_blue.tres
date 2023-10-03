@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_ve56r")
+name = "Blue"
 points = 100
 hits_to_destroy = 1
 can_be_destroyed = true
