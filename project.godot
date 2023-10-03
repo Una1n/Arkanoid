@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SceneManager="*res://globals/scene_manager.gd"
 HighscoreManager="*res://globals/highscore_manager.gd"
+PowerupManager="*res://globals/powerup_manager.gd"
 
 [display]
 

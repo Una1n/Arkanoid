@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _on_screen_exited() -> void:
 	on_screen_exited.emit()
-	queue_free()
+	destroy()
 
 
 func _on_collected(_body: Node2D) -> void:
@@ -24,5 +24,9 @@ func _on_collected(_body: Node2D) -> void:
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 
 
-func enable_powerup(world: World) -> void: pass
-func disable_powerup(world: World) -> void: pass
+func enable_powerup() -> void: pass
+func disable_powerup() -> void: pass
+
+
+func destroy() -> void:
+	queue_free()

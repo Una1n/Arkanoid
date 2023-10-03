@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dy4lsv03y08oy" path="res://scenes/paddle.tscn" id="2_533u3"]
 [ext_resource type="PackedScene" uid="uid://cwdeig8vd2f4c" path="res://scenes/levels/default_level.tscn" id="2_pl2jy"]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" groups=["World"]]
 script = ExtResource("1_3mar2")
 
 [node name="DefaultLevel" parent="." instance=ExtResource("2_pl2jy")]

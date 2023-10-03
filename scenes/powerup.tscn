@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvvi2"]
 size = Vector2(32, 16)
 
-[node name="Powerup" type="StaticBody2D"]
+[node name="Powerup" type="StaticBody2D" groups=["Powerup"]]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_1q6jy")
