@@ -4,12 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="1_rujcs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ud5wm"]
-size = Vector2(66, 16)
+size = Vector2(64, 16)
 
 [node name="Paddle" type="CharacterBody2D" groups=["Paddle"]]
 collision_layer = 2
 collision_mask = 5
-motion_mode = 1
 script = ExtResource("1_rq0yc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
