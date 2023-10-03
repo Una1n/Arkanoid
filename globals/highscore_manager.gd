@@ -4,5 +4,9 @@ var current_score: int = 0
 var highscore: int = 0
 
 
-func add_points(points: int) -> void:
+func add_points(brick: Brick) -> void:
+	var points: int = brick.type.points
+	if brick.type.name == "Silver":
+		points = brick.type.points * SceneManager.current_level_nr
+
 	current_score += points

@@ -24,6 +24,9 @@ func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("Bricks"):
 		var brick = node as Brick
 		brick.on_destroyed.connect(on_destroy_brick)
+		if brick.type.name == "Silver":
+			if SceneManager.current_level_nr % 8 == 0:
+				brick.type.hits_to_destroy += SceneManager.current_level_nr / 8
 
 
 func _input(event: InputEvent) -> void:
@@ -63,7 +66,7 @@ func respawn_ball() -> void:
 
 
 func on_destroy_brick(brick: Brick) -> void:
-	HighscoreManager.add_points(brick.type.points)
+	HighscoreManager.add_points(brick)
 	bricks_available -= 1
 	if bricks_available == 0:
 		on_level_cleared.emit()

@@ -16,7 +16,6 @@ func enable_powerup() -> void:
 	ball.on_screen_exited.connect(world.on_ball_exited_screen)
 	ball2.on_screen_exited.connect(world.on_ball_exited_screen)
 
-	# Making sure the direction is never fully left/right
 	ball.start_moving(Vector2(randf_range(-1.0, 1.0), get_random_direction_y()))
 	ball2.start_moving(Vector2(randf_range(-1.0, 1.0), get_random_direction_y()))
 
