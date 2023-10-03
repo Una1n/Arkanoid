@@ -20,6 +20,7 @@ func _ready() -> void:
 	respawn_ball()
 	on_level_cleared.connect(SceneManager.go_to_next_level)
 	on_level_cleared.connect(PowerupManager.remove_all_powerups)
+	HighscoreManager.on_score_updated.connect(on_score_updated)
 	bricks_available = get_tree().get_nodes_in_group("Bricks").size()
 	for node in get_tree().get_nodes_in_group("Bricks"):
 		var brick = node as Brick
@@ -72,3 +73,7 @@ func on_destroy_brick(brick: Brick) -> void:
 		on_level_cleared.emit()
 	else:
 		PowerupManager.spawn_powerup(self, brick)
+
+
+func on_score_updated() -> void:
+	%Score.text = "%s" % HighscoreManager.current_score

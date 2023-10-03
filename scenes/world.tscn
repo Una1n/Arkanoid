@@ -16,3 +16,37 @@ zoom = Vector2(1.3, 1.3)
 
 [node name="Paddle" parent="." instance=ExtResource("2_533u3")]
 position = Vector2(640, 592)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ScoreContainer" type="PanelContainer" parent="UI"]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 12.0
+offset_right = 100.0
+offset_bottom = 37.0
+grow_horizontal = 2
+metadata/_edit_group_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/ScoreContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ScoreLabel" type="Label" parent="UI/ScoreContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "Score: "
+
+[node name="Score" type="Label" parent="UI/ScoreContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "000000000
+"
