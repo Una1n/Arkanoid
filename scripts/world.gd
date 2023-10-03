@@ -12,6 +12,11 @@ signal on_level_cleared
 
 
 func _ready() -> void:
+	if OS.is_debug_build():
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+
 	respawn_ball()
 	on_level_cleared.connect(SceneManager.go_to_next_level)
 	on_level_cleared.connect(PowerupManager.remove_all_powerups)
