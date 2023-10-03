@@ -18,6 +18,9 @@ func start_moving(direction: Vector2) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if position.y >= 592:
+		set_collision_mask_value(2, false)
+
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 	if collision:
 		if collision.get_collider() is Brick:
