@@ -70,3 +70,4 @@ debug_destroy_bricks={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.0117647, 0.027451, 0.0627451, 1)
