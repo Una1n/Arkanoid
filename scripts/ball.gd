@@ -12,14 +12,14 @@ func _ready() -> void:
 func start_moving(direction: Vector2) -> void:
 	velocity = direction * __SPEED
 
-	# Enable collision after some time (otherwise it will collide with paddle)
+	# Enable collision after some time (otherwise it will collide with paddle on start)
 	if $CollisionShape2D.disabled:
 		await get_tree().create_timer(0.05).timeout
 		disable_collision(false)
 
 
 func _physics_process(delta: float) -> void:
-	if position.y >= 592:
+	if position.y >= 520:
 		set_collision_mask_value(2, false)
 
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
