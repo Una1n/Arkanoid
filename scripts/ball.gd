@@ -5,9 +5,11 @@ const __SPEED = 350.0
 
 signal on_screen_exited(ball: Ball)
 
+func _ready() -> void:
+	add_to_group("Ball")
+
 
 func start_moving(direction: Vector2) -> void:
-	add_to_group("Ball")
 	velocity = direction * __SPEED
 
 	# Enable collision after some time (otherwise it will collide with paddle)
@@ -16,21 +18,20 @@ func start_moving(direction: Vector2) -> void:
 		disable_collision(false)
 
 
-
 func _physics_process(delta: float) -> void:
 	if position.y >= 592:
 		set_collision_mask_value(2, false)
 
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 	if collision:
-		if collision.get_collider() is Brick:
-			var brick = collision.get_collider() as Brick
-			brick.on_collided_with_ball()
+		var collision_body = collision.get_collider()
+		if collision_body.has_method("on_collision"):
+			collision_body.on_collision()
 
 		if collision.get_collider() is Paddle:
 			var paddle = collision.get_collider() as Paddle
 			var paddle_pos: Vector2 = collision.get_position() - paddle.global_position
-			paddle_pos.x /= paddle.size
+			paddle_pos.x /= (paddle.size / 2)
 			paddle_pos.normalized()
 
 			# If we hit the middle part of the paddle it reflects normally

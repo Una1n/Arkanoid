@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Paddle
 
-@onready var mouse_position_x: int = get_global_mouse_position().x
+@onready var mouse_position_x: float = get_global_mouse_position().x
 @onready var size: int = 64
 
 

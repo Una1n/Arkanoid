@@ -27,7 +27,7 @@ func _ready() -> void:
 		brick.on_destroyed.connect(on_destroy_brick)
 		if brick.type.name == "Silver":
 			if SceneManager.current_level_nr % 8 == 0:
-				brick.type.hits_to_destroy += SceneManager.current_level_nr / 8
+				brick.type.hits_to_destroy += SceneManager.current_level_nr / 8.0
 
 
 func _input(event: InputEvent) -> void:
@@ -51,6 +51,7 @@ func on_ball_exited_screen(ball: Ball) -> void:
 	ball.on_screen_exited.disconnect(on_ball_exited_screen)
 	ball.queue_free()
 
+	# Ball is still in the tree until the next frame, so size = 1
 	if get_tree().get_nodes_in_group("Ball").size() == 1:
 		PowerupManager.remove_all_powerups()
 		# TODO: Has enough lives?

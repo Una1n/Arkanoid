@@ -1,5 +1,5 @@
 @tool
-extends Node2D
+extends StaticBody2D
 class_name Brick
 
 
@@ -14,7 +14,7 @@ signal on_destroyed(brick: Brick)
 @onready var current_hits: int = 0
 
 
-func on_collided_with_ball() -> void:
+func on_collision() -> void:
 	if not type.can_be_destroyed: return
 
 	current_hits += 1
