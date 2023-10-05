@@ -8,6 +8,7 @@ const POWERUP_LIST: Array[PackedScene] = [
 var active_powerup: Powerup = null
 var powerup_on_screen: bool = false
 
+signal on_powerup_activated(powerup: Powerup)
 
 func spawn_powerup(parent: Node2D, spawn_position: Vector2) -> void:
 	if powerup_on_screen: return
@@ -28,6 +29,7 @@ func on_powerup_gained(powerup: Powerup) -> void:
 	remove_active_powerup()
 
 	powerup.enable_powerup()
+	on_powerup_activated.emit(powerup)
 	active_powerup = powerup
 	powerup_on_screen = false
 

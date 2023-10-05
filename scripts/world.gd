@@ -27,7 +27,7 @@ func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("Bricks"):
 		var brick = node as Brick
 		brick.on_destroyed.connect(on_destroy_brick)
-		brick.on_destroyed.connect(HighscoreManager.add_points)
+		brick.on_destroyed.connect(HighscoreManager.add_brick_points)
 		if brick.type.name == "Silver":
 			if SceneManager.current_level_nr % 8 == 0:
 				brick.type.hits_to_destroy += SceneManager.current_level_nr / 8.0
@@ -49,8 +49,11 @@ func _connect_signals() -> void:
 	on_life_lost.connect(LifeManager.on_life_lost)
 	on_spawn_powerup.connect(PowerupManager.spawn_powerup)
 	HighscoreManager.on_score_updated.connect(on_score_updated)
+	HighscoreManager.on_highscore_updated.connect(on_highscore_updated)
 	LifeManager.on_lives_updated.connect(on_lives_updated)
 	LifeManager.on_respawn.connect(respawn_ball)
+	if not PowerupManager.on_powerup_activated.is_connected(HighscoreManager.add_powerup_points):
+		PowerupManager.on_powerup_activated.connect(HighscoreManager.add_powerup_points)
 
 
 func _input(event: InputEvent) -> void:

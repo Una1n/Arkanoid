@@ -5,6 +5,8 @@ signal on_screen_exited
 signal on_powerup_gained(powerup: Powerup)
 
 var movement_tween: Tween
+@onready var points: int = 1000
+
 
 func _ready() -> void:
 	movement_tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
