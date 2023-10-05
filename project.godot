@@ -20,12 +20,12 @@ config/icon="res://icon.svg"
 SceneManager="*res://globals/scene_manager.gd"
 HighscoreManager="*res://globals/highscore_manager.gd"
 PowerupManager="*res://globals/powerup_manager.gd"
+LifeManager="*res://globals/life_manager.gd"
 
 [display]
 
 window/size/viewport_width=960
 window/size/viewport_height=540
-window/size/mode=2
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
