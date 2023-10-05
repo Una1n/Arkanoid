@@ -8,4 +8,5 @@ name = "Gold"
 points = 0
 hits_to_destroy = 1
 can_be_destroyed = false
+allowed_to_spawn_powerup = false
 region_rect = Rect2(0, 112, 32, 16)
