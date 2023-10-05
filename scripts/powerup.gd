@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 class_name Powerup
 
 signal on_screen_exited

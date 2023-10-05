@@ -6,13 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvvi2"]
 size = Vector2(32, 16)
 
-[node name="Powerup" type="StaticBody2D" groups=["Powerup"]]
-collision_layer = 16
-collision_mask = 2
+[node name="Powerup" type="Node2D" groups=["Powerup"]]
 script = ExtResource("1_1q6jy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_tvvi2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_svajg")
