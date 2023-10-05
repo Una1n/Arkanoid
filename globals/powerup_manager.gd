@@ -16,7 +16,7 @@ func spawn_powerup(parent: Node2D, spawn_position: Vector2) -> void:
 		not active_powerup.is_allowed_to_spawn_powerups_while_active():
 		return
 
-	if randi_range(1, 5) == 1:
+	if randi_range(1, 4) == 1:
 		var powerup: Powerup = POWERUP_LIST[randi() % POWERUP_LIST.size()].instantiate()
 		powerup.global_position = spawn_position
 		powerup.on_screen_exited.connect(on_powerup_destroyed)
