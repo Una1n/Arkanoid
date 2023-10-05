@@ -1,14 +1,16 @@
 extends Node2D
 class_name World
 
-@onready var started_game: bool = false
-
 var ball_scene: PackedScene = preload("res://scenes/ball.tscn")
+
+@onready var started_game: bool = false
 
 var current_ball: Ball = null
 var bricks_available: int = 100
 
 signal on_level_cleared
+signal on_life_lost
+signal on_spawn_powerup(parent: Node2D, spawn_position: Vector2)
 
 
 func _ready() -> void:
@@ -18,16 +20,26 @@ func _ready() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 
 	respawn_ball()
-	on_level_cleared.connect(SceneManager.go_to_next_level)
-	on_level_cleared.connect(PowerupManager.remove_all_powerups)
-	HighscoreManager.on_score_updated.connect(on_score_updated)
+	_connect_signals()
 	bricks_available = get_tree().get_nodes_in_group("Bricks").size()
 	for node in get_tree().get_nodes_in_group("Bricks"):
 		var brick = node as Brick
 		brick.on_destroyed.connect(on_destroy_brick)
+		brick.on_destroyed.connect(HighscoreManager.add_points)
 		if brick.type.name == "Silver":
 			if SceneManager.current_level_nr % 8 == 0:
 				brick.type.hits_to_destroy += SceneManager.current_level_nr / 8.0
+
+
+func _connect_signals() -> void:
+	on_level_cleared.connect(SceneManager.go_to_next_level)
+	on_level_cleared.connect(PowerupManager.remove_all_powerups)
+	on_life_lost.connect(PowerupManager.remove_all_powerups)
+	on_life_lost.connect(LifeManager.on_life_lost)
+	on_spawn_powerup.connect(PowerupManager.spawn_powerup)
+	HighscoreManager.on_score_updated.connect(on_score_updated)
+	LifeManager.on_lives_updated.connect(on_lives_updated)
+	LifeManager.on_respawn.connect(respawn_ball)
 
 
 func _input(event: InputEvent) -> void:
@@ -48,14 +60,13 @@ func _input(event: InputEvent) -> void:
 
 
 func on_ball_exited_screen(ball: Ball) -> void:
-	ball.on_screen_exited.disconnect(on_ball_exited_screen)
+	ball.tree_exited.connect(handle_life_lost)
 	ball.queue_free()
 
-	# Ball is still in the tree until the next frame, so size = 1
-	if get_tree().get_nodes_in_group("Ball").size() == 1:
-		PowerupManager.remove_all_powerups()
-		# TODO: Has enough lives?
-		respawn_ball()
+
+func handle_life_lost() -> void:
+	if get_tree().get_nodes_in_group("Ball").size() == 0:
+		on_life_lost.emit()
 
 
 func respawn_ball() -> void:
@@ -68,12 +79,15 @@ func respawn_ball() -> void:
 
 
 func on_destroy_brick(brick: Brick) -> void:
-	HighscoreManager.add_points(brick)
 	bricks_available -= 1
 	if bricks_available == 0:
 		on_level_cleared.emit()
-	else:
-		PowerupManager.spawn_powerup(self, brick)
+	elif brick.type.allowed_to_spawn_powerup:
+		on_spawn_powerup.emit(self, brick.global_position)
+
+
+func on_lives_updated() -> void:
+	%Lives.text = "%s" % LifeManager.lives
 
 
 func on_score_updated() -> void:
