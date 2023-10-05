@@ -2,7 +2,8 @@ extends Node
 
 const POWERUP_LIST: Array[PackedScene] = [
 	preload("res://scenes/powerups/powerup_enlarge.tscn"),
-	preload("res://scenes/powerups/powerup_disruption.tscn")
+	preload("res://scenes/powerups/powerup_disruption.tscn"),
+	preload("res://scenes/powerups/powerup_player.tscn")
 ]
 
 var active_powerup: Powerup = null

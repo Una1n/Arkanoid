@@ -1,5 +1,4 @@
 extends Powerup
-class_name PowerupDisruption
 
 
 func enable_powerup() -> void:
