@@ -58,6 +58,12 @@ func _input(event: InputEvent) -> void:
 	if OS.is_debug_build() and event.is_action_pressed("debug_destroy_bricks"):
 		on_level_cleared.emit()
 
+	if OS.is_debug_build() and event.is_action_pressed("debug_add_life"):
+		LifeManager.add_life()
+
+	if OS.is_debug_build() and event.is_action_pressed("debug_remove_life"):
+		LifeManager.remove_life()
+
 
 func on_ball_exited_screen(ball: Ball) -> void:
 	ball.tree_exited.connect(handle_life_lost)
