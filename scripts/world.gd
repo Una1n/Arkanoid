@@ -2,6 +2,7 @@ extends Node2D
 class_name World
 
 var ball_scene: PackedScene = preload("res://scenes/ball.tscn")
+var life_texture: PackedScene = preload("res://scenes/life_texture.tscn")
 
 @onready var started_game: bool = false
 
@@ -20,6 +21,7 @@ func _ready() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 
 	respawn_ball()
+	_initialize_ui()
 	_connect_signals()
 	bricks_available = get_tree().get_nodes_in_group("Bricks").size()
 	for node in get_tree().get_nodes_in_group("Bricks"):
@@ -31,9 +33,18 @@ func _ready() -> void:
 				brick.type.hits_to_destroy += SceneManager.current_level_nr / 8.0
 
 
+func _initialize_ui() -> void:
+	on_score_updated()
+	on_highscore_updated()
+	%Rounds.text = "%s" % SceneManager.current_level_nr
+
+	for i in LifeManager.lives:
+		%LivesTextureContainer.add_child(life_texture.instantiate())
+
+
 func _connect_signals() -> void:
-	on_level_cleared.connect(SceneManager.go_to_next_level)
 	on_level_cleared.connect(PowerupManager.remove_all_powerups)
+	on_level_cleared.connect(SceneManager.go_to_next_level)
 	on_life_lost.connect(PowerupManager.remove_all_powerups)
 	on_life_lost.connect(LifeManager.on_life_lost)
 	on_spawn_powerup.connect(PowerupManager.spawn_powerup)
@@ -93,8 +104,18 @@ func on_destroy_brick(brick: Brick) -> void:
 
 
 func on_lives_updated() -> void:
-	%Lives.text = "%s" % LifeManager.lives
+	var ui_lives_count: int = %LivesTextureContainer.get_child_count()
+	if ui_lives_count < LifeManager.lives:
+		%LivesTextureContainer.add_child(life_texture.instantiate())
+	elif ui_lives_count > LifeManager.lives:
+		if ui_lives_count > 0:
+			var life = %LivesTextureContainer.get_child(ui_lives_count - 1)
+			%LivesTextureContainer.remove_child(life)
 
 
 func on_score_updated() -> void:
 	%Score.text = "%s" % HighscoreManager.current_score
+
+
+func on_highscore_updated() -> void:
+	%HighScore.text = "%s" % HighscoreManager.highscore

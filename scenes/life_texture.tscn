@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c64p0ppi77ell"]
+
+[ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="1_m5d7m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihikg"]
+atlas = ExtResource("1_m5d7m")
+region = Rect2(40, 400, 48, 16)
+
+[node name="LifeTexture" type="TextureRect"]
+texture = SubResource("AtlasTexture_ihikg")
+stretch_mode = 3

@@ -8,8 +8,8 @@ signal on_game_over
 
 
 func on_life_lost() -> void:
-	remove_life()
-	if lives >= 0:
+	if lives > 0:
+		remove_life()
 		on_respawn.emit()
 	else:
 		on_game_over.emit()
