@@ -13,6 +13,10 @@ func disable_powerup() -> void:
 	super()
 
 
+func is_allowed_to_spawn_powerups_while_active() -> bool:
+	return get_tree().get_nodes_in_group("Ball").size() == 1
+
+
 func _create_ball(world: World) -> void:
 	var ball: Ball = world.ball_scene.instantiate()
 	var current_ball = get_tree().get_first_node_in_group("Ball") as Ball

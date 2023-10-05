@@ -24,6 +24,10 @@ func _on_collected(_body: Node2D) -> void:
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 
 
+func is_allowed_to_spawn_powerups_while_active() -> bool:
+	return true
+
+
 func enable_powerup() -> void: pass
 func disable_powerup() -> void: pass
 
