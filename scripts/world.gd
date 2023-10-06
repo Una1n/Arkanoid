@@ -86,6 +86,9 @@ func _input(event: InputEvent) -> void:
 	if OS.is_debug_build() and event.is_action_pressed("debug_drop_powerup"):
 		PowerupManager.spawn_powerup(self, Vector2(500, 300))
 
+	if OS.is_debug_build() and event.is_action_pressed("debug_ball_right"):
+		current_ball.velocity = Vector2(1, 0.05) * current_ball.__SPEED
+
 
 func on_entered_gate() -> void:
 	HighscoreManager.add_gate_points()
