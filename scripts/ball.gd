@@ -3,14 +3,19 @@ class_name Ball
 
 const __SPEED = 350.0
 
+@onready var powerup_slow_active = false
+var current_direction: Vector2
+
 signal on_screen_exited(ball: Ball)
+
 
 func _ready() -> void:
 	add_to_group("Ball")
 
 
 func start_moving(direction: Vector2) -> void:
-	velocity = direction * __SPEED
+	current_direction = direction
+	velocity = current_direction * __SPEED
 
 	# Enable collision after some time (otherwise it will collide with paddle on start)
 	if $CollisionShape2D.disabled:
@@ -25,6 +30,7 @@ func _physics_process(delta: float) -> void:
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 	if collision:
 		var collision_body = collision.get_collider()
+		var bounce_velocity: Vector2 = velocity.bounce(collision.get_normal())
 		if collision_body.has_method("on_collision"):
 			collision_body.on_collision()
 
@@ -42,14 +48,34 @@ func _physics_process(delta: float) -> void:
 				degrees *= -1
 
 			# On the edge of the paddle it will go at a sharper angle
-			var reflect_vector: Vector2 = Vector2.UP.rotated(deg_to_rad(degrees))
-			velocity = reflect_vector * __SPEED
-			move_and_collide(reflect_vector * delta)
+			current_direction = Vector2.UP.rotated(deg_to_rad(degrees))
+			velocity = current_direction * bounce_velocity.length()
+			_move_ball(delta)
 			return
 
-		var reflect = collision.get_remainder().bounce(collision.get_normal())
-		velocity = velocity.bounce(collision.get_normal())
-		move_and_collide(reflect * delta)
+		current_direction = bounce_velocity.normalized()
+#		if rad_to_deg(current_direction.angle()) > 175 and rad_to_deg(current_direction.angle()) < 95:
+#			var angle_offset = rad_to_deg(current_direction.angle()) + 10
+#			current_direction.rotated(deg_to_rad(angle_offset))
+		velocity = current_direction * bounce_velocity.length()
+		_move_ball(delta)
+
+
+func _move_ball(delta: float) -> void:
+	print("Direction angle: %s" % rad_to_deg(current_direction.angle()))
+	if powerup_slow_active:
+		velocity *= randf_range(1.01, 1.05)
+	move_and_collide(velocity * delta)
+
+
+func normal_speed() -> void:
+	velocity = current_direction * __SPEED
+	powerup_slow_active = false
+
+
+func slow_speed() -> void:
+	velocity /= 2
+	powerup_slow_active = true
 
 
 func _on_screen_exited() -> void:

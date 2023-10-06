@@ -4,7 +4,8 @@ const POWERUP_LIST: Array[PackedScene] = [
 	preload("res://scenes/powerups/powerup_enlarge.tscn"),
 	preload("res://scenes/powerups/powerup_disruption.tscn"),
 	preload("res://scenes/powerups/powerup_player.tscn"),
-	preload("res://scenes/powerups/powerup_breakout.tscn")
+	preload("res://scenes/powerups/powerup_breakout.tscn"),
+	preload("res://scenes/powerups/powerup_slow.tscn")
 ]
 
 var active_powerup: Powerup = null
