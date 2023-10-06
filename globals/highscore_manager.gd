@@ -16,6 +16,10 @@ func _add_points(points: int) -> void:
 		on_highscore_updated.emit()
 
 
+func add_gate_points() -> void:
+	_add_points(10000)
+
+
 func add_powerup_points(powerup: Powerup) -> void:
 	_add_points(powerup.points)
 

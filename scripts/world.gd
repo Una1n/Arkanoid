@@ -5,6 +5,7 @@ var ball_scene: PackedScene = preload("res://scenes/ball.tscn")
 var life_texture: PackedScene = preload("res://scenes/life_texture.tscn")
 
 @onready var started_game: bool = false
+@onready var gate: Gate = %Gate as Gate
 
 var current_ball: Ball = null
 var bricks_available: int = 100
@@ -43,6 +44,7 @@ func _initialize_ui() -> void:
 
 
 func _connect_signals() -> void:
+	gate.on_gate_entered.connect(on_entered_gate)
 	on_level_cleared.connect(PowerupManager.remove_all_powerups)
 	on_level_cleared.connect(SceneManager.go_to_next_level)
 	on_life_lost.connect(PowerupManager.remove_all_powerups)
@@ -59,7 +61,7 @@ func _connect_signals() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire_button"):
 		if not started_game:
-			current_ball.start_moving(Vector2(1, -1))
+			current_ball.start_moving(Vector2(0.7, -1))
 			current_ball.reparent(self)
 			started_game = true
 
@@ -77,6 +79,17 @@ func _input(event: InputEvent) -> void:
 
 	if OS.is_debug_build() and event.is_action_pressed("debug_remove_life"):
 		LifeManager.remove_life()
+
+	if OS.is_debug_build() and event.is_action_pressed("debug_open_gate"):
+		gate.open()
+
+	if OS.is_debug_build() and event.is_action_pressed("debug_drop_powerup"):
+		PowerupManager.spawn_powerup(self, Vector2(500, 128))
+
+
+func on_entered_gate() -> void:
+	HighscoreManager.add_gate_points()
+	on_level_cleared.emit()
 
 
 func on_ball_exited_screen(ball: Ball) -> void:

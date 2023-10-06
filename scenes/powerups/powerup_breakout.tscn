@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4q18k1jg40ep"]
+
+[ext_resource type="PackedScene" uid="uid://c3u2pk5ceaigr" path="res://scenes/powerup.tscn" id="1_ju5gk"]
+[ext_resource type="Script" path="res://scenes/powerups/powerup_breakout.gd" id="2_hvy5g"]
+
+[node name="PowerupBreakout" instance=ExtResource("1_ju5gk")]
+script = ExtResource("2_hvy5g")
+
+[node name="Sprite2D" parent="." index="0"]
+region_rect = Rect2(224, 80, 32, 16)
