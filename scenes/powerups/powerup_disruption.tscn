@@ -5,3 +5,7 @@
 
 [node name="PowerupDisruption" instance=ExtResource("1_sq2po")]
 script = ExtResource("2_tg28u")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+frame = 1
+frame_progress = 0.644445

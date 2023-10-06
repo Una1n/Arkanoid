@@ -1,10 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4q18k1jg40ep"]
+[gd_scene load_steps=11 format=3 uid="uid://b4q18k1jg40ep"]
 
 [ext_resource type="PackedScene" uid="uid://c3u2pk5ceaigr" path="res://scenes/powerup.tscn" id="1_ju5gk"]
 [ext_resource type="Script" path="res://scenes/powerups/powerup_breakout.gd" id="2_hvy5g"]
+[ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="3_u53mm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6a4c"]
+atlas = ExtResource("3_u53mm")
+region = Rect2(224, 80, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jvsh"]
+atlas = ExtResource("3_u53mm")
+region = Rect2(256, 80, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldfgd"]
+atlas = ExtResource("3_u53mm")
+region = Rect2(288, 80, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyt03"]
+atlas = ExtResource("3_u53mm")
+region = Rect2(320, 80, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emhws"]
+atlas = ExtResource("3_u53mm")
+region = Rect2(352, 80, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu2s4"]
+atlas = ExtResource("3_u53mm")
+region = Rect2(384, 80, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gu3ty"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6a4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jvsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldfgd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyt03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emhws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu2s4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="PowerupBreakout" instance=ExtResource("1_ju5gk")]
 script = ExtResource("2_hvy5g")
 
-[node name="Sprite2D" parent="." index="0"]
-region_rect = Rect2(224, 80, 32, 16)
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_gu3ty")
+frame = 0
+frame_progress = 0.0

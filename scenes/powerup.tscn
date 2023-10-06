@@ -1,7 +1,57 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3u2pk5ceaigr"]
+[gd_scene load_steps=11 format=3 uid="uid://c3u2pk5ceaigr"]
 
 [ext_resource type="Script" path="res://scripts/powerup.gd" id="1_1q6jy"]
 [ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="2_svajg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvmf3"]
+atlas = ExtResource("2_svajg")
+region = Rect2(224, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceehe"]
+atlas = ExtResource("2_svajg")
+region = Rect2(256, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nosu8"]
+atlas = ExtResource("2_svajg")
+region = Rect2(288, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stvc0"]
+atlas = ExtResource("2_svajg")
+region = Rect2(320, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0hm7"]
+atlas = ExtResource("2_svajg")
+region = Rect2(352, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4ryj"]
+atlas = ExtResource("2_svajg")
+region = Rect2(384, 16, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_im83p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvmf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceehe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nosu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stvc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0hm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4ryj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvvi2"]
 size = Vector2(32, 16)
@@ -9,10 +59,10 @@ size = Vector2(32, 16)
 [node name="Powerup" type="Node2D" groups=["Powerup"]]
 script = ExtResource("1_1q6jy")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_svajg")
-region_enabled = true
-region_rect = Rect2(224, 16, 32, 16)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_im83p")
+frame = 5
+frame_progress = 0.661932
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(-2.38419e-07, 4.17233e-07)

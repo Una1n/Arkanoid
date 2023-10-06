@@ -1,10 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctn6iy25bhhce"]
+[gd_scene load_steps=11 format=3 uid="uid://ctn6iy25bhhce"]
 
 [ext_resource type="PackedScene" uid="uid://c3u2pk5ceaigr" path="res://scenes/powerup.tscn" id="1_ge1x6"]
 [ext_resource type="Script" path="res://scenes/powerups/powerup_player.gd" id="2_gtuvs"]
+[ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="3_betoq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hw5t"]
+atlas = ExtResource("3_betoq")
+region = Rect2(224, 96, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kghj"]
+atlas = ExtResource("3_betoq")
+region = Rect2(256, 96, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvmnb"]
+atlas = ExtResource("3_betoq")
+region = Rect2(288, 96, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh7lg"]
+atlas = ExtResource("3_betoq")
+region = Rect2(320, 96, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1i62"]
+atlas = ExtResource("3_betoq")
+region = Rect2(352, 96, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mghwv"]
+atlas = ExtResource("3_betoq")
+region = Rect2(384, 96, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_stsf0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hw5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kghj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvmnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eh7lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1i62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mghwv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="PowerupPlayer" instance=ExtResource("1_ge1x6")]
 script = ExtResource("2_gtuvs")
 
-[node name="Sprite2D" parent="." index="0"]
-region_rect = Rect2(224, 96, 32, 16)
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_stsf0")
+frame = 0
+frame_progress = 0.636512
