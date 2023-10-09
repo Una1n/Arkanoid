@@ -14,7 +14,7 @@ func _ready() -> void:
 
 
 func start_moving(direction: Vector2) -> void:
-	current_direction = direction
+	current_direction = direction.normalized()
 	velocity = current_direction * __SPEED
 
 	# Enable collision after some time (otherwise it will collide with paddle on start)
