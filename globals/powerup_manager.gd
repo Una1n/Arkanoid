@@ -26,6 +26,11 @@ var POWERUP_LIST: Array[Dictionary] = [
 		"scene": preload("res://scenes/powerups/powerup_slow.tscn"),
 		"roll_weight": 4.0,
 		"acc_weight": 0.0
+	},
+	{
+		"scene": preload("res://scenes/powerups/powerup_laser.tscn"),
+		"roll_weight": 100.0,
+		"acc_weight": 0.0
 	}
 ]
 
