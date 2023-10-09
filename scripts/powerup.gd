@@ -12,7 +12,6 @@ func _ready() -> void:
 	movement_tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	var start_position = Vector2(global_position.x, 1000)
 	movement_tween.tween_property(self, "position", start_position, 5)
-	$AnimatedSprite2D.play("default")
 
 
 func _on_screen_exited() -> void:
