@@ -24,7 +24,7 @@ var POWERUP_LIST: Array[Dictionary] = [
 	},
 	{
 		"scene": preload("res://scenes/powerups/powerup_slow.tscn"),
-		"roll_weight": 5.0,
+		"roll_weight": 4.0,
 		"acc_weight": 0.0
 	}
 ]
