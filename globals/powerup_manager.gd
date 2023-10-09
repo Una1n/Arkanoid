@@ -1,4 +1,5 @@
 extends Node
+class_name PowerupManager
 
 const POWERUP_LIST: Array[PackedScene] = [
 	preload("res://scenes/powerups/powerup_enlarge.tscn"),
