@@ -90,6 +90,9 @@ func _input(event: InputEvent) -> void:
 	if OS.is_debug_build() and event.is_action_pressed("debug_ball_right"):
 		current_ball.velocity = Vector2(1, 0.05) * current_ball.__SPEED
 
+	if OS.is_debug_build() and event.is_action_pressed("debug_pause_ball"):
+		current_ball.velocity = Vector2(0, 0)
+
 
 func on_entered_gate() -> void:
 	HighscoreManager.add_gate_points()
