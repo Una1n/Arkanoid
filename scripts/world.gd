@@ -29,6 +29,10 @@ func _ready() -> void:
 	bricks_available = get_tree().get_nodes_in_group("Bricks").size()
 	for node in get_tree().get_nodes_in_group("Bricks"):
 		var brick = node as Brick
+		if not brick.type.can_be_destroyed:
+			bricks_available -= 1
+			continue
+
 		brick.on_destroyed.connect(on_destroy_brick)
 		brick.on_destroyed.connect(HighscoreManager.add_brick_points)
 		if brick.type.name == "Silver":
