@@ -24,8 +24,11 @@ script = ExtResource("1_3mar2")
 [node name="DefaultLevel" parent="." instance=ExtResource("2_pl2jy")]
 position = Vector2(240, 0)
 
-[node name="Paddle" parent="." instance=ExtResource("2_533u3")]
+[node name="PaddlePosition" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(480, 520)
+
+[node name="Paddle" parent="PaddlePosition" instance=ExtResource("2_533u3")]
 
 [node name="Gate" type="Node2D" parent="." groups=["Gate"]]
 unique_name_in_owner = true

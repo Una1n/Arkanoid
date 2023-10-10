@@ -69,7 +69,6 @@ func spawn_powerup(parent: Node2D, spawn_position: Vector2) -> void:
 
 func _get_random_powerup() -> Powerup:
 	var roll: float = randf_range(0.0, powerup_total_weight)
-	print(roll)
 	for powerup in POWERUP_LIST:
 		if powerup.acc_weight >= roll:
 			return powerup.scene.instantiate() as Powerup

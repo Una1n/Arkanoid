@@ -7,6 +7,7 @@ var life_texture: PackedScene = preload("res://scenes/life_texture.tscn")
 @onready var started_game: bool = false
 @onready var gate: Gate = %Gate as Gate
 @onready var powerup_manager: PowerupManager = %PowerupManager
+@onready var paddle_position: Node2D = %PaddlePosition
 
 var current_ball: Ball = null
 var bricks_available: int = 100
@@ -112,7 +113,7 @@ func handle_life_lost() -> void:
 func respawn_ball() -> void:
 	current_ball = ball_scene.instantiate()
 	current_ball.disable_collision()
-	$Paddle.add_child(current_ball)
+	$PaddlePosition/Paddle.add_child(current_ball)
 	current_ball.position = Vector2(0, -12)
 	current_ball.on_screen_exited.connect(on_ball_exited_screen)
 	started_game = false
