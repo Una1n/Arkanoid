@@ -117,7 +117,8 @@ func handle_life_lost() -> void:
 func respawn_ball() -> void:
 	current_ball = ball_scene.instantiate()
 	current_ball.disable_collision()
-	$PaddlePosition/Paddle.add_child(current_ball)
+	var paddle = get_tree().get_first_node_in_group("Paddle") as Paddle
+	paddle.add_child(current_ball)
 	current_ball.position = Vector2(0, -12)
 	current_ball.on_screen_exited.connect(on_ball_exited_screen)
 	started_game = false
