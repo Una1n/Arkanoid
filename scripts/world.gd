@@ -10,6 +10,7 @@ var life_texture: PackedScene = preload("res://scenes/life_texture.tscn")
 @onready var paddle_position: Node2D = %PaddlePosition
 
 var current_ball: Ball = null
+@onready var current_paddle: Paddle = $PaddlePosition/Paddle
 var bricks_available: int = 100
 
 signal on_level_cleared
@@ -117,11 +118,15 @@ func handle_life_lost() -> void:
 func respawn_ball() -> void:
 	current_ball = ball_scene.instantiate()
 	current_ball.disable_collision()
-	var paddle = get_tree().get_first_node_in_group("Paddle") as Paddle
-	paddle.add_child(current_ball)
+	print(current_paddle)
+	current_paddle.add_child(current_ball)
 	current_ball.position = Vector2(0, -12)
 	current_ball.on_screen_exited.connect(on_ball_exited_screen)
 	started_game = false
+
+
+func change_paddle(paddle: Paddle) -> void:
+	current_paddle = paddle
 
 
 func on_destroy_brick(brick: Brick) -> void:

@@ -9,12 +9,12 @@ var laser_paddle: PaddleLaser = null
 func enable_powerup() -> void:
 	super()
 	var world = get_tree().get_first_node_in_group("World") as World
-	var paddle = get_tree().get_first_node_in_group("Paddle") as Paddle
-	var old_position = paddle.position
-	paddle.queue_free()
+	var old_position = world.current_paddle.position
+	world.current_paddle.queue_free()
 	laser_paddle = laser_paddle_scene.instantiate() as PaddleLaser
 	world.paddle_position.add_child(laser_paddle)
 	laser_paddle.position = old_position
+	world.change_paddle(laser_paddle)
 
 
 func disable_powerup() -> void:
@@ -26,3 +26,4 @@ func disable_powerup() -> void:
 	var paddle = paddle_scene.instantiate() as Paddle
 	world.paddle_position.add_child(paddle)
 	paddle.position = old_position
+	world.change_paddle(paddle)
