@@ -77,4 +77,4 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_tvvi2")
 
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_screen_exited"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_collected"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_collected" flags=3]

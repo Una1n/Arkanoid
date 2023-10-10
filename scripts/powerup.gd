@@ -20,10 +20,10 @@ func _on_screen_exited() -> void:
 
 
 func _on_collected(_body: Node2D) -> void:
-	on_powerup_gained.emit(self)
 	movement_tween.stop()
 	$AnimatedSprite2D.visible = false
-	$Area2D/CollisionShape2D.set_deferred("disabled", true)
+	$Area2D/CollisionShape2D.disabled = true
+	on_powerup_gained.emit(self)
 
 
 func is_allowed_to_spawn_powerups_while_active() -> bool:

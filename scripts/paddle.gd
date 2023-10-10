@@ -26,8 +26,8 @@ func enlarge() -> void:
 	size = 96
 	$Sprite2D.region_rect = Rect2(256, 400, 96, 16)
 	$CollisionMiddle.shape.size = Vector2(96, 16)
-	if position.x >= 815 - 17:
-		position.x = 815 - 17
-	if position.x <= 465 + 17:
-		position.x = 465 + 17
+	if position.x >= 175 - 17:
+		position.x = 175 - 17
+	if position.x <= -175 + 17:
+		position.x = -175 + 17
 

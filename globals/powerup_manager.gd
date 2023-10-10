@@ -9,7 +9,7 @@ var POWERUP_LIST: Array[Dictionary] = [
 	},
 	{
 		"scene": preload("res://scenes/powerups/powerup_disruption.tscn"),
-		"roll_weight": 4.0,
+		"roll_weight": 5.0,
 		"acc_weight": 0.0
 	},
 	{
@@ -29,7 +29,7 @@ var POWERUP_LIST: Array[Dictionary] = [
 	},
 	{
 		"scene": preload("res://scenes/powerups/powerup_laser.tscn"),
-		"roll_weight": 100.0,
+		"roll_weight": 3.0,
 		"acc_weight": 0.0
 	}
 ]
@@ -62,7 +62,7 @@ func spawn_powerup(parent: Node2D, spawn_position: Vector2) -> void:
 
 		powerup.global_position = spawn_position
 		powerup.on_screen_exited.connect(on_powerup_destroyed)
-		powerup.on_powerup_gained.connect(on_powerup_gained)
+		powerup.on_powerup_gained.connect(on_powerup_gained, CONNECT_DEFERRED)
 		parent.add_child(powerup)
 		powerup_on_screen = true
 
@@ -80,9 +80,9 @@ func on_powerup_gained(powerup: Powerup) -> void:
 	remove_active_powerup()
 
 	powerup.enable_powerup()
-	on_powerup_activated.emit(powerup)
 	active_powerup = powerup
 	powerup_on_screen = false
+	on_powerup_activated.emit(powerup)
 
 
 func on_powerup_destroyed() -> void:
@@ -98,7 +98,7 @@ func remove_active_powerup() -> void:
 
 
 func remove_all_powerups() -> void:
-	remove_active_powerup()
+	call_deferred("remove_active_powerup")
 	if powerup_on_screen:
 		get_tree().call_group("Powerup", "destroy")
 		powerup_on_screen = false

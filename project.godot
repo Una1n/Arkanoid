@@ -95,6 +95,7 @@ debug_pause_ball={
 2d_physics/layer_4="Bricks"
 2d_physics/layer_5="Powerup"
 2d_physics/layer_6="Gate"
+2d_physics/layer_7="Laser"
 
 [rendering]
 
