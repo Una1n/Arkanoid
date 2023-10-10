@@ -8,4 +8,5 @@ name = "Yellow"
 points = 120
 hits_to_destroy = 1
 can_be_destroyed = true
+allowed_to_spawn_powerup = true
 region_rect = Rect2(0, 64, 32, 16)
