@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3lbrecxfhffr"]
+
+[ext_resource type="Script" path="res://scripts/laser.gd" id="1_gihgs"]
+[ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="1_yn772"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jinlv"]
+size = Vector2(8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf0vd"]
+atlas = ExtResource("1_yn772")
+region = Rect2(448, 480, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e83tp"]
+atlas = ExtResource("1_yn772")
+region = Rect2(464, 480, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c710o"]
+atlas = ExtResource("1_yn772")
+region = Rect2(480, 480, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lg8g"]
+atlas = ExtResource("1_yn772")
+region = Rect2(496, 480, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mnuvm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf0vd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e83tp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c710o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lg8g")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 10.0
+}]
+
+[node name="Laser" type="Area2D"]
+collision_layer = 64
+collision_mask = 9
+script = ExtResource("1_gihgs")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jinlv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mnuvm")
+animation = &"shoot"
+autoplay = "shoot"
+frame = 3
+frame_progress = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_collision"]
