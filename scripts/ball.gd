@@ -88,4 +88,4 @@ func _on_screen_exited() -> void:
 
 
 func disable_collision(disable: bool = true) -> void:
-	$CollisionShape2D.set_deferred("disabled", disable)
+	$CollisionShape2D.disabled = disable

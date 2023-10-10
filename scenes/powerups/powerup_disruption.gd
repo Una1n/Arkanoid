@@ -23,7 +23,7 @@ func _create_ball(world: World) -> void:
 		ball.position = current_ball.position
 
 	ball.on_screen_exited.connect(world.on_ball_exited_screen)
-	world.call_deferred("add_child", ball)
+	world.add_child(ball)
 	ball.start_moving(Vector2(randf_range(-1.0, 1.0), get_random_direction_y()))
 
 

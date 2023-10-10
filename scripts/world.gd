@@ -55,7 +55,7 @@ func _connect_signals() -> void:
 	HighscoreManager.on_score_updated.connect(on_score_updated)
 	HighscoreManager.on_highscore_updated.connect(on_highscore_updated)
 	LifeManager.on_lives_updated.connect(on_lives_updated)
-	LifeManager.on_respawn.connect(respawn_ball)
+	LifeManager.on_respawn.connect(respawn_ball, CONNECT_DEFERRED)
 	if not powerup_manager.on_powerup_activated.is_connected(HighscoreManager.add_powerup_points):
 		powerup_manager.on_powerup_activated.connect(HighscoreManager.add_powerup_points)
 
