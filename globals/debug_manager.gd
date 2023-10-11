@@ -33,4 +33,7 @@ func _input(event: InputEvent) -> void:
 		current_world.current_ball.velocity = Vector2(1, 0.05) * current_world.current_ball.__SPEED
 
 	if OS.is_debug_build() and event.is_action_pressed("debug_pause_ball"):
-		current_world.current_ball.velocity = Vector2(0, 0)
+		if current_world.current_ball.velocity == Vector2.ZERO:
+			current_world.current_ball.start_moving(Vector2(0.7, -1))
+		else:
+			current_world.current_ball.velocity = Vector2.ZERO
