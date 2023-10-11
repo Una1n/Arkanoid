@@ -11,6 +11,7 @@ func open() -> void:
 	tween.tween_property($LowerBlock, "scale", Vector2(1, 0.2), 1)
 	tween.tween_property($LowerBlock, "position", Vector2(0, 34), 1)
 	tween.set_ease(Tween.EASE_IN)
+	tween.finished.connect(_enable_collision)
 	tween.play()
 
 
@@ -21,7 +22,16 @@ func close() -> void:
 	tween.tween_property($LowerBlock, "scale", Vector2(1, 1), 1)
 	tween.tween_property($LowerBlock, "position", Vector2(0, 0), 1)
 	tween.set_ease(Tween.EASE_OUT)
+	tween.finished.connect(_disable_collision)
 	tween.play()
+
+
+func _enable_collision() -> void:
+	$NextLevelHitbox/CollisionShape2D.set_deferred("disabled", false)
+
+
+func _disable_collision() -> void:
+	$NextLevelHitbox/CollisionShape2D.set_deferred("disabled", true)
 
 
 func _on_next_level_hitbox_collision(_body: Node2D) -> void:
