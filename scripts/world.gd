@@ -9,6 +9,7 @@ var life_texture: PackedScene = preload("res://scenes/life_texture.tscn")
 @onready var powerup_manager: PowerupManager = %PowerupManager
 @onready var paddle_position: Node2D = %PaddlePosition
 
+var debug_manager: DebugManager
 var current_ball: Ball = null
 @onready var current_paddle: Paddle = $PaddlePosition/Paddle
 var bricks_available: int = 100
@@ -20,6 +21,9 @@ signal on_spawn_powerup(parent: Node2D, spawn_position: Vector2)
 
 func _ready() -> void:
 	if OS.is_debug_build():
+		debug_manager = DebugManager.new(self)
+		debug_manager.name = "DebugManager"
+		add_child(debug_manager)
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
@@ -66,38 +70,10 @@ func _connect_signals() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("fire_button"):
-		if not started_game:
-			current_ball.start_moving(Vector2(0.7, -1))
-			current_ball.reparent(self)
-			started_game = true
-
-	if OS.is_debug_build() and event.is_action_pressed("debug_next_level"):
-		SceneManager.go_to_next_level()
-
-	if OS.is_debug_build() and event.is_action_pressed("debug_prev_level"):
-		SceneManager.go_to_prev_level()
-
-	if OS.is_debug_build() and event.is_action_pressed("debug_destroy_bricks"):
-		on_level_cleared.emit()
-
-	if OS.is_debug_build() and event.is_action_pressed("debug_add_life"):
-		LifeManager.add_life()
-
-	if OS.is_debug_build() and event.is_action_pressed("debug_remove_life"):
-		LifeManager.remove_life()
-
-	if OS.is_debug_build() and event.is_action_pressed("debug_open_gate"):
-		gate.open()
-
-	if OS.is_debug_build() and event.is_action_pressed("debug_drop_powerup"):
-		powerup_manager.spawn_powerup(self, Vector2(500, 300))
-
-	if OS.is_debug_build() and event.is_action_pressed("debug_ball_right"):
-		current_ball.velocity = Vector2(1, 0.05) * current_ball.__SPEED
-
-	if OS.is_debug_build() and event.is_action_pressed("debug_pause_ball"):
-		current_ball.velocity = Vector2(0, 0)
+	if event.is_action_pressed("fire_button") and not started_game:
+		current_ball.start_moving(Vector2(0.7, -1))
+		current_ball.reparent(self)
+		started_game = true
 
 
 func on_entered_gate() -> void:
