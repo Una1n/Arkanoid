@@ -21,6 +21,10 @@ SceneManager="*res://globals/scene_manager.gd"
 HighscoreManager="*res://globals/highscore_manager.gd"
 LifeManager="*res://globals/life_manager.gd"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=960
