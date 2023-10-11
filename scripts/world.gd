@@ -16,7 +16,6 @@ var bricks_available: int = 100
 
 signal on_level_cleared
 signal on_life_lost
-signal on_spawn_powerup(parent: Node2D, spawn_position: Vector2)
 
 
 func _ready() -> void:
@@ -58,7 +57,6 @@ func _connect_signals() -> void:
 	gate.on_gate_entered.connect(on_entered_gate)
 	on_level_cleared.connect(SceneManager.go_to_next_level)
 	on_life_lost.connect(LifeManager.on_life_lost)
-	on_spawn_powerup.connect(powerup_manager.spawn_powerup)
 	HighscoreManager.on_score_updated.connect(on_score_updated)
 	HighscoreManager.on_highscore_updated.connect(on_highscore_updated)
 	LifeManager.on_lives_updated.connect(on_lives_updated)
@@ -107,7 +105,7 @@ func on_destroy_brick(brick: Brick) -> void:
 	if bricks_available == 0:
 		on_level_cleared.emit()
 	elif brick.type.allowed_to_spawn_powerup:
-		on_spawn_powerup.emit(brick.global_position)
+		powerup_manager.spawn_powerup(brick.global_position)
 
 
 func on_lives_updated() -> void:
