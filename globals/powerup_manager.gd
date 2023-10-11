@@ -17,7 +17,7 @@ func _ready() -> void:
 		powerup.acc_weight = powerup_total_weight
 
 
-func spawn_powerup(parent: Node2D, spawn_position: Vector2) -> void:
+func spawn_powerup(spawn_position: Vector2) -> void:
 	if powerup_on_screen: return
 	if is_instance_valid(active_powerup) and \
 		not active_powerup.is_allowed_to_spawn_powerups_while_active():
@@ -26,13 +26,13 @@ func spawn_powerup(parent: Node2D, spawn_position: Vector2) -> void:
 	if randi_range(1, 4) == 1:
 		var powerup = _get_random_powerup()
 		if not is_instance_valid(powerup):
-			printerr("Couldn't get powerup from loot table")
+			printerr("Couldn't get powerup from drop table")
 			return
 
 		powerup.global_position = spawn_position
 		powerup.on_screen_exited.connect(on_powerup_destroyed)
 		powerup.on_powerup_gained.connect(on_powerup_gained, CONNECT_DEFERRED)
-		parent.add_child(powerup)
+		add_child(powerup)
 		powerup_on_screen = true
 
 

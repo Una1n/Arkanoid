@@ -110,7 +110,7 @@ func on_destroy_brick(brick: Brick) -> void:
 	if bricks_available == 0:
 		on_level_cleared.emit()
 	elif brick.type.allowed_to_spawn_powerup:
-		on_spawn_powerup.emit(self, brick.global_position)
+		on_spawn_powerup.emit(brick.global_position)
 
 
 func on_lives_updated() -> void:
