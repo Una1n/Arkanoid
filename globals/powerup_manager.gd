@@ -1,38 +1,7 @@
 extends Node
 class_name PowerupManager
 
-var POWERUP_LIST: Array[Dictionary] = [
-	{
-		"scene": preload("res://scenes/powerups/powerup_enlarge.tscn"),
-		"roll_weight": 5.0,
-		"acc_weight": 0.0
-	},
-	{
-		"scene": preload("res://scenes/powerups/powerup_disruption.tscn"),
-		"roll_weight": 5.0,
-		"acc_weight": 0.0
-	},
-	{
-		"scene": preload("res://scenes/powerups/powerup_player.tscn"),
-		"roll_weight": 2.0,
-		"acc_weight": 0.0
-	},
-	{
-		"scene": preload("res://scenes/powerups/powerup_breakout.tscn"),
-		"roll_weight": 1.0,
-		"acc_weight": 0.0
-	},
-	{
-		"scene": preload("res://scenes/powerups/powerup_slow.tscn"),
-		"roll_weight": 4.0,
-		"acc_weight": 0.0
-	},
-	{
-		"scene": preload("res://scenes/powerups/powerup_laser.tscn"),
-		"roll_weight": 3.0,
-		"acc_weight": 0.0
-	}
-]
+@export var powerup_list: Array[PowerupData] = []
 
 var active_powerup: Powerup = null
 var powerup_on_screen: bool = false
@@ -43,7 +12,7 @@ signal on_powerup_activated(powerup: Powerup)
 
 func _ready() -> void:
 	powerup_total_weight = 0.0
-	for powerup in POWERUP_LIST:
+	for powerup in powerup_list:
 		powerup_total_weight += powerup.roll_weight
 		powerup.acc_weight = powerup_total_weight
 
@@ -69,7 +38,7 @@ func spawn_powerup(parent: Node2D, spawn_position: Vector2) -> void:
 
 func _get_random_powerup() -> Powerup:
 	var roll: float = randf_range(0.0, powerup_total_weight)
-	for powerup in POWERUP_LIST:
+	for powerup in powerup_list:
 		if powerup.acc_weight >= roll:
 			return powerup.scene.instantiate() as Powerup
 

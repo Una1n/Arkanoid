@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PowerupData" load_steps=3 format=3 uid="uid://6ctl765vjlh8"]
+
+[ext_resource type="PackedScene" uid="uid://dowk3ro1n00fm" path="res://scenes/powerups/powerup_disruption.tscn" id="1_euar5"]
+[ext_resource type="Script" path="res://scenes/powerups/powerup_data.gd" id="2_63ace"]
+
+[resource]
+script = ExtResource("2_63ace")
+scene = ExtResource("1_euar5")
+roll_weight = 5.0
