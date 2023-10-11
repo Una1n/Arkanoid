@@ -5,13 +5,13 @@ var ball_scene: PackedScene = preload("res://scenes/ball.tscn")
 var life_texture: PackedScene = preload("res://scenes/life_texture.tscn")
 
 @onready var started_game: bool = false
-@onready var gate: Gate = %Gate as Gate
-@onready var powerup_manager: PowerupManager = %PowerupManager
-@onready var paddle_position: Node2D = %PaddlePosition
+@export var gate: Gate
+@export var powerup_manager: PowerupManager
+@export var paddle_position: Node2D
+@export var current_paddle: Paddle
 
 var debug_manager: DebugManager
 var current_ball: Ball = null
-@onready var current_paddle: Paddle = $PaddlePosition/Paddle
 var bricks_available: int = 100
 
 signal on_level_cleared
@@ -33,22 +33,21 @@ func _ready() -> void:
 	_connect_signals()
 	bricks_available = get_tree().get_nodes_in_group("Bricks").size()
 	for node in get_tree().get_nodes_in_group("Bricks"):
-		var brick = node as Brick
+		var brick := node as Brick
 		if not brick.type.can_be_destroyed:
 			bricks_available -= 1
 			continue
 
 		brick.on_destroyed.connect(on_destroy_brick)
 		brick.on_destroyed.connect(HighscoreManager.add_brick_points)
-		if brick.type.name == "Silver":
-			if SceneManager.current_level_nr % 8 == 0:
-				brick.type.hits_to_destroy += SceneManager.current_level_nr / 8.0
+		if brick.type.name == "Silver" and SceneManager.current_level_nr % 8 == 0:
+			brick.type.hits_to_destroy += SceneManager.current_level_nr / 8
 
 
 func _initialize_ui() -> void:
 	on_score_updated()
 	on_highscore_updated()
-	%Rounds.text = "%s" % SceneManager.current_level_nr
+	on_rounds_updated()
 
 	for i in LifeManager.lives:
 		%LivesTextureContainer.add_child(life_texture.instantiate())
@@ -56,17 +55,14 @@ func _initialize_ui() -> void:
 
 func _connect_signals() -> void:
 	gate.on_gate_entered.connect(on_entered_gate)
-	on_level_cleared.connect(powerup_manager.remove_all_powerups)
 	on_level_cleared.connect(SceneManager.go_to_next_level)
-	on_life_lost.connect(powerup_manager.remove_all_powerups)
 	on_life_lost.connect(LifeManager.on_life_lost)
 	on_spawn_powerup.connect(powerup_manager.spawn_powerup)
 	HighscoreManager.on_score_updated.connect(on_score_updated)
 	HighscoreManager.on_highscore_updated.connect(on_highscore_updated)
 	LifeManager.on_lives_updated.connect(on_lives_updated)
 	LifeManager.on_respawn.connect(respawn_ball, CONNECT_DEFERRED)
-	if not powerup_manager.on_powerup_activated.is_connected(HighscoreManager.add_powerup_points):
-		powerup_manager.on_powerup_activated.connect(HighscoreManager.add_powerup_points)
+	powerup_manager.on_powerup_activated.connect(HighscoreManager.add_powerup_points)
 
 
 func _input(event: InputEvent) -> void:
@@ -88,13 +84,13 @@ func on_ball_exited_screen(ball: Ball) -> void:
 
 func handle_life_lost() -> void:
 	if get_tree().get_nodes_in_group("Ball").size() == 0:
+		powerup_manager.remove_all_powerups()
 		on_life_lost.emit()
 
 
 func respawn_ball() -> void:
-	current_ball = ball_scene.instantiate()
+	current_ball = ball_scene.instantiate() as Ball
 	current_ball.disable_collision()
-	print(current_paddle)
 	current_paddle.add_child(current_ball)
 	current_ball.position = Vector2(0, -12)
 	current_ball.on_screen_exited.connect(on_ball_exited_screen)
@@ -129,3 +125,7 @@ func on_score_updated() -> void:
 
 func on_highscore_updated() -> void:
 	%HighScore.text = "%s" % HighscoreManager.highscore
+
+
+func on_rounds_updated() -> void:
+	%Rounds.text = "%s" % SceneManager.current_level_nr
