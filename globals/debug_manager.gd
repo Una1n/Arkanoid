@@ -27,7 +27,7 @@ func _input(event: InputEvent) -> void:
 		current_world.gate.open()
 
 	if OS.is_debug_build() and event.is_action_pressed("debug_drop_powerup"):
-		current_world.powerup_manager.spawn_powerup(Vector2(670, 300))
+		current_world.powerup_manager.spawn_powerup(Vector2(500, 300))
 
 	if OS.is_debug_build() and event.is_action_pressed("debug_ball_right"):
 		current_world.current_ball.velocity = Vector2(1, 0.05) * current_world.current_ball.__SPEED
