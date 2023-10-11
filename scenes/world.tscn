@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdlewbi22dowq"]
+[gd_scene load_steps=18 format=3 uid="uid://bdlewbi22dowq"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_3mar2"]
 [ext_resource type="PackedScene" uid="uid://dy4lsv03y08oy" path="res://scenes/paddle.tscn" id="2_533u3"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://b4hxioc5h1qgb" path="res://scenes/powerups/powerup_laser.tres" id="10_5o554"]
 [ext_resource type="Resource" uid="uid://1idmhb1f8xww" path="res://scenes/powerups/powerup_player.tres" id="11_k8qq8"]
 [ext_resource type="Resource" uid="uid://k716alu8pmvn" path="res://scenes/powerups/powerup_slow.tres" id="12_h1cg6"]
+[ext_resource type="PackedScene" uid="uid://cs43nvracxcf1" path="res://scenes/pause_menu.tscn" id="13_7tlyd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttkjv"]
 size = Vector2(32, 32)
@@ -190,5 +191,8 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
 text = "20
 "
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("13_7tlyd")]
+unique_name_in_owner = true
 
 [connection signal="body_entered" from="Gate/NextLevelHitbox" to="Gate" method="_on_next_level_hitbox_collision"]

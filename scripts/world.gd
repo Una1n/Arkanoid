@@ -64,11 +64,26 @@ func _connect_signals() -> void:
 	powerup_manager.on_powerup_activated.connect(HighscoreManager.add_powerup_points)
 
 
+func _notification(what: int) -> void:
+	match what:
+		NOTIFICATION_APPLICATION_FOCUS_OUT:
+			_pause_game()
+
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire_button") and not started_game:
 		current_ball.start_moving(Vector2(0.7, -1))
 		current_ball.reparent(self)
 		started_game = true
+
+	# TODO: Handle when we have other menus open
+	if event.is_action_pressed("ui_cancel"):
+		_pause_game()
+
+
+func _pause_game() -> void:
+	get_tree().paused = true
+	%PauseMenu.show()
 
 
 func on_entered_gate() -> void:
