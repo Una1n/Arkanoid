@@ -28,6 +28,7 @@ func _ready() -> void:
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 
+	Input.warp_mouse(paddle_position.position)
 	respawn_ball()
 	_initialize_ui()
 	_connect_signals()
