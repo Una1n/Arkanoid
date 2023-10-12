@@ -109,6 +109,7 @@ theme_override_constants/separation = 10
 alignment = 1
 
 [node name="NewLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxHighScore"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.792157, 0, 0.0980392, 1)
@@ -138,7 +139,6 @@ layout_mode = 2
 text = "Quit to main menu"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "new_highscore"
 libraries = {
 "": SubResource("AnimationLibrary_ognt6")
 }
