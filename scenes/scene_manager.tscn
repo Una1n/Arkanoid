@@ -52,10 +52,10 @@ tracks/1/path = NodePath("DissolveRect/RoundLabel:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(356, 100), Vector2(356, 236)]
+"values": [Vector2(356, 100), Vector2(356, 100), Vector2(356, 236)]
 }
 
 [sub_resource type="Animation" id="Animation_xvtqe"]
@@ -104,10 +104,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.5
-offset_top = -170.0
-offset_right = 125.503
-offset_bottom = -97.9989
+offset_left = 354.5
+offset_top = 100.0
+offset_right = 605.503
+offset_bottom = 172.001
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 75
