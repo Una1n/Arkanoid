@@ -30,13 +30,41 @@ func go_to_prev_level() -> void:
 
 func _transition_level(level: String) -> void:
 	in_transition = true
-	var world = get_tree().get_first_node_in_group("World") as World
-	if is_instance_valid(world):
-		world.process_mode = Node.PROCESS_MODE_DISABLED
+	_disable_world_process()
 	%RoundLabel.text = "Round %s" % current_level_nr
 	$AnimationPlayer.play("fadein_round")
 	await $AnimationPlayer.animation_finished
 	get_tree().change_scene_to_file(level)
+	_end_transition()
+
+
+func go_to_main_menu() -> void:
+	in_transition = true
+	_disable_world_process()
+	$AnimationPlayer.play("fadein")
+	await $AnimationPlayer.animation_finished
+	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
+	_end_transition()
+
+
+func go_to_game_over() -> void:
+	in_transition = true
+	_disable_world_process()
+	$AnimationPlayer.play("fadein")
+	await $AnimationPlayer.animation_finished
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	_end_transition()
+
+
+func _end_transition() -> void:
+	%DissolveRect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	$AnimationPlayer.play("fadeout")
 	await $AnimationPlayer.animation_finished
 	in_transition = false
+
+
+func _disable_world_process() -> void:
+	%DissolveRect.mouse_filter = Control.MOUSE_FILTER_STOP
+	var world := get_tree().get_first_node_in_group("World") as World
+	if is_instance_valid(world):
+		world.process_mode = Node.PROCESS_MODE_DISABLED

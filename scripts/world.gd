@@ -62,6 +62,8 @@ func _connect_signals() -> void:
 	LifeManager.on_lives_updated.connect(on_lives_updated)
 	LifeManager.on_respawn.connect(respawn_ball, CONNECT_DEFERRED)
 	powerup_manager.on_powerup_activated.connect(HighscoreManager.add_powerup_points)
+	if not LifeManager.on_game_over.is_connected(SceneManager.go_to_game_over):
+		LifeManager.on_game_over.connect(SceneManager.go_to_game_over)
 
 
 func _notification(what: int) -> void:
