@@ -2,8 +2,11 @@ extends Control
 
 
 func _ready() -> void:
+	%NewLabel.hide()
 	%ScoreLabel.text = "Score: %s" % HighscoreManager.current_score
 	%HighScoreLabel.text = "Highscore: %s" % HighscoreManager.highscore
+	if HighscoreManager.new_highscore:
+		$AnimationPlayer.play("new_highscore")
 
 
 func _on_restart_button_pressed() -> void:
