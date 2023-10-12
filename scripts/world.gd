@@ -67,7 +67,8 @@ func _connect_signals() -> void:
 func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_APPLICATION_FOCUS_OUT:
-			_pause_game()
+			if not SceneManager.in_transition:
+				_pause_game()
 
 
 func _input(event: InputEvent) -> void:

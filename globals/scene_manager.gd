@@ -1,15 +1,15 @@
-extends Node
+extends CanvasLayer
 
 var current_level_nr: int = 1
-var current_level: PackedScene
+var in_transition: bool = false
 
 func go_to_next_level() -> void:
 	current_level_nr += 1
-	current_level = load("res://scenes/levels/level%s.tscn" % current_level_nr)
-	if current_level:
-		get_tree().change_scene_to_packed(current_level)
+	if ResourceLoader.exists("res://scenes/levels/level%s.tscn" % current_level_nr):
+		_transition_level("res://scenes/levels/level%s.tscn" % current_level_nr)
 	else:
-		printerr("No level found for level nr: %s!" % current_level_nr)
+		printerr("Level %s not found!" % current_level_nr)
+
 
 func go_to_prev_level() -> void:
 	if current_level_nr == 1:
@@ -17,5 +17,16 @@ func go_to_prev_level() -> void:
 		return
 
 	current_level_nr -= 1
-	current_level = load("res://scenes/levels/level%s.tscn" % current_level_nr)
-	get_tree().change_scene_to_packed(current_level)
+	_transition_level("res://scenes/levels/level%s.tscn" % current_level_nr)
+
+
+func _transition_level(level: String) -> void:
+	in_transition = true
+	var world = get_tree().get_first_node_in_group("World") as World
+	world.process_mode = Node.PROCESS_MODE_DISABLED
+	$AnimationPlayer.play("fadein_round")
+	await $AnimationPlayer.animation_finished
+	get_tree().change_scene_to_file(level)
+	$AnimationPlayer.play("fadeout")
+	await $AnimationPlayer.animation_finished
+	in_transition = false
