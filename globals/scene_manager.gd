@@ -24,6 +24,7 @@ func _transition_level(level: String) -> void:
 	in_transition = true
 	var world = get_tree().get_first_node_in_group("World") as World
 	world.process_mode = Node.PROCESS_MODE_DISABLED
+	%RoundLabel.text = "Round %s" % current_level_nr
 	$AnimationPlayer.play("fadein_round")
 	await $AnimationPlayer.animation_finished
 	get_tree().change_scene_to_file(level)
