@@ -3,10 +3,13 @@ extends CanvasLayer
 var current_level_nr: int = 1
 var in_transition: bool = false
 
+signal on_load_first_level
+
 func go_to_first_level() -> void:
 	current_level_nr = 1
 	if ResourceLoader.exists("res://scenes/levels/level%s.tscn" % current_level_nr):
 		_transition_level("res://scenes/levels/level%s.tscn" % current_level_nr)
+		on_load_first_level.emit()
 	else:
 		printerr("Level %s not found!" % current_level_nr)
 
