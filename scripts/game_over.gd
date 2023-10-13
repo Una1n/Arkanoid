@@ -7,6 +7,8 @@ func _ready() -> void:
 	%HighScoreLabel.text = "Highscore: %s" % HighscoreManager.highscore
 	if HighscoreManager.new_highscore:
 		$AnimationPlayer.play("new_highscore")
+	%RestartButton.grab_focus()
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 
 
 func _on_restart_button_pressed() -> void:
