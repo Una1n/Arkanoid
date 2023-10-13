@@ -6,7 +6,7 @@ class_name Paddle
 
 var non_mouse_movement: bool = true
 var move_motion: Vector2 = Vector2.ZERO
-const MOVEMENT_SPEED: int = 10
+const MOVEMENT_SPEED: int = 375
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -17,12 +17,12 @@ func _input(event: InputEvent) -> void:
 			non_mouse_movement = false
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var dir: float = Input.get_axis("move_left", "move_right")
 	if dir != 0:
 		non_mouse_movement = true
 
-	move_motion = Vector2(dir * MOVEMENT_SPEED, 0)
+	move_motion = Vector2(dir * MOVEMENT_SPEED, 0) * delta
 
 	if move_motion == Vector2.ZERO and non_mouse_movement == false:
 		move_motion = Vector2(mouse_position_x - global_position.x, 0)
