@@ -70,4 +70,4 @@ func _disable_world_process() -> void:
 	%DissolveRect.mouse_filter = Control.MOUSE_FILTER_STOP
 	var world := get_tree().get_first_node_in_group("World") as World
 	if is_instance_valid(world):
-		world.process_mode = Node.PROCESS_MODE_DISABLED
+		world.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
