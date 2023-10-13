@@ -43,6 +43,7 @@ grow_vertical = 0
 theme_override_constants/separation = 50
 
 [node name="ResumeButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Resume"
 
