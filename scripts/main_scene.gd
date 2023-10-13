@@ -1,6 +1,10 @@
 extends Control
 
 
+func _ready() -> void:
+	%NewGameButton.grab_focus()
+
+
 func _on_new_game_button_pressed() -> void:
 	SceneManager.go_to_first_level()
 
