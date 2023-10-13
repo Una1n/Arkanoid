@@ -10,8 +10,11 @@ const MOVEMENT_SPEED: int = 10
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		mouse_position_x = get_global_mouse_position().x
-		non_mouse_movement = false
+		var motion := event as InputEventMouseMotion
+		# Fix for controller trigger: it is seen as mouse motion with no motion
+		if motion.relative != Vector2.ZERO:
+			mouse_position_x = get_global_mouse_position().x
+			non_mouse_movement = false
 
 
 func _physics_process(_delta: float) -> void:
