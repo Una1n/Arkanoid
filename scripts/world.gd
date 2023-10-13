@@ -61,11 +61,8 @@ func _connect_signals() -> void:
 	HighscoreManager.on_highscore_updated.connect(on_highscore_updated)
 	LifeManager.on_lives_updated.connect(on_lives_updated)
 	LifeManager.on_respawn.connect(respawn_ball, CONNECT_DEFERRED)
+	LifeManager.on_game_over.connect(on_game_over)
 	powerup_manager.on_powerup_activated.connect(HighscoreManager.add_powerup_points)
-	if not LifeManager.on_game_over.is_connected(SceneManager.go_to_game_over):
-		LifeManager.on_game_over.connect(SceneManager.go_to_game_over)
-	if not LifeManager.on_game_over.is_connected(HighscoreManager.save_highscore):
-		LifeManager.on_game_over.connect(HighscoreManager.save_highscore)
 	if not SceneManager.on_load_first_level.is_connected(HighscoreManager.reset_score):
 		SceneManager.on_load_first_level.connect(HighscoreManager.reset_score)
 
@@ -91,6 +88,11 @@ func _input(event: InputEvent) -> void:
 func _pause_game() -> void:
 	get_tree().paused = true
 	%PauseMenu.show()
+
+
+func on_game_over() -> void:
+	HighscoreManager.save_highscore()
+	SceneManager.go_to_game_over()
 
 
 func on_entered_gate() -> void:
