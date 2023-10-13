@@ -7,3 +7,4 @@ class_name BrickType
 @export var can_be_destroyed: bool = true
 @export var allowed_to_spawn_powerup: bool = true
 @export var region_rect: Rect2 = Rect2(0, 0, 32, 16)
+@export var animation_name: String = ""
