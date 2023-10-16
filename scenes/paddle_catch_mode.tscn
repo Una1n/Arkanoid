@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://p2ljwptyomd0"]
+
+[ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="2_620qw"]
+[ext_resource type="Script" path="res://scripts/paddle_catch_mode.gd" id="2_mi5bm"]
+
+[node name="Paddle" type="Node2D" groups=["Paddle"]]
+script = ExtResource("2_mi5bm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_620qw")
+region_enabled = true
+region_rect = Rect2(96, 496, 64, 16)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bdlewbi22dowq"]
+[gd_scene load_steps=19 format=3 uid="uid://bdlewbi22dowq"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_3mar2"]
 [ext_resource type="PackedScene" uid="uid://dy4lsv03y08oy" path="res://scenes/paddle.tscn" id="2_533u3"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://1idmhb1f8xww" path="res://scenes/powerups/powerup_player.tres" id="11_k8qq8"]
 [ext_resource type="Resource" uid="uid://k716alu8pmvn" path="res://scenes/powerups/powerup_slow.tres" id="12_h1cg6"]
 [ext_resource type="PackedScene" uid="uid://cs43nvracxcf1" path="res://scenes/pause_menu.tscn" id="13_7tlyd"]
+[ext_resource type="Resource" uid="uid://kpqj8c365acr" path="res://scenes/powerups/powerup_catch.tres" id="13_21miq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttkjv"]
 size = Vector2(32, 32)
@@ -87,7 +88,7 @@ shape = SubResource("RectangleShape2D_503wu")
 
 [node name="PowerupManager" type="Node" parent="."]
 script = ExtResource("6_50chc")
-powerup_list = Array[Resource("res://scenes/powerups/powerup_data.gd")]([ExtResource("7_ejb5k"), ExtResource("8_w1t3c"), ExtResource("9_rvi23"), ExtResource("10_5o554"), ExtResource("11_k8qq8"), ExtResource("12_h1cg6")])
+powerup_list = Array[Resource("res://scenes/powerups/powerup_data.gd")]([ExtResource("7_ejb5k"), ExtResource("8_w1t3c"), ExtResource("9_rvi23"), ExtResource("10_5o554"), ExtResource("11_k8qq8"), ExtResource("12_h1cg6"), ExtResource("13_21miq")])
 
 [node name="UI" type="CanvasLayer" parent="."]
 

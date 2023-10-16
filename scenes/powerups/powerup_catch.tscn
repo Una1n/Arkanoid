@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://bqffls0dai6pa"]
+
+[ext_resource type="PackedScene" uid="uid://c3u2pk5ceaigr" path="res://scenes/powerup.tscn" id="1_t3fre"]
+[ext_resource type="Script" path="res://scenes/powerups/powerup_catch.gd" id="2_ysais"]
+[ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="3_coso1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p68ul"]
+atlas = ExtResource("3_coso1")
+region = Rect2(224, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5xpo"]
+atlas = ExtResource("3_coso1")
+region = Rect2(256, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1d4n"]
+atlas = ExtResource("3_coso1")
+region = Rect2(288, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ingyo"]
+atlas = ExtResource("3_coso1")
+region = Rect2(320, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1ssd"]
+atlas = ExtResource("3_coso1")
+region = Rect2(352, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hm5n"]
+atlas = ExtResource("3_coso1")
+region = Rect2(384, 32, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kws0m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p68ul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5xpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1d4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ingyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1ssd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hm5n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="PowerupCatch" instance=ExtResource("1_t3fre")]
+script = ExtResource("2_ysais")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_kws0m")
+frame = 0
+frame_progress = 0.0
