@@ -13,7 +13,6 @@ size = Vector2(16, 64)
 size = Vector2(32, 64)
 
 [node name="Gate" type="Node2D" groups=["Gate"]]
-position = Vector2(704, 496)
 script = ExtResource("1_yx5ki")
 
 [node name="UpperBlock" type="StaticBody2D" parent="."]

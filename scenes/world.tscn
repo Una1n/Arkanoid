@@ -16,9 +16,8 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s686c"]
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("gate", "powerup_manager", "paddle_position", "current_paddle") groups=["World"]]
+[node name="World" type="Node2D" node_paths=PackedStringArray("powerup_manager", "paddle_position", "current_paddle") groups=["World"]]
 script = ExtResource("1_3mar2")
-gate = NodePath("")
 powerup_manager = NodePath("PowerupManager")
 paddle_position = NodePath("PaddlePosition")
 current_paddle = NodePath("PaddlePosition/Paddle")
@@ -32,6 +31,7 @@ position = Vector2(480, 520)
 [node name="Paddle" parent="PaddlePosition" instance=ExtResource("2_533u3")]
 
 [node name="Gate" parent="." instance=ExtResource("4_h2ykw")]
+position = Vector2(704, 496)
 
 [node name="PowerupManager" type="Node" parent="."]
 script = ExtResource("6_50chc")
