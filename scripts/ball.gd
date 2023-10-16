@@ -17,11 +17,6 @@ func start_moving(direction: Vector2) -> void:
 	current_direction = direction.normalized()
 	velocity = current_direction * __SPEED
 
-	# Enable collision after some time (otherwise it will collide with paddle on start)
-	if $CollisionShape2D.disabled:
-		await get_tree().create_timer(0.05).timeout
-		disable_collision(false)
-
 
 func _physics_process(delta: float) -> void:
 	if position.y >= 520:

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="1_rujcs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ud5wm"]
-size = Vector2(64, 16)
+size = Vector2(64, 14)
 
 [node name="Paddle" type="CharacterBody2D" groups=["Paddle"]]
 collision_layer = 2

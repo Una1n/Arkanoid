@@ -31,6 +31,7 @@ func _ready() -> void:
 	respawn_ball()
 	_initialize_ui()
 	_connect_signals()
+
 	bricks_available = get_tree().get_nodes_in_group("Bricks").size()
 	for node in get_tree().get_nodes_in_group("Bricks"):
 		var brick := node as Brick
@@ -113,7 +114,6 @@ func handle_life_lost() -> void:
 
 func respawn_ball() -> void:
 	current_ball = ball_scene.instantiate() as Ball
-	current_ball.disable_collision()
 	current_paddle.add_child(current_ball)
 	current_ball.position = Vector2(0, -12)
 	current_ball.on_screen_exited.connect(on_ball_exited_screen)
