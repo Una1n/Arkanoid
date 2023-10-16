@@ -284,7 +284,7 @@ type = ExtResource("8_kuhia")
 
 [node name="Brick27" parent="DefaultLevel/Gold" index="0" instance=ExtResource("2_jverq")]
 position = Vector2(144, 120)
-type = ExtResource("6_5kidx")
+type = ExtResource("6_urenx")
 
 [node name="Brick28" parent="DefaultLevel/Gold" index="1" instance=ExtResource("2_jverq")]
 position = Vector2(176, 120)
@@ -324,7 +324,7 @@ type = ExtResource("6_5kidx")
 
 [node name="Brick47" parent="DefaultLevel/Gold" index="10" instance=ExtResource("2_jverq")]
 position = Vector2(144, 280)
-type = ExtResource("6_5kidx")
+type = ExtResource("7_x7xha")
 
 [node name="Brick48" parent="DefaultLevel/Gold" index="11" instance=ExtResource("2_jverq")]
 position = Vector2(176, 280)
@@ -400,7 +400,7 @@ type = ExtResource("6_5kidx")
 
 [node name="Brick46" parent="DefaultLevel/Gold" index="29" instance=ExtResource("2_jverq")]
 position = Vector2(336, 200)
-type = ExtResource("6_5kidx")
+type = ExtResource("6_urenx")
 
 [node name="Brick57" parent="DefaultLevel/Gold" index="30" instance=ExtResource("2_jverq")]
 position = Vector2(48, 360)
@@ -440,4 +440,7 @@ type = ExtResource("6_5kidx")
 
 [node name="Brick66" parent="DefaultLevel/Gold" index="39" instance=ExtResource("2_jverq")]
 position = Vector2(336, 360)
-type = ExtResource("6_5kidx")
+type = ExtResource("8_kuhia")
+
+[node name="PauseMenu" parent="UI" index="1"]
+visible = false
