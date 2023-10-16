@@ -44,10 +44,13 @@ func _physics_process(delta: float) -> void:
 
 			# On the edge of the paddle it will go at a sharper angle
 			current_direction = Vector2.UP.rotated(deg_to_rad(degrees))
+			velocity = current_direction * bounce_velocity.length()
+
+			paddle.on_ball_hit(self)
 		else:
 			current_direction = bounce_velocity.normalized()
 
-			# Making sure the ball horizontal movement is not within a 5 degree angle
+			# Making sure the ball horizontal movement is never within a 5 degree angle
 			# Otherwise it may get stuck going only horizontal
 			var angle = rad_to_deg(collision.get_normal().angle_to(bounce_velocity))
 			if angle > -5 and angle < 5 and collision.get_normal() != Vector2.DOWN:
@@ -58,14 +61,16 @@ func _physics_process(delta: float) -> void:
 					offset_angle = rad_to_deg(current_direction.angle()) - 10
 				current_direction = Vector2.from_angle(deg_to_rad(offset_angle))
 
-		velocity = current_direction * bounce_velocity.length()
+			velocity = current_direction * bounce_velocity.length()
+
 		_move_ball(delta)
 
 
 func _move_ball(delta: float) -> void:
 	if powerup_slow_active:
 		velocity *= randf_range(1.01, 1.05)
-	move_and_collide(velocity * delta)
+	if velocity != Vector2.ZERO:
+		move_and_collide(velocity * delta)
 
 
 func normal_speed() -> void:
