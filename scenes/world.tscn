@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://bdlewbi22dowq"]
+[gd_scene load_steps=15 format=3 uid="uid://bdlewbi22dowq"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_3mar2"]
 [ext_resource type="PackedScene" uid="uid://dy4lsv03y08oy" path="res://scenes/paddle.tscn" id="2_533u3"]
 [ext_resource type="PackedScene" uid="uid://cwdeig8vd2f4c" path="res://scenes/levels/default_level.tscn" id="2_pl2jy"]
-[ext_resource type="Script" path="res://scenes/gate.gd" id="4_pbrdb"]
-[ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="4_ucish"]
+[ext_resource type="PackedScene" uid="uid://bkwoi6i376sfq" path="res://scenes/gate.tscn" id="4_h2ykw"]
 [ext_resource type="Script" path="res://globals/powerup_manager.gd" id="6_50chc"]
 [ext_resource type="Resource" uid="uid://bplq01gg473fw" path="res://scenes/powerups/powerup_breakout.tres" id="7_ejb5k"]
 [ext_resource type="Resource" uid="uid://6ctl765vjlh8" path="res://scenes/powerups/powerup_disruption.tres" id="8_w1t3c"]
@@ -15,20 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://cs43nvracxcf1" path="res://scenes/pause_menu.tscn" id="13_7tlyd"]
 [ext_resource type="Resource" uid="uid://kpqj8c365acr" path="res://scenes/powerups/powerup_catch.tres" id="13_21miq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttkjv"]
-size = Vector2(32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7h1l"]
-size = Vector2(16, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_503wu"]
-size = Vector2(32, 64)
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s686c"]
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("gate", "powerup_manager", "paddle_position", "current_paddle") groups=["World"]]
 script = ExtResource("1_3mar2")
-gate = NodePath("Gate")
+gate = NodePath("")
 powerup_manager = NodePath("PowerupManager")
 paddle_position = NodePath("PaddlePosition")
 current_paddle = NodePath("PaddlePosition/Paddle")
@@ -41,50 +31,7 @@ position = Vector2(480, 520)
 
 [node name="Paddle" parent="PaddlePosition" instance=ExtResource("2_533u3")]
 
-[node name="Gate" type="Node2D" parent="." groups=["Gate"]]
-position = Vector2(704, 496)
-script = ExtResource("4_pbrdb")
-
-[node name="UpperBlock" type="StaticBody2D" parent="Gate"]
-collision_mask = 6
-
-[node name="SpriteUpper" type="Sprite2D" parent="Gate/UpperBlock"]
-texture = ExtResource("4_ucish")
-region_enabled = true
-region_rect = Rect2(320, 224, 32, 32)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/UpperBlock"]
-shape = SubResource("RectangleShape2D_ttkjv")
-
-[node name="LowerBlock" type="StaticBody2D" parent="Gate"]
-collision_mask = 6
-
-[node name="SpriteLower" type="Sprite2D" parent="Gate/LowerBlock"]
-position = Vector2(0, 32)
-texture = ExtResource("4_ucish")
-region_enabled = true
-region_rect = Rect2(320, 224, 32, 32)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/LowerBlock"]
-position = Vector2(0, 32)
-shape = SubResource("RectangleShape2D_ttkjv")
-
-[node name="NextLevelHitbox" type="Area2D" parent="Gate"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/NextLevelHitbox"]
-position = Vector2(0, 16)
-shape = SubResource("RectangleShape2D_v7h1l")
-disabled = true
-
-[node name="BlockBall" type="StaticBody2D" parent="Gate"]
-collision_layer = 32
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/BlockBall"]
-position = Vector2(0, 16)
-shape = SubResource("RectangleShape2D_503wu")
+[node name="Gate" parent="." instance=ExtResource("4_h2ykw")]
 
 [node name="PowerupManager" type="Node" parent="."]
 script = ExtResource("6_50chc")
@@ -195,5 +142,3 @@ text = "20
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("13_7tlyd")]
 unique_name_in_owner = true
-
-[connection signal="body_entered" from="Gate/NextLevelHitbox" to="Gate" method="_on_next_level_hitbox_collision"]
