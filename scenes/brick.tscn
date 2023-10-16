@@ -522,5 +522,6 @@ region_rect = Rect2(0, 0, 32, 16)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 sprite_frames = SubResource("SpriteFrames_00o33")
 animation = &"brick_yellow"
