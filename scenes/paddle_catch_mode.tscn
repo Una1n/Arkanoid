@@ -10,3 +10,7 @@ script = ExtResource("2_mi5bm")
 texture = ExtResource("2_620qw")
 region_enabled = true
 region_rect = Rect2(96, 496, 64, 16)
+
+[node name="ReleaseTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
