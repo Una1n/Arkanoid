@@ -1,29 +1,20 @@
 extends Powerup
 
+var normal_mode_scene: PackedScene = preload("res://scenes/paddle_normal_mode.tscn")
+var laser_mode_scene: PackedScene = preload("res://scenes/paddle_laser_mode.tscn")
 
-var paddle_scene: PackedScene = preload("res://scenes/paddle.tscn")
-var laser_paddle_scene: PackedScene = preload("res://scenes/paddle_laser_mode.tscn")
-
-var laser_paddle: PaddleLaser = null
 
 func enable_powerup() -> void:
 	super()
-	var world = get_tree().get_first_node_in_group("World") as World
-	var old_position = world.current_paddle.position
-	world.current_paddle.queue_free()
-	laser_paddle = laser_paddle_scene.instantiate() as PaddleLaser
-	world.paddle_position.add_child(laser_paddle)
-	laser_paddle.position = old_position
-	world.change_paddle(laser_paddle)
+	var paddle = get_tree().get_first_node_in_group("Paddle") as Paddle
+	if paddle:
+		var laser_mode = laser_mode_scene.instantiate() as LaserPaddleMode
+		paddle.set_mode(laser_mode)
 
 
 func disable_powerup() -> void:
 	super()
-	var world = get_tree().get_first_node_in_group("World") as World
-	var old_position = laser_paddle.position
-	laser_paddle.disable()
-	laser_paddle.free()
-	var paddle = paddle_scene.instantiate() as Paddle
-	world.paddle_position.add_child(paddle)
-	paddle.position = old_position
-	world.change_paddle(paddle)
+	var paddle = get_tree().get_first_node_in_group("Paddle") as Paddle
+	if paddle:
+		var normal_mode = normal_mode_scene.instantiate() as NormalPaddleMode
+		paddle.set_mode(normal_mode)

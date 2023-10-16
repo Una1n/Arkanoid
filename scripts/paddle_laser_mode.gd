@@ -1,20 +1,10 @@
-class_name PaddleLaser extends Paddle
+class_name LaserPaddleMode extends PaddleMode
 
 @onready var left_muzzle_position: Vector2 = $LeftBulletMuzzle.position
 @onready var right_muzzle_position: Vector2 = $RightBulletMuzzle.position
+@onready var laser_cooldown_timer: Timer = $LaserCooldown
 
-@export var laser_fire_rate: float = 0.3
-
-var laser_scene: PackedScene = preload("res://scenes/laser.tscn")
-
-var laser_cooldown_timer: Timer
-
-
-func _ready() -> void:
-	laser_cooldown_timer = Timer.new()
-	laser_cooldown_timer.wait_time = laser_fire_rate
-	laser_cooldown_timer.one_shot = true
-	add_child(laser_cooldown_timer)
+var laser_projectile_scene: PackedScene = preload("res://scenes/laser.tscn")
 
 
 func _process(_delta: float) -> void:
@@ -34,12 +24,6 @@ func shoot() -> void:
 
 func _create_laser() -> Laser:
 	var world = get_tree().get_first_node_in_group("World") as World
-	var laser = laser_scene.instantiate()
+	var laser = laser_projectile_scene.instantiate()
 	world.add_child(laser)
 	return laser
-
-
-func disable() -> void:
-	normal_size()
-	laser_cooldown_timer.queue_free()
-	laser_cooldown_timer = null

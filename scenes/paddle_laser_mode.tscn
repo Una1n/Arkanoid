@@ -1,17 +1,22 @@
 [gd_scene load_steps=3 format=3 uid="uid://3magf4qot0ek"]
 
-[ext_resource type="PackedScene" uid="uid://dy4lsv03y08oy" path="res://scenes/paddle.tscn" id="1_52aw8"]
 [ext_resource type="Script" path="res://scripts/paddle_laser_mode.gd" id="2_dp02d"]
+[ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="2_od8bi"]
 
-[node name="PaddleLaser" instance=ExtResource("1_52aw8")]
+[node name="PaddleLaser" type="Node2D" groups=["Paddle"]]
 script = ExtResource("2_dp02d")
-laser_fire_rate = 0.3
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_od8bi")
+region_enabled = true
 region_rect = Rect2(96, 384, 64, 16)
 
-[node name="LeftBulletMuzzle" type="Marker2D" parent="." index="2"]
+[node name="LeftBulletMuzzle" type="Marker2D" parent="."]
 position = Vector2(-16, -16)
 
-[node name="RightBulletMuzzle" type="Marker2D" parent="." index="3"]
+[node name="RightBulletMuzzle" type="Marker2D" parent="."]
 position = Vector2(16, -16)
+
+[node name="LaserCooldown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
