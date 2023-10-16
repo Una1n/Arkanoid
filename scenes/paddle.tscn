@@ -7,6 +7,7 @@
 size = Vector2(64, 14)
 
 [node name="Paddle" type="CharacterBody2D" groups=["Paddle"]]
+z_index = 1
 collision_layer = 2
 script = ExtResource("1_rq0yc")
 

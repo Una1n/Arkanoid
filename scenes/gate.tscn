@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkwoi6i376sfq"]
+[gd_scene load_steps=13 format=3 uid="uid://bkwoi6i376sfq"]
 
 [ext_resource type="Script" path="res://scripts/gate.gd" id="1_yx5ki"]
 [ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="2_ssc0w"]
+[ext_resource type="Shader" uid="uid://dlhtcro8ywpwt" path="res://shaders/gate_shader.tres" id="3_4t34f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttkjv"]
 size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rphn"]
+size = Vector2(26, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7h1l"]
 size = Vector2(16, 64)
@@ -12,10 +16,68 @@ size = Vector2(16, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_503wu"]
 size = Vector2(32, 64)
 
+[sub_resource type="Animation" id="Animation_ksxd3"]
+resource_name = "exit_sign_blink"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExitSign/ExitSignLabel:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.113725), Color(1, 1, 1, 0), Color(1, 1, 1, 0.113725)]
+}
+
+[sub_resource type="Animation" id="Animation_vn7kd"]
+resource_name = "exit_sign_fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExitSign/ExitSignLabel:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.113725)]
+}
+
+[sub_resource type="Animation" id="Animation_7hjpk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExitSign/ExitSignLabel:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.113725)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v81a2"]
+_data = {
+"RESET": SubResource("Animation_7hjpk"),
+"exit_sign_blink": SubResource("Animation_ksxd3"),
+"exit_sign_fade_in": SubResource("Animation_vn7kd")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lrs2x"]
+shader = ExtResource("3_4t34f")
+
 [node name="Gate" type="Node2D" groups=["Gate"]]
 script = ExtResource("1_yx5ki")
 
 [node name="UpperBlock" type="StaticBody2D" parent="."]
+z_index = 2
 collision_mask = 6
 
 [node name="SpriteUpper" type="Sprite2D" parent="UpperBlock"]
@@ -27,6 +89,7 @@ region_rect = Rect2(320, 224, 32, 32)
 shape = SubResource("RectangleShape2D_ttkjv")
 
 [node name="LowerBlock" type="StaticBody2D" parent="."]
+z_index = 2
 collision_mask = 6
 
 [node name="SpriteLower" type="Sprite2D" parent="LowerBlock"]
@@ -39,12 +102,21 @@ region_rect = Rect2(320, 224, 32, 32)
 position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_ttkjv")
 
+[node name="BlockOutside" type="StaticBody2D" parent="."]
+z_index = 2
+position = Vector2(32, 0)
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockOutside"]
+position = Vector2(-3, 16)
+shape = SubResource("RectangleShape2D_2rphn")
+
 [node name="NextLevelHitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NextLevelHitbox"]
-position = Vector2(0, 16)
+position = Vector2(8, 16)
 shape = SubResource("RectangleShape2D_v7h1l")
 disabled = true
 
@@ -55,5 +127,29 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlockBall"]
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_503wu")
+
+[node name="ExitSign" type="Node2D" parent="."]
+
+[node name="ExitSignLabel" type="Label" parent="ExitSign"]
+offset_left = -64.0
+offset_right = -15.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.113725)
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v81a2")
+}
+
+[node name="Shader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_lrs2x")
+position = Vector2(4.99195, 15.9883)
+rotation = 1.5708
+scale = Vector2(0.933708, 0.55018)
+texture = ExtResource("2_ssc0w")
+region_enabled = true
+region_rect = Rect2(576, 256, 64, 32)
 
 [connection signal="body_entered" from="NextLevelHitbox" to="." method="_on_next_level_hitbox_collision"]

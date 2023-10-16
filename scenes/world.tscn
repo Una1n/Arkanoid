@@ -16,8 +16,9 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s686c"]
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("powerup_manager", "paddle_position", "current_paddle") groups=["World"]]
+[node name="World" type="Node2D" node_paths=PackedStringArray("gate", "powerup_manager", "paddle_position", "current_paddle") groups=["World"]]
 script = ExtResource("1_3mar2")
+gate = NodePath("Gate")
 powerup_manager = NodePath("PowerupManager")
 paddle_position = NodePath("PaddlePosition")
 current_paddle = NodePath("PaddlePosition/Paddle")

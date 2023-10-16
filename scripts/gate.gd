@@ -3,6 +3,14 @@ class_name Gate
 
 signal on_gate_entered
 
+@onready var exit_sign: Node2D = $ExitSign
+@onready var exit_sign_label: Label = $ExitSign/ExitSignLabel
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+
+func _ready() -> void:
+	exit_sign.hide()
+
 
 func open() -> void:
 	var tween: Tween = get_tree().create_tween().set_parallel()
@@ -13,6 +21,10 @@ func open() -> void:
 	tween.set_ease(Tween.EASE_IN)
 	tween.finished.connect(_enable_collision)
 	tween.play()
+	exit_sign.show()
+	animation_player.play("exit_sign_fade_in")
+	await animation_player.animation_finished
+	animation_player.play("exit_sign_blink")
 
 
 func close() -> void:
@@ -24,6 +36,8 @@ func close() -> void:
 	tween.set_ease(Tween.EASE_OUT)
 	tween.finished.connect(_disable_collision)
 	tween.play()
+	exit_sign.hide()
+	animation_player.stop()
 
 
 func _enable_collision() -> void:
