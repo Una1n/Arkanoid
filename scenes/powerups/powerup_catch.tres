@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource("2_d17ou")
 scene = ExtResource("1_uomed")
-roll_weight = 100.0
+roll_weight = 3.0
