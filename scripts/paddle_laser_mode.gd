@@ -4,7 +4,7 @@ class_name LaserPaddleMode extends PaddleMode
 @onready var right_muzzle_position: Vector2 = $RightBulletMuzzle.position
 @onready var laser_cooldown_timer: Timer = $LaserCooldown
 
-var laser_projectile_scene: PackedScene = preload("res://scenes/laser.tscn")
+@export var laser_projectile_scene: PackedScene
 
 
 func on_ball_hit(_ball: Ball) -> void:

@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4gn3wta6o07t"]
+[gd_scene load_steps=13 format=3 uid="uid://b4gn3wta6o07t"]
 
 [ext_resource type="PackedScene" uid="uid://c3u2pk5ceaigr" path="res://scenes/powerup.tscn" id="1_3w5lu"]
 [ext_resource type="Script" path="res://scenes/powerups/powerup_laser.gd" id="2_p5g12"]
+[ext_resource type="PackedScene" uid="uid://dulwet84qar3i" path="res://scenes/paddle_normal_mode.tscn" id="3_5hvya"]
 [ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="3_fbai3"]
+[ext_resource type="PackedScene" uid="uid://3magf4qot0ek" path="res://scenes/paddle_laser_mode.tscn" id="4_h84ph"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x7tph"]
 atlas = ExtResource("3_fbai3")
@@ -56,6 +58,8 @@ animations = [{
 
 [node name="PowerupLaser" instance=ExtResource("1_3w5lu")]
 script = ExtResource("2_p5g12")
+normal_mode_scene = ExtResource("3_5hvya")
+laser_mode_scene = ExtResource("4_h84ph")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_i41uc")

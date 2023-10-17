@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqffls0dai6pa"]
+[gd_scene load_steps=13 format=3 uid="uid://bqffls0dai6pa"]
 
 [ext_resource type="PackedScene" uid="uid://c3u2pk5ceaigr" path="res://scenes/powerup.tscn" id="1_t3fre"]
 [ext_resource type="Script" path="res://scenes/powerups/powerup_catch.gd" id="2_ysais"]
+[ext_resource type="PackedScene" uid="uid://dulwet84qar3i" path="res://scenes/paddle_normal_mode.tscn" id="3_8dqdg"]
 [ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="3_coso1"]
+[ext_resource type="PackedScene" uid="uid://p2ljwptyomd0" path="res://scenes/paddle_catch_mode.tscn" id="4_q6jbw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p68ul"]
 atlas = ExtResource("3_coso1")
@@ -56,6 +58,8 @@ animations = [{
 
 [node name="PowerupCatch" instance=ExtResource("1_t3fre")]
 script = ExtResource("2_ysais")
+normal_mode_scene = ExtResource("3_8dqdg")
+catch_mode_scene = ExtResource("4_q6jbw")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_kws0m")

@@ -1,7 +1,7 @@
 extends Powerup
 
-var normal_mode_scene: PackedScene = preload("res://scenes/paddle_normal_mode.tscn")
-var catch_mode_scene: PackedScene = preload("res://scenes/paddle_catch_mode.tscn")
+@export var normal_mode_scene: PackedScene
+@export var catch_mode_scene: PackedScene
 
 
 func enable_powerup() -> void:
