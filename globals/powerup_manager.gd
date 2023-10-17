@@ -48,6 +48,7 @@ func _get_random_powerup() -> Powerup:
 func on_powerup_gained(powerup: Powerup) -> void:
 	remove_active_powerup()
 
+	AudioManager.play("res://assets/audio/sfx/powerup_gained.wav")
 	powerup.enable_powerup()
 	active_powerup = powerup
 	powerup_on_screen = false
