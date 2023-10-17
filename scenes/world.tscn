@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bdlewbi22dowq"]
+[gd_scene load_steps=17 format=3 uid="uid://bdlewbi22dowq"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_3mar2"]
 [ext_resource type="PackedScene" uid="uid://dy4lsv03y08oy" path="res://scenes/paddle.tscn" id="2_533u3"]
 [ext_resource type="PackedScene" uid="uid://cwdeig8vd2f4c" path="res://scenes/levels/default_level.tscn" id="2_pl2jy"]
+[ext_resource type="PackedScene" uid="uid://cwokanr7mk82v" path="res://scenes/ball.tscn" id="2_qokux"]
+[ext_resource type="PackedScene" uid="uid://c64p0ppi77ell" path="res://scenes/ui/life_texture.tscn" id="3_tc1rq"]
 [ext_resource type="PackedScene" uid="uid://bkwoi6i376sfq" path="res://scenes/gate.tscn" id="4_h2ykw"]
 [ext_resource type="Script" path="res://globals/powerup_manager.gd" id="6_50chc"]
 [ext_resource type="Resource" uid="uid://bplq01gg473fw" path="res://scenes/powerups/powerup_breakout.tres" id="7_ejb5k"]
@@ -11,13 +13,15 @@
 [ext_resource type="Resource" uid="uid://b4hxioc5h1qgb" path="res://scenes/powerups/powerup_laser.tres" id="10_5o554"]
 [ext_resource type="Resource" uid="uid://1idmhb1f8xww" path="res://scenes/powerups/powerup_player.tres" id="11_k8qq8"]
 [ext_resource type="Resource" uid="uid://k716alu8pmvn" path="res://scenes/powerups/powerup_slow.tres" id="12_h1cg6"]
-[ext_resource type="PackedScene" uid="uid://cs43nvracxcf1" path="res://scenes/pause_menu.tscn" id="13_7tlyd"]
+[ext_resource type="PackedScene" uid="uid://cs43nvracxcf1" path="res://scenes/ui/pause_menu.tscn" id="13_7tlyd"]
 [ext_resource type="Resource" uid="uid://kpqj8c365acr" path="res://scenes/powerups/powerup_catch.tres" id="13_21miq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s686c"]
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("gate", "powerup_manager", "paddle_position", "current_paddle") groups=["World"]]
 script = ExtResource("1_3mar2")
+ball_scene = ExtResource("2_qokux")
+life_texture = ExtResource("3_tc1rq")
 gate = NodePath("Gate")
 powerup_manager = NodePath("PowerupManager")
 paddle_position = NodePath("PaddlePosition")

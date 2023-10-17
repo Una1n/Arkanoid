@@ -1,14 +1,15 @@
 extends Node2D
 class_name World
 
-var ball_scene: PackedScene = preload("res://scenes/ball.tscn")
-var life_texture: PackedScene = preload("res://scenes/life_texture.tscn")
+@export var ball_scene: PackedScene
+@export var life_texture: PackedScene
 
-@onready var started_game: bool = false
 @export var gate: Gate
 @export var powerup_manager: PowerupManager
 @export var paddle_position: Node2D
 @export var current_paddle: Paddle
+
+@onready var started_game: bool = false
 
 var debug_manager: DebugManager
 var current_ball: Ball = null
