@@ -21,12 +21,15 @@ func on_collision() -> void:
 	if not type.can_be_destroyed:
 		%AnimatedSprite2D.show()
 		%AnimatedSprite2D.play(type.animation_name)
+		AudioManager.play("res://assets/audio/sfx/brick_indestructable.wav")
 		return
 
 	current_hits += 1
 	if type.hits_to_destroy == current_hits:
+		AudioManager.play("res://assets/audio/sfx/brick_destroyed.wav")
 		on_destroyed.emit(self)
 		queue_free()
 	else:
 		%AnimatedSprite2D.show()
 		%AnimatedSprite2D.play(type.animation_name)
+		AudioManager.play("res://assets/audio/sfx/brick_indestructable.wav")
