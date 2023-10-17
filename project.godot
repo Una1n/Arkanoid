@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 HighscoreManager="*res://globals/highscore_manager.gd"
 LifeManager="*res://globals/life_manager.gd"
 SceneManager="*res://scenes/scene_manager.tscn"
+AudioManager="*res://globals/audio_manager.gd"
 
 [debug]
 
