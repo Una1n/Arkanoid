@@ -109,6 +109,7 @@ func on_ball_exited_screen(ball: Ball) -> void:
 
 func handle_life_lost() -> void:
 	if get_tree().get_nodes_in_group("Ball").size() == 0:
+		AudioManager.play("res://assets/audio/sfx/lost_last_ball.wav")
 		powerup_manager.remove_all_powerups()
 		on_life_lost.emit()
 
