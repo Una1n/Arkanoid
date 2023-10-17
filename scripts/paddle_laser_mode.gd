@@ -7,6 +7,10 @@ class_name LaserPaddleMode extends PaddleMode
 var laser_projectile_scene: PackedScene = preload("res://scenes/laser.tscn")
 
 
+func on_ball_hit(_ball: Ball) -> void:
+	paddle.play_hit_sfx()
+
+
 func _process(_delta: float) -> void:
 	if not is_instance_valid(laser_cooldown_timer): return
 

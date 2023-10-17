@@ -7,6 +7,7 @@ var attached_ball: Ball = null
 func on_ball_hit(ball: Ball) -> void:
 	ball.velocity = Vector2.ZERO
 	attach_ball(ball)
+	AudioManager.play("res://assets/audio/sfx/paddle_ball_catch.wav")
 
 
 func attach_ball(ball: Ball) -> void:

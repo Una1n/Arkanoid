@@ -28,6 +28,10 @@ func on_ball_hit(ball: Ball) -> void:
 	mode.on_ball_hit(ball)
 
 
+func play_hit_sfx() -> void:
+	AudioManager.play("res://assets/audio/sfx/paddle_ball_hit.wav")
+
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var motion := event as InputEventMouseMotion
