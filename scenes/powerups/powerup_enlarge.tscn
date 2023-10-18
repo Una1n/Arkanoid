@@ -60,6 +60,7 @@ animations = [{
 script = ExtResource("2_snlp6")
 normal_mode_scene = ExtResource("3_krlej")
 enlarge_mode_scene = ExtResource("4_qui0m")
+display_name = "Enlarge Paddle"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_p852f")

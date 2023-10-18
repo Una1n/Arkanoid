@@ -60,6 +60,7 @@ animations = [{
 script = ExtResource("2_ysais")
 normal_mode_scene = ExtResource("3_8dqdg")
 catch_mode_scene = ExtResource("4_q6jbw")
+display_name = "Sticky Paddle"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_kws0m")

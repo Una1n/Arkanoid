@@ -56,6 +56,7 @@ animations = [{
 
 [node name="PowerupSlow" instance=ExtResource("1_s3ds0")]
 script = ExtResource("2_joiao")
+display_name = "Slow Ball"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ikp8q")

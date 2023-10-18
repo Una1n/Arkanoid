@@ -60,6 +60,7 @@ animations = [{
 script = ExtResource("2_p5g12")
 normal_mode_scene = ExtResource("3_5hvya")
 laser_mode_scene = ExtResource("4_h84ph")
+display_name = "Laser Paddle"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_i41uc")

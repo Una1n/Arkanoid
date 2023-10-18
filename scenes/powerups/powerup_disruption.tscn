@@ -5,6 +5,7 @@
 
 [node name="PowerupDisruption" instance=ExtResource("1_sq2po")]
 script = ExtResource("2_tg28u")
+display_name = "Multi Ball"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 frame = 1

@@ -56,6 +56,7 @@ animations = [{
 
 [node name="PowerupBreakout" instance=ExtResource("1_ju5gk")]
 script = ExtResource("2_hvy5g")
+display_name = "Breakout"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_gu3ty")

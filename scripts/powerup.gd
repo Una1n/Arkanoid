@@ -1,9 +1,10 @@
-extends Node2D
-class_name Powerup
+class_name Powerup extends Node2D
+
 
 signal on_screen_exited
 signal on_powerup_gained(powerup: Powerup)
 
+@export var display_name: String
 var movement_tween: Tween
 @onready var points: int = 1000
 
