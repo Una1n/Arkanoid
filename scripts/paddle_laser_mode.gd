@@ -24,6 +24,7 @@ func shoot() -> void:
 	left_laser.position = left_muzzle_position + global_position
 	right_laser.position = right_muzzle_position + global_position
 	laser_cooldown_timer.start()
+	AudioManager.play("res://assets/audio/sfx/laser_shoot.wav")
 
 
 func _create_laser() -> Laser:
