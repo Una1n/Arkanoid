@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdlewbi22dowq"]
+[gd_scene load_steps=18 format=3 uid="uid://bdlewbi22dowq"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_3mar2"]
 [ext_resource type="PackedScene" uid="uid://dy4lsv03y08oy" path="res://scenes/paddle.tscn" id="2_533u3"]
@@ -15,15 +15,16 @@
 [ext_resource type="Resource" uid="uid://k716alu8pmvn" path="res://scenes/powerups/powerup_slow.tres" id="12_h1cg6"]
 [ext_resource type="PackedScene" uid="uid://cs43nvracxcf1" path="res://scenes/ui/pause_menu.tscn" id="13_7tlyd"]
 [ext_resource type="Resource" uid="uid://kpqj8c365acr" path="res://scenes/powerups/powerup_catch.tres" id="13_21miq"]
+[ext_resource type="Script" path="res://scripts/ui_controller.gd" id="15_uyama"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s686c"]
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("gate", "powerup_manager", "paddle_position", "current_paddle") groups=["World"]]
+[node name="World" type="Node2D" node_paths=PackedStringArray("gate", "powerup_manager", "ui_controller", "paddle_position", "current_paddle") groups=["World"]]
 script = ExtResource("1_3mar2")
 ball_scene = ExtResource("2_qokux")
-life_texture = ExtResource("3_tc1rq")
 gate = NodePath("Gate")
 powerup_manager = NodePath("PowerupManager")
+ui_controller = NodePath("UI")
 paddle_position = NodePath("PaddlePosition")
 current_paddle = NodePath("PaddlePosition/Paddle")
 
@@ -42,7 +43,16 @@ position = Vector2(704, 496)
 script = ExtResource("6_50chc")
 powerup_list = Array[Resource("res://scenes/powerups/powerup_data.gd")]([ExtResource("7_ejb5k"), ExtResource("8_w1t3c"), ExtResource("9_rvi23"), ExtResource("10_5o554"), ExtResource("11_k8qq8"), ExtResource("12_h1cg6"), ExtResource("13_21miq")])
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("powerup_manager", "lives_container", "score_label", "highscore_label", "rounds_label", "powerup_container", "powerup_label")]
+script = ExtResource("15_uyama")
+powerup_manager = NodePath("../PowerupManager")
+life_texture = ExtResource("3_tc1rq")
+lives_container = NodePath("RightContainer/MarginContainer/VBoxContainer/LivesContainer/LivesTextureContainer")
+score_label = NodePath("RightContainer/MarginContainer/VBoxContainer/ScoreContainer/Score")
+highscore_label = NodePath("RightContainer/MarginContainer/VBoxContainer/HighScoreContainer/HighScore")
+rounds_label = NodePath("RightContainer/MarginContainer/VBoxContainer/RoundsContainer/Rounds")
+powerup_container = NodePath("RightContainer/MarginContainer/VBoxContainer/PowerupContainer")
+powerup_label = NodePath("RightContainer/MarginContainer/VBoxContainer/PowerupContainer/Powerup")
 
 [node name="RightContainer" type="PanelContainer" parent="UI"]
 anchors_preset = 1
@@ -75,10 +85,9 @@ theme_override_colors/font_color = Color(0.741176, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
-text = "HighScore: "
+text = "High Score: "
 
 [node name="HighScore" type="Label" parent="UI/RightContainer/MarginContainer/VBoxContainer/HighScoreContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -120,9 +129,28 @@ theme_override_font_sizes/font_size = 24
 text = "Lives:"
 
 [node name="LivesTextureContainer" type="HFlowContainer" parent="UI/RightContainer/MarginContainer/VBoxContainer/LivesContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 2
+
+[node name="PowerupContainer" type="VBoxContainer" parent="UI/RightContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="PowerupLabel" type="Label" parent="UI/RightContainer/MarginContainer/VBoxContainer/PowerupContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.764706, 0.458824, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "Active Powerup:"
+
+[node name="Powerup" type="Label" parent="UI/RightContainer/MarginContainer/VBoxContainer/PowerupContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "powerup name
+"
 
 [node name="RoundsContainer" type="VBoxContainer" parent="UI/RightContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -137,7 +165,6 @@ theme_override_font_sizes/font_size = 24
 text = "Round:"
 
 [node name="Rounds" type="Label" parent="UI/RightContainer/MarginContainer/VBoxContainer/RoundsContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5

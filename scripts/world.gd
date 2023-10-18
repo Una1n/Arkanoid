@@ -1,11 +1,11 @@
-extends Node2D
-class_name World
+class_name World extends Node2D
+
 
 @export var ball_scene: PackedScene
-@export var life_texture: PackedScene
 
 @export var gate: Gate
 @export var powerup_manager: PowerupManager
+@export var ui_controller: UIController
 @export var paddle_position: Node2D
 @export var current_paddle: Paddle
 
@@ -29,9 +29,9 @@ func _ready() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 
 	Input.warp_mouse(paddle_position.position)
-	respawn_ball()
-	_initialize_ui()
+	ui_controller.initialize()
 	_connect_signals()
+	respawn_ball()
 
 	bricks_available = get_tree().get_nodes_in_group("Bricks").size()
 	for node in get_tree().get_nodes_in_group("Bricks"):
@@ -46,22 +46,10 @@ func _ready() -> void:
 			brick.type.hits_to_destroy += SceneManager.current_level_nr / 8
 
 
-func _initialize_ui() -> void:
-	on_score_updated()
-	on_highscore_updated()
-	on_rounds_updated()
-
-	for i in LifeManager.lives:
-		%LivesTextureContainer.add_child(life_texture.instantiate())
-
-
 func _connect_signals() -> void:
 	gate.on_gate_entered.connect(on_entered_gate)
 	on_level_cleared.connect(SceneManager.go_to_next_level)
 	on_life_lost.connect(LifeManager.on_life_lost)
-	HighscoreManager.on_score_updated.connect(on_score_updated)
-	HighscoreManager.on_highscore_updated.connect(on_highscore_updated)
-	LifeManager.on_lives_updated.connect(on_lives_updated)
 	LifeManager.on_respawn.connect(respawn_ball, CONNECT_DEFERRED)
 	LifeManager.on_game_over.connect(on_game_over)
 	powerup_manager.on_powerup_activated.connect(HighscoreManager.add_powerup_points)
@@ -132,25 +120,3 @@ func on_destroy_brick(brick: Brick) -> void:
 		on_level_cleared.emit()
 	elif brick.type.allowed_to_spawn_powerup:
 		powerup_manager.spawn_powerup(brick.global_position)
-
-
-func on_lives_updated() -> void:
-	var ui_lives_count: int = %LivesTextureContainer.get_child_count()
-	if ui_lives_count < LifeManager.lives:
-		%LivesTextureContainer.add_child(life_texture.instantiate())
-	elif ui_lives_count > LifeManager.lives:
-		if ui_lives_count > 0:
-			var life = %LivesTextureContainer.get_child(ui_lives_count - 1)
-			%LivesTextureContainer.remove_child(life)
-
-
-func on_score_updated() -> void:
-	%Score.text = "%s" % HighscoreManager.current_score
-
-
-func on_highscore_updated() -> void:
-	%HighScore.text = "%s" % HighscoreManager.highscore
-
-
-func on_rounds_updated() -> void:
-	%Rounds.text = "%s" % SceneManager.current_level_nr
