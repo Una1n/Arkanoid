@@ -67,5 +67,5 @@ focus_previous = NodePath("../SettingsButton")
 text = "Quit"
 
 [connection signal="pressed" from="Menu/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
-[connection signal="pressed" from="Menu/VBoxContainer/SettingsButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

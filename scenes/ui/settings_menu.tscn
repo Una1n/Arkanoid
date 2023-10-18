@@ -1,0 +1,148 @@
+[gd_scene load_steps=2 format=3 uid="uid://bam0n3u40gc5d"]
+
+[ext_resource type="Script" path="res://scripts/settings_menu.gd" id="1_5qdnk"]
+
+[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("master_volume_label", "music_volume_label", "sfx_volume_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5qdnk")
+master_volume_label = NodePath("MarginContainer/GridContainer/MasterVolumeLabel")
+music_volume_label = NodePath("MarginContainer/GridContainer/MusicVolumeLabel")
+sfx_volume_label = NodePath("MarginContainer/GridContainer/SFXVolumeLabel")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -178.5
+offset_top = 50.0
+offset_right = 178.5
+offset_bottom = 145.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_right = 150
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 50
+columns = 3
+
+[node name="MasterLabel" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Master volume"
+
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../../MarginContainer/VBoxContainer/CancelButton")
+focus_neighbor_top = NodePath("../../MarginContainer/VBoxContainer/CancelButton")
+focus_neighbor_right = NodePath("../MusicSlider")
+focus_neighbor_bottom = NodePath("../MusicSlider")
+focus_next = NodePath("../MusicSlider")
+focus_previous = NodePath("../../MarginContainer/VBoxContainer/CancelButton")
+value = 100.0
+rounded = true
+
+[node name="MasterVolumeLabel" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+text = "100"
+horizontal_alignment = 2
+
+[node name="MusicLabel" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Music volume"
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../MasterSlider")
+focus_neighbor_top = NodePath("../MasterSlider")
+focus_neighbor_right = NodePath("../SFXSlider")
+focus_neighbor_bottom = NodePath("../SFXSlider")
+focus_next = NodePath("../SFXSlider")
+focus_previous = NodePath("../MasterSlider")
+value = 80.0
+rounded = true
+
+[node name="MusicVolumeLabel" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+text = " 80"
+horizontal_alignment = 2
+
+[node name="SFXLabel" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+text = "SFX volume"
+
+[node name="SFXSlider" type="HSlider" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../MusicSlider")
+focus_neighbor_top = NodePath("../MusicSlider")
+focus_neighbor_right = NodePath("../../MarginContainer/VBoxContainer/SaveButton")
+focus_neighbor_bottom = NodePath("../../MarginContainer/VBoxContainer/SaveButton")
+focus_next = NodePath("../../MarginContainer/VBoxContainer/SaveButton")
+focus_previous = NodePath("../MusicSlider")
+value = 80.0
+rounded = true
+
+[node name="SFXVolumeLabel" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+text = " 80"
+horizontal_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 40
+
+[node name="SaveButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../GridContainer/SFXSlider")
+focus_neighbor_top = NodePath("../../../GridContainer/SFXSlider")
+focus_neighbor_right = NodePath("../CancelButton")
+focus_neighbor_bottom = NodePath("../CancelButton")
+focus_next = NodePath("../CancelButton")
+focus_previous = NodePath("../../../GridContainer/SFXSlider")
+text = "save"
+
+[node name="CancelButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../SaveButton")
+focus_neighbor_top = NodePath("../SaveButton")
+focus_neighbor_right = NodePath("../../../GridContainer/MasterSlider")
+focus_neighbor_bottom = NodePath("../../../GridContainer/MasterSlider")
+focus_next = NodePath("../../../GridContainer/MasterSlider")
+focus_previous = NodePath("../SaveButton")
+text = "cancel"
+
+[connection signal="value_changed" from="MarginContainer/GridContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/GridContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
