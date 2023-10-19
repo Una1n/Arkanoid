@@ -9,10 +9,10 @@ func _init(world: World) -> void:
 
 func _input(event: InputEvent) -> void:
 	if OS.is_debug_build() and event.is_action_pressed("debug_next_level"):
-		SceneManager.go_to_next_level()
+		SceneManager.go_to_next_level(current_world.scene_file_path)
 
 	if OS.is_debug_build() and event.is_action_pressed("debug_prev_level"):
-		SceneManager.go_to_prev_level()
+		SceneManager.go_to_prev_level(current_world.scene_file_path)
 
 	if OS.is_debug_build() and event.is_action_pressed("debug_destroy_bricks"):
 		current_world.on_level_cleared.emit()

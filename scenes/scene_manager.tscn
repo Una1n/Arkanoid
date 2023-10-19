@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ba6lefl1hahjc"]
+[gd_scene load_steps=10 format=3 uid="uid://ba6lefl1hahjc"]
 
 [ext_resource type="Script" path="res://globals/scene_manager.gd" id="1_f4p3a"]
 [ext_resource type="PackedScene" uid="uid://cpqgug7fdibiq" path="res://scenes/ui/main_scene.tscn" id="2_50ah2"]
 [ext_resource type="PackedScene" uid="uid://m0i5ufpv6uka" path="res://scenes/ui/game_over.tscn" id="3_m87xm"]
+[ext_resource type="PackedScene" uid="uid://bam0n3u40gc5d" path="res://scenes/ui/settings_menu.tscn" id="4_i8ea7"]
 
 [sub_resource type="Animation" id="Animation_esp35"]
 resource_name = "RESET"
@@ -142,6 +143,7 @@ layer = 5
 script = ExtResource("1_f4p3a")
 main_menu_scene = ExtResource("2_50ah2")
 game_over_scene = ExtResource("3_m87xm")
+settings_menu_scene = ExtResource("4_i8ea7")
 
 [node name="DissolveRect" type="ColorRect" parent="."]
 unique_name_in_owner = true

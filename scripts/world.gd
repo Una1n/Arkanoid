@@ -82,12 +82,12 @@ func _pause_game() -> void:
 
 func on_game_over() -> void:
 	HighscoreManager.save_highscore()
-	SceneManager.go_to_game_over()
+	SceneManager.go_to_game_over(scene_file_path)
 
 
 func on_entered_gate() -> void:
 	HighscoreManager.add_gate_points()
-	on_level_cleared.emit()
+	on_level_cleared.emit(scene_file_path)
 
 
 func on_ball_exited_screen(ball: Ball) -> void:
@@ -117,6 +117,6 @@ func change_paddle(paddle: Paddle) -> void:
 func on_destroy_brick(brick: Brick) -> void:
 	bricks_available -= 1
 	if bricks_available == 0:
-		on_level_cleared.emit()
+		on_level_cleared.emit(scene_file_path)
 	elif brick.type.allowed_to_spawn_powerup:
 		powerup_manager.spawn_powerup(brick.global_position)

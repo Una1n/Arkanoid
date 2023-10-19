@@ -6,7 +6,7 @@ func _ready() -> void:
 
 
 func _on_new_game_button_pressed() -> void:
-	SceneManager.go_to_first_level()
+	SceneManager.go_to_first_level(scene_file_path)
 
 
 func _on_quit_button_pressed() -> void:
@@ -14,4 +14,4 @@ func _on_quit_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
-	pass # Replace with function body.
+	SceneManager.go_to_settings_menu(scene_file_path)

@@ -12,8 +12,8 @@ func _ready() -> void:
 
 
 func _on_restart_button_pressed() -> void:
-	SceneManager.go_to_first_level()
+	SceneManager.go_to_first_level(scene_file_path)
 
 
 func _on_quit_button_pressed() -> void:
-	SceneManager.go_to_main_menu()
+	SceneManager.go_to_main_menu(scene_file_path)
