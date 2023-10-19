@@ -1,5 +1,9 @@
 extends Node
 
+@onready var MASTER_BUS_ID = AudioServer.get_bus_index("Master")
+@onready var MUSIC_BUS_ID = AudioServer.get_bus_index("Music")
+@onready var SFX_BUS_ID = AudioServer.get_bus_index("SFX")
+
 var channels: int = 8
 var bus: String = "SFX"
 
@@ -30,3 +34,18 @@ func _process(_delta: float):
 		available[0].pitch_scale = randf_range(0.75, 1.25)
 		available[0].play()
 		available.pop_front()
+
+
+func set_master_volume(volume: float) -> void:
+	AudioServer.set_bus_volume_db(MASTER_BUS_ID, linear_to_db(volume))
+	AudioServer.set_bus_mute(MASTER_BUS_ID, volume < .05)
+
+
+func set_music_volume(volume: float) -> void:
+	AudioServer.set_bus_volume_db(MUSIC_BUS_ID, linear_to_db(volume))
+	AudioServer.set_bus_mute(MUSIC_BUS_ID, volume < .05)
+
+
+func set_sfx_volume(volume: float) -> void:
+	AudioServer.set_bus_volume_db(SFX_BUS_ID, linear_to_db(volume))
+	AudioServer.set_bus_mute(SFX_BUS_ID, volume < .05)
