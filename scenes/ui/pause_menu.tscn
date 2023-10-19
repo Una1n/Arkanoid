@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_0wc4y"]
 
-[node name="PauseMenu" type="Panel"]
+[node name="PauseMenu" type="Panel" node_paths=PackedStringArray("resume_button")]
 process_mode = 2
 top_level = true
 z_as_relative = false
@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_0wc4y")
+resume_button = NodePath("VBoxContainer/ResumeButton")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -43,15 +44,37 @@ grow_vertical = 0
 theme_override_constants/separation = 50
 
 [node name="ResumeButton" type="Button" parent="VBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../QuitButton")
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_right = NodePath("../SettingsButton")
+focus_neighbor_bottom = NodePath("../SettingsButton")
+focus_next = NodePath("../SettingsButton")
+focus_previous = NodePath("../QuitButton")
 text = "Resume"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../ResumeButton")
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_right = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../ResumeButton")
+text = "Settings"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../SettingsButton")
+focus_neighbor_top = NodePath("../SettingsButton")
+focus_neighbor_right = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../ResumeButton")
+focus_next = NodePath("../ResumeButton")
+focus_previous = NodePath("../SettingsButton")
 text = "Quit to Main Menu
 "
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
