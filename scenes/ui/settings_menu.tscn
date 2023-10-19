@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/settings_menu.gd" id="1_5qdnk"]
 
-[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("master_volume_label", "music_volume_label", "sfx_volume_label")]
+[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("background", "master_volume_label", "music_volume_label", "sfx_volume_label", "master_slider", "music_slider", "sfx_slider")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,19 +10,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5qdnk")
+background = NodePath("Background")
 master_volume_label = NodePath("MarginContainer/GridContainer/MasterVolumeLabel")
 music_volume_label = NodePath("MarginContainer/GridContainer/MusicVolumeLabel")
 sfx_volume_label = NodePath("MarginContainer/GridContainer/SFXVolumeLabel")
+master_slider = NodePath("MarginContainer/GridContainer/MasterSlider")
+music_slider = NodePath("MarginContainer/GridContainer/MusicSlider")
+sfx_slider = NodePath("MarginContainer/GridContainer/SFXSlider")
+
+[node name="Background" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -178.5
-offset_top = 50.0
-offset_right = 178.5
-offset_bottom = 145.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 40.0
+offset_bottom = 135.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 100
 text = "Settings"
@@ -35,6 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 150
 theme_override_constants/margin_right = 150
 
@@ -112,6 +124,7 @@ horizontal_alignment = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 200
 theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 40
@@ -146,3 +159,5 @@ text = "cancel"
 [connection signal="value_changed" from="MarginContainer/GridContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/GridContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
