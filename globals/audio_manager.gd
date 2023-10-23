@@ -12,6 +12,11 @@ var queue: Array[String] = []
 
 
 func _ready():
+	var user_preferences := UserPreferences.load_or_create()
+	set_master_volume(user_preferences.master_audio_level)
+	set_music_volume(user_preferences.music_audio_level)
+	set_sfx_volume(user_preferences.sfx_audio_level)
+
 	for i in channels:
 		var audio_player := AudioStreamPlayer.new()
 		add_child(audio_player)
@@ -34,6 +39,10 @@ func _process(_delta: float):
 		available[0].pitch_scale = randf_range(0.75, 1.25)
 		available[0].play()
 		available.pop_front()
+
+
+func get_linear_volume(bus_index: int) -> float:
+	return db_to_linear(AudioServer.get_bus_volume_db(bus_index))
 
 
 func set_master_volume(volume: float) -> void:

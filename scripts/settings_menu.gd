@@ -11,6 +11,8 @@ class_name SettingsMenu extends Control
 @export var sfx_slider: HSlider
 
 var slider_granularity: int = 100
+var user_preferences: UserPreferences
+
 
 var popup: bool = false:
 	set(value):
@@ -23,13 +25,12 @@ var popup: bool = false:
 
 func _ready() -> void:
 	%SaveButton.grab_focus()
-	# TODO: Load settings from file
-	master_slider.value = db_to_linear(
-		AudioServer.get_bus_volume_db(AudioManager.MASTER_BUS_ID)) * slider_granularity
-	music_slider.value = db_to_linear(
-		AudioServer.get_bus_volume_db(AudioManager.MUSIC_BUS_ID)) * slider_granularity
-	sfx_slider.value = db_to_linear(
-		AudioServer.get_bus_volume_db(AudioManager.SFX_BUS_ID)) * slider_granularity
+	user_preferences = UserPreferences.load_or_create()
+
+	if is_instance_valid(user_preferences):
+		master_slider.value = user_preferences.master_audio_level * slider_granularity
+		music_slider.value = user_preferences.music_audio_level * slider_granularity
+		sfx_slider.value = user_preferences.sfx_audio_level * slider_granularity
 
 
 func _on_master_slider_value_changed(value: float) -> void:
@@ -53,10 +54,12 @@ func _on_save_button_pressed() -> void:
 	AudioManager.set_music_volume(music_slider.value / slider_granularity)
 	AudioManager.set_sfx_volume(sfx_slider.value / slider_granularity)
 
-#	print("Master: %s" % AudioServer.get_bus_volume_db(AudioManager.MASTER_BUS_ID))
-#	print("Music: %s" % AudioServer.get_bus_volume_db(AudioManager.MUSIC_BUS_ID))
-#	print("SFX: %s" % AudioServer.get_bus_volume_db(AudioManager.SFX_BUS_ID))
-	# TODO: Save Settings
+	if is_instance_valid(user_preferences):
+		user_preferences.master_audio_level = master_slider.value / slider_granularity
+		user_preferences.music_audio_level = music_slider.value / slider_granularity
+		user_preferences.sfx_audio_level = sfx_slider.value / slider_granularity
+		user_preferences.save()
+
 	return_to_scene()
 
 
