@@ -16,9 +16,9 @@ var popup: bool = false:
 	set(value):
 		popup = value
 		if popup:
-			background.modulate = Color(1, 1, 1, 1)
+			background.modulate = Color(3, 7, 16, 1)
 		else:
-			background.modulate = Color(1, 1, 1, 0)
+			background.modulate = Color(3, 7, 16, 0)
 
 
 func _ready() -> void:
