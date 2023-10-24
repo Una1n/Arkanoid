@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bdlewbi22dowq"]
+[gd_scene load_steps=19 format=3 uid="uid://bdlewbi22dowq"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_3mar2"]
 [ext_resource type="PackedScene" uid="uid://dy4lsv03y08oy" path="res://scenes/paddle.tscn" id="2_533u3"]
@@ -18,6 +18,10 @@
 [ext_resource type="Script" path="res://scripts/ui_controller.gd" id="15_uyama"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s686c"]
+
+[sub_resource type="Environment" id="Environment_ohrhi"]
+glow_enabled = true
+glow_hdr_threshold = 1.5
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("gate", "powerup_manager", "ui_controller", "paddle_position", "current_paddle") groups=["World"]]
 script = ExtResource("1_3mar2")
@@ -174,3 +178,6 @@ text = "20
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("13_7tlyd")]
 unique_name_in_owner = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ohrhi")

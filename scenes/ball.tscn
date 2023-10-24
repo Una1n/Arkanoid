@@ -1,11 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwokanr7mk82v"]
+[gd_scene load_steps=11 format=3 uid="uid://cwokanr7mk82v"]
 
 [ext_resource type="Script" path="res://scripts/ball.gd" id="1_hdw1j"]
 [ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="1_yrk2e"]
 [ext_resource type="PackedScene" uid="uid://cnwyeao1h4vit" path="res://effects/hit_particles.tscn" id="2_xodx4"]
+[ext_resource type="Script" path="res://scripts/ball_trail.gd" id="4_anjrq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oejnf"]
 radius = 8.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cnx0q"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_lnsbg"]
+_data = [Vector2(0, 0.294737), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Animation" id="Animation_e8jqa"]
 length = 0.001
@@ -55,6 +63,19 @@ hit_particles_scene = ExtResource("2_xodx4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oejnf")
+
+[node name="Line2D" type="Line2D" parent="."]
+modulate = Color(3, 3, 3, 1)
+material = SubResource("CanvasItemMaterial_cnx0q")
+scale = Vector2(1, 1)
+points = PackedVector2Array(-131.429, 51.4286, -108.571, 40, -51.4286, 34.2857, -5.71429, 28.5714, 0, 0)
+width = 7.0
+width_curve = SubResource("Curve_lnsbg")
+default_color = Color(0.137255, 0.207843, 0.619608, 0.207843)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("4_anjrq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_yrk2e")
