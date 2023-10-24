@@ -22,33 +22,34 @@ func on_collision() -> void:
 	if is_being_destroyed: return
 
 	if not type.can_be_destroyed:
-		animated_sprite.show()
-		animated_sprite.play(type.animation_name)
-		animation_player.play("hit_indestructable")
-		AudioManager.play("res://assets/audio/sfx/brick_indestructable.wav")
+		_on_hit_indestructable()
 		return
 
 	current_hits += 1
 	if type.hits_to_destroy == current_hits:
-		is_being_destroyed = true
-		animated_sprite.hide()
-		$Sprite2D.z_index = 100
-		$Sprite2D.z_as_relative = false
-		$CollisionShape2D.set_deferred("disabled", true)
-		AudioManager.play("res://assets/audio/sfx/brick_destroyed.wav")
-		if randi_range(1, 2) == 1:
-			animation_player.play("destroy_left")
-		else:
-			animation_player.play("destroy_right")
-		on_destroyed.emit(self)
-		await animation_player.animation_finished
 		_destroy()
 	else:
-		animated_sprite.show()
-		animated_sprite.play(type.animation_name)
-		animation_player.play("hit_indestructable")
-		AudioManager.play("res://assets/audio/sfx/brick_indestructable.wav")
+		_on_hit_indestructable()
+
+
+func _on_hit_indestructable() -> void:
+	animated_sprite.show()
+	animated_sprite.play(type.animation_name)
+	animation_player.play("hit_indestructable")
+	AudioManager.play("res://assets/audio/sfx/brick_indestructable.wav")
 
 
 func _destroy() -> void:
+	is_being_destroyed = true
+	animated_sprite.hide()
+	$Sprite2D.z_index = 100
+	$Sprite2D.z_as_relative = false
+	$CollisionShape2D.set_deferred("disabled", true)
+	AudioManager.play("res://assets/audio/sfx/brick_destroyed.wav")
+	if randi_range(1, 2) == 1:
+		animation_player.play("destroy_left")
+	else:
+		animation_player.play("destroy_right")
+	on_destroyed.emit(self)
+	await animation_player.animation_finished
 	queue_free()
