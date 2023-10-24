@@ -3,6 +3,8 @@ class_name Ball extends CharacterBody2D
 const SPEED = 350.0
 
 @export var animation_player: AnimationPlayer
+@export var hit_particles_scene: PackedScene
+
 @onready var powerup_slow_active = false
 @onready var current_direction: Vector2 = Vector2.ZERO
 
@@ -67,6 +69,11 @@ func _physics_process(delta: float) -> void:
 			velocity = current_direction * bounce_velocity.length()
 
 		animation_player.play("hit")
+		var hit_particles := hit_particles_scene.instantiate() as GPUParticles2D
+		add_child(hit_particles)
+		hit_particles.global_position = collision.get_position()
+		hit_particles.global_rotation = collision.get_normal().angle()
+		hit_particles.emitting = true
 		_move_ball(delta)
 
 

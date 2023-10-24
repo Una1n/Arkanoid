@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnwyeao1h4vit"]
+
+[ext_resource type="Script" path="res://scripts/particles.gd" id="1_35iyp"]
+
+[sub_resource type="Gradient" id="Gradient_wd6it"]
+offsets = PackedFloat32Array(0, 0.692308, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.898039, 0.898039, 0.898039, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6wc64"]
+gradient = SubResource("Gradient_wd6it")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wsk3v"]
+particle_flag_disable_z = true
+spread = 48.3
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 80.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 2.0
+scale_max = 6.0
+color = Color(0.909804, 0.917647, 0.913725, 1)
+color_ramp = SubResource("GradientTexture1D_6wc64")
+attractor_interaction_enabled = false
+
+[node name="HitParticles" type="GPUParticles2D" node_paths=PackedStringArray("remove_timer")]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_wsk3v")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("1_35iyp")
+remove_timer = NodePath("RemoveTimer")
+
+[node name="RemoveTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="RemoveTimer" to="." method="_on_remove_timer_timeout"]

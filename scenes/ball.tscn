@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ball.gd" id="1_hdw1j"]
 [ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="1_yrk2e"]
+[ext_resource type="PackedScene" uid="uid://cnwyeao1h4vit" path="res://effects/hit_particles.tscn" id="2_xodx4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oejnf"]
 radius = 8.0
@@ -50,6 +51,7 @@ collision_layer = 4
 collision_mask = 43
 script = ExtResource("1_hdw1j")
 animation_player = NodePath("AnimationPlayer")
+hit_particles_scene = ExtResource("2_xodx4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oejnf")
