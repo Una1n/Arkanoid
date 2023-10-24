@@ -25,7 +25,7 @@ attractor_interaction_enabled = false
 
 [node name="HitParticles" type="GPUParticles2D" node_paths=PackedStringArray("remove_timer")]
 emitting = false
-amount = 10
+amount = 6
 process_material = SubResource("ParticleProcessMaterial_wsk3v")
 lifetime = 0.5
 one_shot = true
