@@ -67,6 +67,8 @@ func _physics_process(delta: float) -> void:
 				current_direction = Vector2.from_angle(deg_to_rad(offset_angle))
 
 			velocity = current_direction * bounce_velocity.length()
+			var camera := get_tree().get_first_node_in_group("Camera") as Camera
+			camera.shake(Vector2(2, 2))
 
 		animation_player.play("hit")
 		var hit_particles := hit_particles_scene.instantiate() as GPUParticles2D

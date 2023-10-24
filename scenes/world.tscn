@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://bdlewbi22dowq"]
+[gd_scene load_steps=20 format=3 uid="uid://bdlewbi22dowq"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_3mar2"]
 [ext_resource type="PackedScene" uid="uid://dy4lsv03y08oy" path="res://scenes/paddle.tscn" id="2_533u3"]
 [ext_resource type="PackedScene" uid="uid://cwdeig8vd2f4c" path="res://scenes/levels/default_level.tscn" id="2_pl2jy"]
 [ext_resource type="PackedScene" uid="uid://cwokanr7mk82v" path="res://scenes/ball.tscn" id="2_qokux"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="3_8meuo"]
 [ext_resource type="PackedScene" uid="uid://c64p0ppi77ell" path="res://scenes/ui/life_texture.tscn" id="3_tc1rq"]
 [ext_resource type="PackedScene" uid="uid://bkwoi6i376sfq" path="res://scenes/gate.tscn" id="4_h2ykw"]
 [ext_resource type="Script" path="res://globals/powerup_manager.gd" id="6_50chc"]
@@ -31,6 +32,10 @@ powerup_manager = NodePath("PowerupManager")
 ui_controller = NodePath("UI")
 paddle_position = NodePath("PaddlePosition")
 current_paddle = NodePath("PaddlePosition/Paddle")
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
+anchor_mode = 0
+script = ExtResource("3_8meuo")
 
 [node name="DefaultLevel" parent="." instance=ExtResource("2_pl2jy")]
 position = Vector2(240, 0)
