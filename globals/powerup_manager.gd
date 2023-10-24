@@ -8,6 +8,7 @@ var powerup_on_screen: bool = false
 var powerup_total_weight: float = 0.0
 
 signal on_powerup_activated(powerup: Powerup)
+signal on_powerup_deactivated
 
 
 func _ready() -> void:
@@ -65,6 +66,7 @@ func remove_active_powerup() -> void:
 	active_powerup.disable_powerup()
 	active_powerup.queue_free()
 	active_powerup = null
+	on_powerup_deactivated.emit()
 
 
 func remove_all_powerups() -> void:

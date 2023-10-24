@@ -20,6 +20,7 @@ func initialize() -> void:
 	HighscoreManager.on_highscore_updated.connect(on_highscore_updated)
 	LifeManager.on_lives_updated.connect(on_lives_updated)
 	powerup_manager.on_powerup_activated.connect(on_powerup_updated)
+	powerup_manager.on_powerup_deactivated.connect(on_powerup_updated.bind(null))
 
 	for i in LifeManager.lives:
 		lives_container.add_child(life_texture.instantiate())
