@@ -6,10 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ud5wm"]
 size = Vector2(64, 14)
 
-[node name="Paddle" type="CharacterBody2D" groups=["Paddle"]]
+[node name="Paddle" type="CharacterBody2D" node_paths=PackedStringArray("mode", "collision_node") groups=["Paddle"]]
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_rq0yc")
+mode = NodePath("NormalMode")
+collision_node = NodePath("Collision")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

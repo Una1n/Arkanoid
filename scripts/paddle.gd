@@ -1,10 +1,11 @@
 extends CharacterBody2D
 class_name Paddle
 
+@export var mode: PaddleMode
+@export var collision_node: CollisionShape2D
+
 @onready var mouse_position_x: float = get_global_mouse_position().x
 @onready var size: int = 64
-@onready var mode: PaddleMode = $NormalMode
-@onready var collision_node: CollisionShape2D = $Collision
 
 var non_mouse_movement: bool = true
 var move_motion: Vector2 = Vector2.ZERO
@@ -25,6 +26,10 @@ func set_mode(new_mode: PaddleMode) -> void:
 
 
 func on_ball_hit(ball: Ball) -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(mode, "scale", Vector2(1, 1), 0.2).from(Vector2(1.5, 0.7))
+	tween.set_ease(Tween.EASE_OUT)
+	tween.play()
 	mode.on_ball_hit(ball)
 
 
