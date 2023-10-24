@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwokanr7mk82v"]
+[gd_scene load_steps=8 format=3 uid="uid://cwokanr7mk82v"]
 
 [ext_resource type="Script" path="res://scripts/ball.gd" id="1_hdw1j"]
 [ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="1_yrk2e"]
@@ -6,12 +6,50 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_oejnf"]
 radius = 8.0
 
-[node name="Ball" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_e8jqa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_waw2h"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.517632, 4.43828),
+"update": 0,
+"values": [Vector2(1.7, 1.7), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4jr28"]
+_data = {
+"RESET": SubResource("Animation_e8jqa"),
+"hit": SubResource("Animation_waw2h")
+}
+
+[node name="Ball" type="CharacterBody2D" node_paths=PackedStringArray("animation_player")]
 z_index = 2
 scale = Vector2(0.7, 0.7)
 collision_layer = 4
 collision_mask = 43
 script = ExtResource("1_hdw1j")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oejnf")
@@ -24,5 +62,10 @@ region_rect = Rect2(384, 432, 16, 16)
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(2.38419e-07, 2.38419e-07)
 scale = Vector2(0.571429, 0.571429)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4jr28")
+}
 
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_screen_exited"]

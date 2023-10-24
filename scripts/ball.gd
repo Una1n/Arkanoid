@@ -1,10 +1,10 @@
-extends CharacterBody2D
-class_name Ball
+class_name Ball extends CharacterBody2D
 
-const __SPEED = 350.0
+const SPEED = 350.0
 
+@export var animation_player: AnimationPlayer
 @onready var powerup_slow_active = false
-var current_direction: Vector2
+@onready var current_direction: Vector2 = Vector2.ZERO
 
 signal on_screen_exited(ball: Ball)
 
@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func start_moving(direction: Vector2) -> void:
 	current_direction = direction.normalized()
-	velocity = current_direction * __SPEED
+	velocity = current_direction * SPEED
 
 
 func _physics_process(delta: float) -> void:
@@ -66,6 +66,7 @@ func _physics_process(delta: float) -> void:
 
 			velocity = current_direction * bounce_velocity.length()
 
+		animation_player.play("hit")
 		_move_ball(delta)
 
 
@@ -77,7 +78,7 @@ func _move_ball(delta: float) -> void:
 
 
 func normal_speed() -> void:
-	velocity = current_direction * __SPEED
+	velocity = current_direction * SPEED
 	powerup_slow_active = false
 
 
