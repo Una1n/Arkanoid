@@ -67,7 +67,6 @@ shape = SubResource("CircleShape2D_oejnf")
 [node name="Line2D" type="Line2D" parent="."]
 modulate = Color(3, 3, 3, 1)
 material = SubResource("CanvasItemMaterial_cnx0q")
-scale = Vector2(1, 1)
 points = PackedVector2Array(-131.429, 51.4286, -108.571, 40, -51.4286, 34.2857, -5.71429, 28.5714, 0, 0)
 width = 7.0
 width_curve = SubResource("Curve_lnsbg")

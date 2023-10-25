@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpqgug7fdibiq"]
+[gd_scene load_steps=13 format=3 uid="uid://cpqgug7fdibiq"]
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_qw3tj"]
+[ext_resource type="PackedScene" uid="uid://dva53aapfah8n" path="res://scenes/brick.tscn" id="2_ep01h"]
+[ext_resource type="Resource" uid="uid://b60q2xaraql5a" path="res://scenes/bricks/brick_blue.tres" id="3_1mk4p"]
+[ext_resource type="Resource" uid="uid://c6fncyguxrsml" path="res://scenes/bricks/brick_cyan.tres" id="4_6ecyy"]
+[ext_resource type="Resource" uid="uid://dgctb785bff1f" path="res://scenes/bricks/brick_gold.tres" id="5_2jal4"]
+[ext_resource type="Resource" uid="uid://dxr3tphjisjr6" path="res://scenes/bricks/brick_green.tres" id="6_ycx2p"]
+[ext_resource type="Resource" uid="uid://8yj2bxodgf1b" path="res://scenes/bricks/brick_orange.tres" id="7_h5vr8"]
+[ext_resource type="Resource" uid="uid://dce56mdkpqqik" path="res://scenes/bricks/brick_pink.tres" id="8_a4l37"]
+[ext_resource type="Resource" uid="uid://cguheqpy5613d" path="res://scenes/bricks/brick_red.tres" id="9_muxk0"]
+[ext_resource type="Resource" uid="uid://f68v43dk7ffp" path="res://scenes/bricks/brick_silver.tres" id="10_l78p2"]
+[ext_resource type="Resource" uid="uid://dwsn7qaam7hel" path="res://scenes/bricks/brick_violet.tres" id="11_l8848"]
+[ext_resource type="Resource" uid="uid://dtpprlbwjl2db" path="res://scenes/bricks/brick_yellow.tres" id="12_hrnm1"]
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -19,19 +30,108 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Control" type="Control" parent="Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="TitleShadow" type="Label" parent="Menu/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -362.0
+offset_top = 7.0
+offset_right = 376.0
+offset_bottom = 194.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.286275, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "arkanoid"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="Menu/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -369.0
+offset_right = 369.0
+offset_bottom = 187.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "arkanoid"
+horizontal_alignment = 1
+
+[node name="Bricks" type="Control" parent="Menu/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Brick2" parent="Menu/Control/Bricks" instance=ExtResource("2_ep01h")]
+position = Vector2(-124, 176)
+type = ExtResource("3_1mk4p")
+
+[node name="Brick3" parent="Menu/Control/Bricks" instance=ExtResource("2_ep01h")]
+position = Vector2(-92, 176)
+type = ExtResource("4_6ecyy")
+
+[node name="Brick4" parent="Menu/Control/Bricks" instance=ExtResource("2_ep01h")]
+position = Vector2(-60, 176)
+type = ExtResource("5_2jal4")
+
+[node name="Brick5" parent="Menu/Control/Bricks" instance=ExtResource("2_ep01h")]
+position = Vector2(-28, 176)
+type = ExtResource("6_ycx2p")
+
+[node name="Brick6" parent="Menu/Control/Bricks" instance=ExtResource("2_ep01h")]
+position = Vector2(4, 176)
+type = ExtResource("7_h5vr8")
+
+[node name="Brick7" parent="Menu/Control/Bricks" instance=ExtResource("2_ep01h")]
+position = Vector2(36, 176)
+type = ExtResource("8_a4l37")
+
+[node name="Brick8" parent="Menu/Control/Bricks" instance=ExtResource("2_ep01h")]
+position = Vector2(68, 176)
+type = ExtResource("9_muxk0")
+
+[node name="Brick9" parent="Menu/Control/Bricks" instance=ExtResource("2_ep01h")]
+position = Vector2(100, 176)
+type = ExtResource("10_l78p2")
+
+[node name="Brick10" parent="Menu/Control/Bricks" instance=ExtResource("2_ep01h")]
+position = Vector2(132, 176)
+type = ExtResource("11_l8848")
+
+[node name="Brick11" parent="Menu/Control/Bricks" instance=ExtResource("2_ep01h")]
+position = Vector2(164, 176)
+type = ExtResource("12_hrnm1")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -100.0
-offset_top = -70.0
+offset_top = -290.0
 offset_right = 100.0
-offset_bottom = 70.0
+offset_bottom = -79.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_constants/separation = 50
 
 [node name="NewGameButton" type="Button" parent="Menu/VBoxContainer"]
