@@ -509,22 +509,6 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="Animation" id="Animation_oji3t"]
-resource_name = "hit_indestructable"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 9.51364, 30.9099),
-"update": 0,
-"values": [0.0, 0.174533, -0.174533, 0.0]
-}
-
 [sub_resource type="Animation" id="Animation_x5jcs"]
 length = 0.001
 tracks/0/type = "value"
@@ -678,6 +662,22 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_oji3t"]
+resource_name = "hit_indestructable"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 9.51364, 30.9099),
+"update": 0,
+"values": [0.0, 0.174533, -0.174533, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lnmuc"]
 _data = {
 "RESET": SubResource("Animation_x5jcs"),
@@ -686,10 +686,8 @@ _data = {
 "hit_indestructable": SubResource("Animation_oji3t")
 }
 
-[node name="Brick" type="StaticBody2D" node_paths=PackedStringArray("animated_sprite", "animation_player") groups=["Bricks"]]
+[node name="Brick" type="StaticBody2D" groups=["Bricks"]]
 script = ExtResource("1_56n43")
-animated_sprite = NodePath("AnimatedSprite2D")
-animation_player = NodePath("AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ykxew")

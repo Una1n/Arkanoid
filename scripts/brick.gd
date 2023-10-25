@@ -8,9 +8,8 @@ signal on_destroyed(brick: Brick)
 		type = value
 		$Sprite2D.region_rect = value.region_rect
 
-@export var animated_sprite: AnimatedSprite2D
-@export var animation_player: AnimationPlayer
-
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var current_hits: int = 0
 @onready var is_being_destroyed: bool = false
 
