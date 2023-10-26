@@ -26,10 +26,18 @@ static func set_fullscreen(fullscreen: bool = true) -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		var screen_size: Vector2i = DisplayServer.screen_get_size(0)
-		var window_size: Vector2i = Vector2i(1280, 720)
-		DisplayServer.window_set_size(window_size)
-		DisplayServer.window_set_position(screen_size/2 - window_size/2)
+		DisplayServer.window_set_size(Vector2i(1280, 720))
+		DisplayServer.window_set_position(
+			get_middle_of_screen_position() - get_middle_of_window_position()
+		)
+
+
+static func get_middle_of_screen_position() -> Vector2i:
+	return DisplayServer.screen_get_size(0) / 2
+
+
+static func get_middle_of_window_position() -> Vector2i:
+	return DisplayServer.window_get_size() / 2
 
 
 static func get_current_os() -> OS_TYPES:

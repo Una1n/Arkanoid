@@ -6,7 +6,6 @@ class_name World extends Node2D
 @export var gate: Gate
 @export var powerup_manager: PowerupManager
 @export var ui_controller: UIController
-@export var paddle_position: Node2D
 @export var current_paddle: Paddle
 
 @onready var started_game: bool = false
@@ -28,7 +27,7 @@ func _ready() -> void:
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 
-	Input.warp_mouse(paddle_position.position)
+	Input.warp_mouse(Utils.get_middle_of_window_position())
 	ui_controller.initialize()
 	_connect_signals()
 	respawn_ball()
