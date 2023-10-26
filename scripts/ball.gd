@@ -55,10 +55,10 @@ func _physics_process(delta: float) -> void:
 			if collision_body.name == "DefaultLevel":
 				AudioManager.play("res://assets/audio/sfx/ball_hit_wall.wav")
 
-			# Making sure the ball horizontal movement is never within a 5 degree angle
+			# Making sure the ball horizontal movement is never within a 7 degree angle
 			# Otherwise it may get stuck going only horizontal
 			var angle = rad_to_deg(collision.get_normal().angle_to(bounce_velocity))
-			if angle > -5 and angle < 5 and collision.get_normal() != Vector2.DOWN:
+			if angle > -7 and angle < 7 and collision.get_normal() != Vector2.DOWN:
 				var offset_angle: float
 				if angle > 0:
 					offset_angle = rad_to_deg(current_direction.angle()) + 10
