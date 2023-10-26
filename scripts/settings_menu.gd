@@ -10,6 +10,9 @@ class_name SettingsMenu extends Control
 @export var music_slider: HSlider
 @export var sfx_slider: HSlider
 
+@export var fullscreen_label: Label
+@export var fullscreen_checkbox: CheckBox
+
 var slider_granularity: int = 100
 var user_preferences: UserPreferences
 
@@ -28,6 +31,12 @@ func _ready() -> void:
 	user_preferences = UserPreferences.load_or_create()
 
 	if is_instance_valid(user_preferences):
+		if Utils.get_current_os() == Utils.OS_TYPES.WEB:
+			fullscreen_checkbox.hide()
+			fullscreen_label.hide()
+		else:
+			fullscreen_checkbox.set_pressed_no_signal(user_preferences.fullscreen)
+
 		master_slider.value = user_preferences.master_audio_level * slider_granularity
 		music_slider.value = user_preferences.music_audio_level * slider_granularity
 		sfx_slider.value = user_preferences.sfx_audio_level * slider_granularity
@@ -53,8 +62,10 @@ func _on_save_button_pressed() -> void:
 	AudioManager.set_master_volume(master_slider.value / slider_granularity)
 	AudioManager.set_music_volume(music_slider.value / slider_granularity)
 	AudioManager.set_sfx_volume(sfx_slider.value / slider_granularity)
+	Utils.set_fullscreen(fullscreen_checkbox.is_pressed())
 
 	if is_instance_valid(user_preferences):
+		user_preferences.fullscreen = fullscreen_checkbox.is_pressed()
 		user_preferences.master_audio_level = master_slider.value / slider_granularity
 		user_preferences.music_audio_level = music_slider.value / slider_granularity
 		user_preferences.sfx_audio_level = sfx_slider.value / slider_granularity
