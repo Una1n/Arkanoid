@@ -24,14 +24,14 @@
 glow_enabled = true
 glow_hdr_threshold = 1.5
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("gate", "powerup_manager", "ui_controller", "paddle_position", "current_paddle") groups=["World"]]
+[node name="World" type="Node2D" node_paths=PackedStringArray("gate", "powerup_manager", "ui_controller", "current_paddle", "paddle_position") groups=["World"]]
 script = ExtResource("1_3mar2")
 ball_scene = ExtResource("2_qokux")
 gate = NodePath("Gate")
 powerup_manager = NodePath("PowerupManager")
 ui_controller = NodePath("UI")
-paddle_position = NodePath("PaddlePosition")
 current_paddle = NodePath("PaddlePosition/Paddle")
+paddle_position = NodePath("PaddlePosition")
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
 anchor_mode = 0
