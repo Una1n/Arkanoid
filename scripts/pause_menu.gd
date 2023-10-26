@@ -29,15 +29,19 @@ func _on_quit_button_pressed() -> void:
 
 
 func _resume_game() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
-	Input.warp_mouse(paused_mouse_position)
+	if OS.is_debug_build():
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+
+	get_viewport().warp_mouse(paused_mouse_position)
 	hide()
 	get_tree().paused = false
 
 
 func _on_visibility_changed() -> void:
 	if visible:
-		paused_mouse_position = get_global_mouse_position()
+		paused_mouse_position = get_viewport().get_mouse_position()
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 		# Need to check for inside tree, visibility gets called before add to tree
 		if resume_button.is_inside_tree():
