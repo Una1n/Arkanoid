@@ -41,4 +41,4 @@ func _input(event: InputEvent) -> void:
 			current_world.current_ball.velocity = Vector2.ZERO
 
 	if event.is_action_pressed("debug_screenshot"):
-		Utils.take_screenshot()
+		Utils.take_screenshot(get_viewport())

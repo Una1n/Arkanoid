@@ -22,7 +22,6 @@ LifeManager="*res://globals/life_manager.gd"
 SceneManager="*res://scenes/scene_manager.tscn"
 AudioManager="*res://globals/audio_manager.gd"
 ControllerUiInput="*res://globals/controller_ui_input.gd"
-Utils="*res://scripts/utils.gd"
 
 [debug]
 
