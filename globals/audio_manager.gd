@@ -12,11 +12,6 @@ var queue: Array[String] = []
 
 
 func _ready():
-	var user_preferences := UserPreferences.load_or_create()
-	set_master_volume(user_preferences.master_audio_level)
-	set_music_volume(user_preferences.music_audio_level)
-	set_sfx_volume(user_preferences.sfx_audio_level)
-
 	for i in channels:
 		var audio_player := AudioStreamPlayer.new()
 		add_child(audio_player)

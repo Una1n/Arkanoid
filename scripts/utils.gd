@@ -17,3 +17,34 @@ static func take_screenshot(viewport: Viewport) -> void:
 		file_path = SCREENSHOT_PATH + "screenshot-%s" % randi() + ".png"
 
 	image.save_png(file_path)
+
+
+static func set_fullscreen(fullscreen: bool = true) -> void:
+	if get_current_os() == OS_TYPES.WEB: return
+
+	if fullscreen:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		var screen_size: Vector2i = DisplayServer.screen_get_size(0)
+		var window_size: Vector2i = Vector2i(1280, 720)
+		DisplayServer.window_set_size(window_size)
+		DisplayServer.window_set_position(screen_size/2 - window_size/2)
+
+
+static func get_current_os() -> OS_TYPES:
+	match OS.get_name():
+		"Windows", "UWP":
+			return OS_TYPES.WINDOWS
+		"macOS":
+			return OS_TYPES.MACOS
+		"Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
+			return OS_TYPES.LINUX
+		"Android":
+			return OS_TYPES.ANDROID
+		"iOS":
+			return OS_TYPES.IOS
+		"Web":
+			return OS_TYPES.WEB
+
+	return OS_TYPES.UNKNOWN

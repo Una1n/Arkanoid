@@ -2,10 +2,10 @@ class_name UserPreferences extends Resource
 
 const USER_PREFERENCES_FILE = "user://user_preferences.tres"
 
+@export var fullscreen: bool = false
 @export_range(0, 1, 0.01) var master_audio_level: float = 1
 @export_range(0, 1, 0.01) var music_audio_level: float = 1
 @export_range(0, 1, 0.01) var sfx_audio_level: float = 1
-
 
 func save() -> void:
 	ResourceSaver.save(self, USER_PREFERENCES_FILE)
