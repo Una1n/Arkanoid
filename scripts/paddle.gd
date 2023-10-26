@@ -25,7 +25,22 @@ func set_mode(new_mode: PaddleMode) -> void:
 	mode.enable()
 
 
-func on_ball_hit(ball: Ball) -> void:
+func on_ball_hit(ball: Ball, collision: KinematicCollision2D) -> void:
+	var paddle_pos: Vector2 = collision.get_position() - global_position
+	paddle_pos.x /= (size / 2)
+	paddle_pos.normalized()
+
+	# If we hit the middle part of the paddle it reflects normally
+	var degrees: float = clampf(paddle_pos.x * 75, -75, 75)
+	if paddle_pos.x > -0.2 and paddle_pos.x < 0 and velocity.normalized().x > 0:
+		degrees = absf(degrees)
+	elif paddle_pos.x >= 0 and paddle_pos.x < 0.2 and velocity.normalized().x < 0:
+		degrees *= -1
+
+	# On the edge of the paddle the ball will go at a sharper angle
+	ball.current_direction = Vector2.UP.rotated(deg_to_rad(degrees))
+	ball.velocity = ball.current_direction * ball.velocity.bounce(collision.get_normal()).length()
+
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(mode, "scale", Vector2(1, 1), 0.2).from(Vector2(1.5, 0.7))
 	tween.set_ease(Tween.EASE_OUT)

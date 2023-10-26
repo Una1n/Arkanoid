@@ -21,35 +21,21 @@ func start_moving(direction: Vector2) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Remove collision with paddle when below a certain height
 	if position.y >= 520:
 		set_collision_mask_value(2, false)
 
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 	if collision:
 		var collision_body = collision.get_collider()
-		var bounce_velocity: Vector2 = velocity.bounce(collision.get_normal())
 		if collision_body.has_method("on_collision"):
 			collision_body.on_collision()
 
 		if collision.get_collider() is Paddle:
 			var paddle = collision.get_collider() as Paddle
-			var paddle_pos: Vector2 = collision.get_position() - paddle.global_position
-			paddle_pos.x /= (paddle.size / 2)
-			paddle_pos.normalized()
-
-			# If we hit the middle part of the paddle it reflects normally
-			var degrees: float = clampf(paddle_pos.x * 75, -75, 75)
-			if paddle_pos.x > -0.2 and paddle_pos.x < 0 and velocity.normalized().x > 0:
-				degrees = absf(degrees)
-			elif paddle_pos.x >= 0 and paddle_pos.x < 0.2 and velocity.normalized().x < 0:
-				degrees *= -1
-
-			# On the edge of the paddle it will go at a sharper angle
-			current_direction = Vector2.UP.rotated(deg_to_rad(degrees))
-			velocity = current_direction * bounce_velocity.length()
-
-			paddle.on_ball_hit(self)
+			paddle.on_ball_hit(self, collision)
 		else:
+			var bounce_velocity: Vector2 = velocity.bounce(collision.get_normal())
 			current_direction = bounce_velocity.normalized()
 
 			if collision_body.name == "DefaultLevel":
