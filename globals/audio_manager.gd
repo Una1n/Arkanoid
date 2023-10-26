@@ -1,23 +1,31 @@
 extends Node
 
-@onready var MASTER_BUS_ID = AudioServer.get_bus_index("Master")
-@onready var MUSIC_BUS_ID = AudioServer.get_bus_index("Music")
-@onready var SFX_BUS_ID = AudioServer.get_bus_index("SFX")
+const MASTER_BUS: String = "Master"
+const SFX_BUS: String = "SFX"
+const MUSIC_BUS: String = "Music"
 
-var channels: int = 8
-var bus: String = "SFX"
+@onready var MASTER_BUS_ID = AudioServer.get_bus_index(MASTER_BUS)
+@onready var MUSIC_BUS_ID = AudioServer.get_bus_index(MUSIC_BUS)
+@onready var SFX_BUS_ID = AudioServer.get_bus_index(SFX_BUS)
+
+var sfx_channels: int = 8
+var music_player: AudioStreamPlayer
 
 var available: Array[AudioStreamPlayer] = []
 var queue: Array[String] = []
 
 
 func _ready():
-	for i in channels:
+	music_player = AudioStreamPlayer.new()
+	add_child(music_player)
+	music_player.bus = MUSIC_BUS
+
+	for i in sfx_channels:
 		var audio_player := AudioStreamPlayer.new()
 		add_child(audio_player)
 		available.append(audio_player)
 		audio_player.finished.connect(_on_stream_finished.bind(audio_player))
-		audio_player.bus = bus
+		audio_player.bus = SFX_BUS
 
 
 func _on_stream_finished(stream: AudioStreamPlayer):
