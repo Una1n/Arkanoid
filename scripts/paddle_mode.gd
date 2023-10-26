@@ -1,5 +1,5 @@
-extends Node2D
-class_name PaddleMode
+class_name PaddleMode extends Node2D
+
 
 var paddle: Paddle = null
 

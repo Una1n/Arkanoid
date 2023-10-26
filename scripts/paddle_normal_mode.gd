@@ -1,5 +1,4 @@
-extends PaddleMode
-class_name NormalPaddleMode
+class_name NormalPaddleMode extends PaddleMode
 
 
 func on_ball_hit(_ball: Ball) -> void:

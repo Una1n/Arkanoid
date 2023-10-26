@@ -1,5 +1,5 @@
-extends CharacterBody2D
-class_name Paddle
+class_name Paddle extends CharacterBody2D
+
 
 @export var mode: PaddleMode
 @export var collision_node: CollisionShape2D

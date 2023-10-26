@@ -1,5 +1,5 @@
-extends Resource
-class_name BrickType
+class_name BrickType extends Resource
+
 
 @export var name: String = "Red"
 @export var points: int = 90
