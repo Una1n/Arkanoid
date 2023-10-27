@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://b60q2xaraql5a" path="res://scenes/bricks/brick_blue.tres" id="9_wpqmk"]
 [ext_resource type="Resource" uid="uid://dwsn7qaam7hel" path="res://scenes/bricks/brick_violet.tres" id="10_cu3ex"]
 
-[node name="World" instance=ExtResource("1_o5h0k")]
+[node name="Level8" instance=ExtResource("1_o5h0k")]
 
 [node name="Brick" parent="DefaultLevel" index="1" instance=ExtResource("2_42s7k")]
 position = Vector2(80, 144)
