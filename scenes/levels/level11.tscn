@@ -1,0 +1,314 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyybfepbuiwlu"]
+
+[ext_resource type="PackedScene" uid="uid://bdlewbi22dowq" path="res://scenes/world.tscn" id="1_f1x77"]
+[ext_resource type="PackedScene" uid="uid://dva53aapfah8n" path="res://scenes/brick.tscn" id="2_5rxa7"]
+[ext_resource type="Resource" uid="uid://f68v43dk7ffp" path="res://scenes/bricks/brick_silver.tres" id="3_5p5ne"]
+
+[node name="Level11" instance=ExtResource("1_f1x77")]
+
+[node name="Brick" parent="DefaultLevel" index="1" instance=ExtResource("2_5rxa7")]
+position = Vector2(80, 176)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick2" parent="DefaultLevel" index="2" instance=ExtResource("2_5rxa7")]
+position = Vector2(80, 160)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick3" parent="DefaultLevel" index="3" instance=ExtResource("2_5rxa7")]
+position = Vector2(80, 144)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick4" parent="DefaultLevel" index="4" instance=ExtResource("2_5rxa7")]
+position = Vector2(80, 128)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick5" parent="DefaultLevel" index="5" instance=ExtResource("2_5rxa7")]
+position = Vector2(80, 112)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick6" parent="DefaultLevel" index="6" instance=ExtResource("2_5rxa7")]
+position = Vector2(80, 96)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick23" parent="DefaultLevel" index="7" instance=ExtResource("2_5rxa7")]
+position = Vector2(80, 240)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick24" parent="DefaultLevel" index="8" instance=ExtResource("2_5rxa7")]
+position = Vector2(80, 208)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick83" parent="DefaultLevel" index="9" instance=ExtResource("2_5rxa7")]
+position = Vector2(80, 272)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick84" parent="DefaultLevel" index="10" instance=ExtResource("2_5rxa7")]
+position = Vector2(80, 256)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick85" parent="DefaultLevel" index="11" instance=ExtResource("2_5rxa7")]
+position = Vector2(240, 168)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick86" parent="DefaultLevel" index="12" instance=ExtResource("2_5rxa7")]
+position = Vector2(144, 240)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick87" parent="DefaultLevel" index="13" instance=ExtResource("2_5rxa7")]
+position = Vector2(144, 176)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick88" parent="DefaultLevel" index="14" instance=ExtResource("2_5rxa7")]
+position = Vector2(144, 160)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick89" parent="DefaultLevel" index="15" instance=ExtResource("2_5rxa7")]
+position = Vector2(144, 208)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick90" parent="DefaultLevel" index="16" instance=ExtResource("2_5rxa7")]
+position = Vector2(144, 192)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick25" parent="DefaultLevel" index="17" instance=ExtResource("2_5rxa7")]
+position = Vector2(80, 192)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick26" parent="DefaultLevel" index="18" instance=ExtResource("2_5rxa7")]
+position = Vector2(176, 272)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick13" parent="DefaultLevel" index="19" instance=ExtResource("2_5rxa7")]
+position = Vector2(144, 272)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick15" parent="DefaultLevel" index="20" instance=ExtResource("2_5rxa7")]
+position = Vector2(336, 224)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick16" parent="DefaultLevel" index="21" instance=ExtResource("2_5rxa7")]
+position = Vector2(144, 224)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick17" parent="DefaultLevel" index="22" instance=ExtResource("2_5rxa7")]
+position = Vector2(112, 96)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick29" parent="DefaultLevel" index="23" instance=ExtResource("2_5rxa7")]
+position = Vector2(80, 224)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick30" parent="DefaultLevel" index="24" instance=ExtResource("2_5rxa7")]
+position = Vector2(208, 168)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick31" parent="DefaultLevel" index="25" instance=ExtResource("2_5rxa7")]
+position = Vector2(144, 128)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick32" parent="DefaultLevel" index="26" instance=ExtResource("2_5rxa7")]
+position = Vector2(144, 96)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick43" parent="DefaultLevel" index="27" instance=ExtResource("2_5rxa7")]
+position = Vector2(176, 240)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick44" parent="DefaultLevel" index="28" instance=ExtResource("2_5rxa7")]
+position = Vector2(208, 272)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick49" parent="DefaultLevel" index="29" instance=ExtResource("2_5rxa7")]
+position = Vector2(176, 128)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick50" parent="DefaultLevel" index="30" instance=ExtResource("2_5rxa7")]
+position = Vector2(176, 96)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick51" parent="DefaultLevel" index="31" instance=ExtResource("2_5rxa7")]
+position = Vector2(208, 240)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick52" parent="DefaultLevel" index="32" instance=ExtResource("2_5rxa7")]
+position = Vector2(240, 272)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick55" parent="DefaultLevel" index="33" instance=ExtResource("2_5rxa7")]
+position = Vector2(240, 200)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick56" parent="DefaultLevel" index="34" instance=ExtResource("2_5rxa7")]
+position = Vector2(208, 200)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick57" parent="DefaultLevel" index="35" instance=ExtResource("2_5rxa7")]
+position = Vector2(208, 128)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick58" parent="DefaultLevel" index="36" instance=ExtResource("2_5rxa7")]
+position = Vector2(208, 96)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick59" parent="DefaultLevel" index="37" instance=ExtResource("2_5rxa7")]
+position = Vector2(240, 240)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick60" parent="DefaultLevel" index="38" instance=ExtResource("2_5rxa7")]
+position = Vector2(272, 272)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick63" parent="DefaultLevel" index="39" instance=ExtResource("2_5rxa7")]
+position = Vector2(272, 200)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick64" parent="DefaultLevel" index="40" instance=ExtResource("2_5rxa7")]
+position = Vector2(208, 184)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick65" parent="DefaultLevel" index="41" instance=ExtResource("2_5rxa7")]
+position = Vector2(240, 128)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick66" parent="DefaultLevel" index="42" instance=ExtResource("2_5rxa7")]
+position = Vector2(240, 96)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick67" parent="DefaultLevel" index="43" instance=ExtResource("2_5rxa7")]
+position = Vector2(272, 240)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick68" parent="DefaultLevel" index="44" instance=ExtResource("2_5rxa7")]
+position = Vector2(304, 272)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick71" parent="DefaultLevel" index="45" instance=ExtResource("2_5rxa7")]
+position = Vector2(272, 168)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick72" parent="DefaultLevel" index="46" instance=ExtResource("2_5rxa7")]
+position = Vector2(272, 184)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick73" parent="DefaultLevel" index="47" instance=ExtResource("2_5rxa7")]
+position = Vector2(272, 128)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick74" parent="DefaultLevel" index="48" instance=ExtResource("2_5rxa7")]
+position = Vector2(272, 96)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick75" parent="DefaultLevel" index="49" instance=ExtResource("2_5rxa7")]
+position = Vector2(304, 240)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick76" parent="DefaultLevel" index="50" instance=ExtResource("2_5rxa7")]
+position = Vector2(336, 272)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick78" parent="DefaultLevel" index="51" instance=ExtResource("2_5rxa7")]
+position = Vector2(400, 224)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick81" parent="DefaultLevel" index="52" instance=ExtResource("2_5rxa7")]
+position = Vector2(304, 128)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick82" parent="DefaultLevel" index="53" instance=ExtResource("2_5rxa7")]
+position = Vector2(304, 96)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick33" parent="DefaultLevel" index="54" instance=ExtResource("2_5rxa7")]
+position = Vector2(400, 272)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick34" parent="DefaultLevel" index="55" instance=ExtResource("2_5rxa7")]
+position = Vector2(112, 272)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick35" parent="DefaultLevel" index="56" instance=ExtResource("2_5rxa7")]
+position = Vector2(336, 240)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick36" parent="DefaultLevel" index="57" instance=ExtResource("2_5rxa7")]
+position = Vector2(368, 272)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick37" parent="DefaultLevel" index="58" instance=ExtResource("2_5rxa7")]
+position = Vector2(336, 208)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick38" parent="DefaultLevel" index="59" instance=ExtResource("2_5rxa7")]
+position = Vector2(336, 192)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick39" parent="DefaultLevel" index="60" instance=ExtResource("2_5rxa7")]
+position = Vector2(336, 176)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick40" parent="DefaultLevel" index="61" instance=ExtResource("2_5rxa7")]
+position = Vector2(336, 160)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick91" parent="DefaultLevel" index="62" instance=ExtResource("2_5rxa7")]
+position = Vector2(144, 144)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick45" parent="DefaultLevel" index="63" instance=ExtResource("2_5rxa7")]
+position = Vector2(336, 144)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick41" parent="DefaultLevel" index="64" instance=ExtResource("2_5rxa7")]
+position = Vector2(336, 128)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick42" parent="DefaultLevel" index="65" instance=ExtResource("2_5rxa7")]
+position = Vector2(336, 96)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick18" parent="DefaultLevel" index="66" instance=ExtResource("2_5rxa7")]
+position = Vector2(400, 256)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick19" parent="DefaultLevel" index="67" instance=ExtResource("2_5rxa7")]
+position = Vector2(400, 240)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick20" parent="DefaultLevel" index="68" instance=ExtResource("2_5rxa7")]
+position = Vector2(400, 208)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick21" parent="DefaultLevel" index="69" instance=ExtResource("2_5rxa7")]
+position = Vector2(400, 192)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick22" parent="DefaultLevel" index="70" instance=ExtResource("2_5rxa7")]
+position = Vector2(368, 96)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick7" parent="DefaultLevel" index="71" instance=ExtResource("2_5rxa7")]
+position = Vector2(400, 176)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick8" parent="DefaultLevel" index="72" instance=ExtResource("2_5rxa7")]
+position = Vector2(400, 160)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick9" parent="DefaultLevel" index="73" instance=ExtResource("2_5rxa7")]
+position = Vector2(400, 144)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick10" parent="DefaultLevel" index="74" instance=ExtResource("2_5rxa7")]
+position = Vector2(400, 128)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick11" parent="DefaultLevel" index="75" instance=ExtResource("2_5rxa7")]
+position = Vector2(400, 112)
+type = ExtResource("3_5p5ne")
+
+[node name="Brick12" parent="DefaultLevel" index="76" instance=ExtResource("2_5rxa7")]
+position = Vector2(400, 96)
+type = ExtResource("3_5p5ne")
+
+[node name="PauseMenu" parent="UI" index="1"]
+visible = false
