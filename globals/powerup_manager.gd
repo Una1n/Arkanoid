@@ -71,7 +71,7 @@ func remove_active_powerup() -> void:
 
 func remove_all_powerups() -> void:
 	remove_active_powerup()
-	get_tree().call_group("Laser", "destroy")
+	get_tree().call_group("Projectiles", "destroy")
 	if powerup_on_screen:
 		get_tree().call_group("Powerup", "destroy")
 		powerup_on_screen = false
