@@ -2,6 +2,8 @@ extends Control
 
 
 func _ready() -> void:
+	if SceneManager.finished_game:
+		%GameOverLabel.text = "Congratulations"
 	%NewLabel.hide()
 	%ScoreLabel.text = "Score: %s" % HighscoreManager.current_score
 	%HighScoreLabel.text = "Highscore: %s" % HighscoreManager.highscore

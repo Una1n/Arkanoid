@@ -11,12 +11,14 @@ extends CanvasLayer
 var current_level_nr: int = 1
 var in_transition: bool = false
 var previous_scene_path: String = ""
+var finished_game: bool = false
 
 signal on_load_first_level
 
 func go_to_first_level(prev_scene_path: String) -> void:
 	previous_scene_path = prev_scene_path
 	current_level_nr = 1
+	finished_game = false
 	if ResourceLoader.exists("res://scenes/levels/level%s.tscn" % current_level_nr):
 		_transition_level("res://scenes/levels/level%s.tscn" % current_level_nr)
 		on_load_first_level.emit()
@@ -79,6 +81,12 @@ func go_to_main_menu(prev_scene_path: String) -> void:
 
 func go_to_game_over(prev_scene_path: String) -> void:
 	previous_scene_path = prev_scene_path
+	_transition_menu(game_over_scene)
+
+
+func go_to_victory_screen(prev_scene_path: String) -> void:
+	previous_scene_path = prev_scene_path
+	finished_game = true
 	_transition_menu(game_over_scene)
 
 

@@ -22,6 +22,7 @@
 
 [sub_resource type="Environment" id="Environment_ohrhi"]
 glow_enabled = true
+glow_blend_mode = 0
 glow_hdr_threshold = 1.5
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("gate", "powerup_manager", "ui_controller", "current_paddle", "paddle_position") groups=["World"]]
