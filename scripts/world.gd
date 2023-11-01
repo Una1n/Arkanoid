@@ -53,6 +53,7 @@ func _connect_signals() -> void:
 	LifeManager.on_respawn.connect(respawn_ball, CONNECT_DEFERRED)
 	LifeManager.on_game_over.connect(on_game_over)
 	powerup_manager.on_powerup_activated.connect(HighscoreManager.add_powerup_points)
+	current_paddle.on_destroyed.connect(handle_paddle_destroyed)
 	if not SceneManager.on_load_first_level.is_connected(HighscoreManager.reset_score):
 		SceneManager.on_load_first_level.connect(HighscoreManager.reset_score)
 	if not SceneManager.on_load_first_level.is_connected(LifeManager.reset_lives):
@@ -104,16 +105,21 @@ func handle_life_lost() -> void:
 		on_life_lost.emit()
 
 
+func handle_paddle_destroyed() -> void:
+	current_ball.stop_moving()
+	current_ball.tree_exited.connect(handle_life_lost)
+	current_ball.queue_free()
+	AudioManager.play("res://assets/audio/sfx/lost_last_ball.wav")
+	powerup_manager.remove_all_powerups()
+	on_life_lost.emit()
+
+
 func respawn_ball() -> void:
 	current_ball = ball_scene.instantiate() as Ball
 	current_paddle.add_child(current_ball)
 	current_ball.position = Vector2(0, -12)
 	current_ball.on_screen_exited.connect(on_ball_exited_screen)
 	started_game = false
-
-
-func change_paddle(paddle: Paddle) -> void:
-	current_paddle = paddle
 
 
 func on_destroy_brick(brick: Brick) -> void:

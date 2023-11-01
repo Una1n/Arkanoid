@@ -7,6 +7,8 @@ class_name Paddle extends CharacterBody2D
 @onready var mouse_position_x: float = get_global_mouse_position().x
 @onready var size: int = 64
 
+signal on_destroyed
+
 var non_mouse_movement: bool = true
 var move_motion: Vector2 = Vector2.ZERO
 const MOVEMENT_SPEED: int = 375
@@ -72,3 +74,7 @@ func _physics_process(delta: float) -> void:
 		move_motion = Vector2(mouse_position_x - global_position.x, 0)
 
 	move_and_collide(move_motion)
+
+
+func destroy() -> void:
+	on_destroyed.emit()
