@@ -45,6 +45,10 @@ func _add_points(points: int) -> void:
 		on_highscore_updated.emit()
 
 
+func add_boss_hit_points() -> void:
+	_add_points(1000)
+
+
 func add_gate_points() -> void:
 	_add_points(10000)
 
