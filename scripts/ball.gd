@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 	if collision:
-		var collision_body = collision.get_collider()
+		var collision_body := collision.get_collider()
 		if collision_body.has_method("on_collision"):
 			collision_body.on_collision()
 
@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 
 			# Making sure the ball horizontal movement is never within a 7 degree angle
 			# Otherwise it may get stuck going only horizontal
-			var angle = rad_to_deg(collision.get_normal().angle_to(bounce_velocity))
+			var angle := rad_to_deg(collision.get_normal().angle_to(bounce_velocity))
 			if angle > -7 and angle < 7 and collision.get_normal() != Vector2.DOWN:
 				var offset_angle: float
 				if angle > 0:
@@ -70,6 +70,11 @@ func _move_ball(delta: float) -> void:
 		velocity *= randf_range(1.01, 1.05)
 	if velocity != Vector2.ZERO:
 		move_and_collide(velocity * delta)
+
+
+func stop_moving() -> void:
+	velocity = Vector2.ZERO
+	current_direction = Vector2.ZERO
 
 
 func normal_speed() -> void:
