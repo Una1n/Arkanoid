@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://grcnbl35d81b"]
+
+[ext_resource type="Script" path="res://scripts/boss_projectile.gd" id="1_63owq"]
+[ext_resource type="Texture2D" uid="uid://dsyj3w4s364th" path="res://assets/BreakOut Assets x2.png" id="2_jfsnt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jinlv"]
+size = Vector2(16, 8)
+
+[node name="BossProjectile" type="Area2D" groups=["Projectiles"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("1_63owq")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jinlv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_jfsnt")
+region_enabled = true
+region_rect = Rect2(448, 464, 16, 16)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-3.57628e-07, 0)
+scale = Vector2(0.8, 0.4)
+
+[connection signal="body_entered" from="." to="." method="_on_collision"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_screen_exited"]
