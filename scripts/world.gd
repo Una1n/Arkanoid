@@ -55,6 +55,8 @@ func _connect_signals() -> void:
 	powerup_manager.on_powerup_activated.connect(HighscoreManager.add_powerup_points)
 	if not SceneManager.on_load_first_level.is_connected(HighscoreManager.reset_score):
 		SceneManager.on_load_first_level.connect(HighscoreManager.reset_score)
+	if not SceneManager.on_load_first_level.is_connected(LifeManager.reset_lives):
+		SceneManager.on_load_first_level.connect(LifeManager.reset_lives)
 
 
 func _notification(what: int) -> void:

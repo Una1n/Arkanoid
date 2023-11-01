@@ -3,7 +3,7 @@ extends Node
 var starting_lives: int = 2
 var lives: int = 2
 
-signal on_lives_updated
+signal on_lives_updated(new_value: int)
 signal on_respawn
 signal on_game_over
 
@@ -18,14 +18,13 @@ func on_life_lost() -> void:
 		on_respawn.emit()
 	else:
 		on_game_over.emit()
-		reset_lives()
 
 
 func add_life() -> void:
 	lives += 1
-	on_lives_updated.emit()
+	on_lives_updated.emit(lives)
 
 
 func remove_life() -> void:
 	lives -= 1
-	on_lives_updated.emit()
+	on_lives_updated.emit(lives)

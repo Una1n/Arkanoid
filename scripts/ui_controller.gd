@@ -26,13 +26,13 @@ func initialize() -> void:
 		lives_container.add_child(life_texture.instantiate())
 
 
-func on_lives_updated() -> void:
+func on_lives_updated(new_value: int) -> void:
 	var ui_lives_count: int = lives_container.get_child_count()
-	if ui_lives_count < LifeManager.lives:
+	if ui_lives_count < new_value:
 		lives_container.add_child(life_texture.instantiate())
-	elif ui_lives_count > LifeManager.lives:
+	elif ui_lives_count > new_value:
 		if ui_lives_count > 0:
-			var life = lives_container.get_child(ui_lives_count - 1)
+			var life := lives_container.get_child(ui_lives_count - 1)
 			lives_container.remove_child(life)
 
 
