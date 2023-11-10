@@ -29,10 +29,5 @@ func _create_ball(world: World) -> void:
 
 func get_random_direction_y() -> float:
 	# Making sure the direction is never fully left/right
-	var direction_y: float = 0.2
-	if randi_range(1, 2) == 1:
-		direction_y = randf_range(0.2, 1.0)
-	else:
-		direction_y = randf_range(-1.0, -0.2)
-
-	return direction_y
+	# And only make the direction go up so the player is not surprised
+	return randf_range(-0.2, -1.0)
