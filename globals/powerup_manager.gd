@@ -1,5 +1,8 @@
-extends Node
-class_name PowerupManager
+class_name PowerupManager extends Node
+
+
+signal on_powerup_activated(powerup: Powerup)
+signal on_powerup_deactivated
 
 @export var powerup_list: Array[PowerupData] = []
 
@@ -7,8 +10,7 @@ var active_powerup: Powerup = null
 var powerup_on_screen: bool = false
 var powerup_total_weight: float = 0.0
 
-signal on_powerup_activated(powerup: Powerup)
-signal on_powerup_deactivated
+@onready var powerup_not_dropped_counter: int = 0
 
 
 func _ready() -> void:
@@ -24,7 +26,8 @@ func spawn_powerup(spawn_position: Vector2) -> void:
 		not active_powerup.is_allowed_to_spawn_powerups_while_active():
 		return
 
-	if randi_range(1, 4) == 1:
+	if randi_range(1, 3) == 1 or powerup_not_dropped_counter >= 4:
+		powerup_not_dropped_counter = 0
 		var powerup = _get_random_powerup()
 		if not is_instance_valid(powerup):
 			printerr("Couldn't get powerup from drop table")
@@ -35,6 +38,8 @@ func spawn_powerup(spawn_position: Vector2) -> void:
 		powerup.on_powerup_gained.connect(on_powerup_gained, CONNECT_DEFERRED)
 		add_child(powerup)
 		powerup_on_screen = true
+	else:
+		powerup_not_dropped_counter += 1
 
 
 func _get_random_powerup() -> Powerup:
