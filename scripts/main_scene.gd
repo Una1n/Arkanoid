@@ -4,6 +4,7 @@ extends Control
 func _ready() -> void:
 	%NewGameButton.grab_focus()
 	_load_settings()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func _load_settings() -> void:

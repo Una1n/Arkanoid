@@ -42,7 +42,7 @@ func _resume_game() -> void:
 func _on_visibility_changed() -> void:
 	if visible:
 		paused_mouse_position = get_viewport().get_mouse_position()
-		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		# Need to check for inside tree, visibility gets called before add to tree
 		if resume_button.is_inside_tree():
 			resume_button.grab_focus()
