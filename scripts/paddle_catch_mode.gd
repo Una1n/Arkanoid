@@ -15,10 +15,19 @@ func attach_ball(ball: Ball) -> void:
 		release_ball()
 
 	ball.reparent(paddle)
+	_confine_ball_to_inside_top_of_paddle(ball)
 	attached_ball = ball
 	release_timer.start()
 	if not release_timer.timeout.is_connected(release_ball):
 		release_timer.timeout.connect(release_ball)
+
+
+func _confine_ball_to_inside_top_of_paddle(ball: Ball) -> void:
+	if ball.position.x < -26:
+		ball.position.x = -26
+	if ball.position.x > 26:
+		ball.position.x = 26
+	ball.position.y = -12
 
 
 func release_ball() -> void:
