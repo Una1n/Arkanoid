@@ -168,7 +168,7 @@ type = ExtResource("3_kcrlq")
 
 [node name="Brick18" parent="DefaultLevel" index="40" instance=ExtResource("2_lfs4v")]
 position = Vector2(80, 88)
-type = ExtResource("3_kcrlq")
+type = ExtResource("6_u6hce")
 
 [node name="Brick57" parent="DefaultLevel" index="41" instance=ExtResource("2_lfs4v")]
 position = Vector2(80, 56)
