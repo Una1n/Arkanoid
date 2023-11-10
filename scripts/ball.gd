@@ -1,6 +1,6 @@
 class_name Ball extends CharacterBody2D
 
-const SPEED = 350.0
+const SPEED = 450.0
 
 @export var animation_player: AnimationPlayer
 @export var hit_particles_scene: PackedScene
